@@ -1,0 +1,30 @@
+{
+  "name": "G-Next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "json-server": "json-server --watch db.json --port 4000 --delay 200"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.3",
+    "dotenv-webpack": "^1.5.7",
+    "next": "^7.0.2",
+    "next-images": "^1.0.3",
+    "path": "^0.12.7",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-placeholder": "^3.0.1"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.0"
+  }
+}
