@@ -20,9 +20,10 @@
     "next": "^7.0.2",
     "next-images": "^1.0.3",
     "path": "^0.12.7",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-placeholder": "^3.0.1"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-placeholder": "^3.0.1",
+    "react-toastify": "^4.5.2"
   },
   "devDependencies": {
     "json-server": "^0.14.0"

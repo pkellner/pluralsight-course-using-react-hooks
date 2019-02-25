@@ -7,7 +7,8 @@ const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Speakers extends React.Component {
   static GetSpeakersUrl() {
-    return "https://www.siliconvalley-codecamp.com/rest/speakers/ps";
+    //return "https://www.siliconvalley-codecamp.com/rest/speakers/ps";
+    return "http://localhost:4000/speakers";
   }
   static async getInitialProps({ req }) {
     const isServer = !!req;
@@ -70,6 +71,11 @@ class Speakers extends React.Component {
   }
 
   render() {
+
+    if (this.state.hasErrored) return <div>
+          REST Call errored. likely need to 'npm run json-server'
+        </div>;
+
     return (
       <div className="container">
         <div className="row">

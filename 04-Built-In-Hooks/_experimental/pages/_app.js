@@ -1,16 +1,24 @@
-import React from 'react';
-import App, {Container} from 'next/app';
-import {Layout} from "../src/Layout";
+import React from "react";
+import App, { Container } from "next/app";
+import { Layout } from "../src/Layout";
 
 export default class MyApp extends App {
-    render() {
-        const {Component, pageProps} = this.props
-        return (
-            <Container>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </Container>
-        );
-    }
+  render() {
+    const { Component, pageProps } = this.props;
+
+    // // for not using layout, only in testing
+    // return (
+    //   <Container>
+    //       <Component {...pageProps} />
+    //   </Container>
+    // );
+
+    return (
+      <Container>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Container>
+    );
+  }
 }

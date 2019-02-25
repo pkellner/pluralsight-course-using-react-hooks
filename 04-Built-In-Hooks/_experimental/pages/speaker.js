@@ -5,7 +5,8 @@ const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Speaker extends Component {
   static GetSpeakerUrl() {
-    return "https://www.siliconvalley-codecamp.com/rest/Speaker";
+    //return "https://www.siliconvalley-codecamp.com/rest/Speaker";
+    return "http://localhost:4000/Speakers";
   }
   static async getInitialProps({ query }) {
     var promise = axios
@@ -35,6 +36,9 @@ class Speaker extends Component {
   }
 
   render() {
+    if (this.state.hasErrored)
+      return <div>REST Call errored. likely need to 'npm run json-server'</div>;
+
     return (
       <div className="container">
         <div className="row">
@@ -42,7 +46,10 @@ class Speaker extends Component {
             {this.state.speakerDataOne.firstName}{" "}
             {this.state.speakerDataOne.lastName}
           </h2>
-          <p className="margintopbottom20">{this.state.speakerDataOne.bio}</p>
+          <p
+            className="margintopbottom20"
+            dangerouslySetInnerHTML={{ __html: this.state.speakerDataOne.bio }}
+          />
         </div>
       </div>
     );

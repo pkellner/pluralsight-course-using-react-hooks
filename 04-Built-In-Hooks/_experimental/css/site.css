@@ -16,6 +16,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.marginbottom10 {
+    margin-bottom: 10px;
+}
 .cardmin {
     min-width: 300px;
 }

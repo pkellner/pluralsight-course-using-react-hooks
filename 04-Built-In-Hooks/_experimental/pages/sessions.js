@@ -6,7 +6,8 @@ const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Sessions extends React.Component {
   static GetSessionsUrl() {
-    return 'https://www.siliconvalley-codecamp.com/rest/sessions/ps'
+    //return 'https://www.siliconvalley-codecamp.com/rest/sessions/ps';
+    return "http://localhost:4000/sessions";
   }
   static async getInitialProps() {
     var promise = axios
@@ -36,6 +37,9 @@ class Sessions extends React.Component {
   }
 
   render() {
+    if (this.state.hasErrored)
+      return <div>REST Call errored. likely need to 'npm run json-server'</div>;
+
     return (
       <div className="container">
         <div className="row">
