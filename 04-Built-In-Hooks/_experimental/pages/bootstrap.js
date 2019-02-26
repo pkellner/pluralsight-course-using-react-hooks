@@ -5,12 +5,13 @@ import "../css/site.css";
 
 class bootstrap extends Component {
   render() {
-    return (
-      <div>
+    return <div>
         <div className="jumbotron">
           <div className="row">
             <div className="col-12 col-sm-4 text-center">
-              <h6 className="text-uppercase">October 19-20&nbsp;&nbsp;2019</h6>
+              <h6 className="text-uppercase">
+                October 19-20&nbsp;&nbsp;2019
+              </h6>
               <h6 className="text-uppercase">San Jose, California</h6>
             </div>
             <div className="col-12 col-sm-8 text-lg-right">
@@ -22,20 +23,23 @@ class bootstrap extends Component {
           </div>
         </div>
 
-        <div className="container" >
+        <div className="container">
           <div className="row marginbottom10">
-            <div className="col-sm-2"></div>
+            <div className="col-sm-2" />
             <div className="col-sm-8">
               <div className="content">
                 <div className="input-group">
-                  <input type="email" className="form-control" placeholder="Enter your email" />&nbsp;
+                  <input type="email" className="form-control" placeholder="Enter your email" />
+                  &nbsp;
                   <span className="input-group-btn">
-                   <button className="btn" type="submit">Get Updates</button>
-                   </span>
+                    <button className="btn" type="submit">
+                      Get Updates
+                    </button>
+                  </span>
                 </div>
               </div>
             </div>
-              <div className="col-sm-2"></div>
+            <div className="col-sm-2" />
           </div>
         </div>
 
@@ -62,7 +66,6 @@ class bootstrap extends Component {
         </nav>
 
         <div className="container">
-
           <div className="row">
             <div className="col margintopbottom">
               <h2>Speakers</h2>
@@ -72,35 +75,24 @@ class bootstrap extends Component {
           <div className="row">
             <div className="card-deck">
               <div className="card col-4 cardmin">
-                <img
-                  className="card-img-top"
-                  src="/static/speakers/Speaker-8367.jpg"
-                />
+                <img className="card-img-top" src="/static/speakers/Speaker-8367.jpg" />
                 <div className="card-body">
-                  <a
-                    href="#"
-                    className="btn btn-lg btn-block btn-outline-primary margintopbottom10"
-                  >
+                  <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
                   </a>
                   <h4 className="card-title">Gayle Laakmann McDowell</h4>
                   <p className="card-text">
-                    Founder/CEO of CareerCup, a company that does lots of things
-                    around tech interviews, such as consulting and publishing.
+                    Founder/CEO of CareerCup, a company that does lots of
+                    things around tech interviews, such as consulting and
+                    publishing.
                   </p>
                 </div>
               </div>
 
               <div className="card col-4 cardmin ">
-                <img
-                  className="card-img-top"
-                  src="/static/speakers/Speaker-2920.jpg"
-                />
+                <img className="card-img-top" src="/static/speakers/Speaker-2920.jpg" />
                 <div className="card-body">
-                  <a
-                    href="#"
-                    className="btn btn-lg btn-block btn-outline-primary margintopbottom10"
-                  >
+                  <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
                   </a>
                   <h4 className="card-title">Ron Lichty</h4>
@@ -112,44 +104,32 @@ class bootstrap extends Component {
               </div>
 
               <div className="card col-4 cardmin">
-                <img
-                  className="card-img-top"
-                  src="/static/speakers/Speaker-1124.jpg"
-                />
+                <img className="card-img-top" src="/static/speakers/Speaker-1124.jpg" />
                 <div className="card-body">
-                  <a
-                    href="#"
-                    className="btn btn-lg btn-block btn-outline-primary margintopbottom10"
-                  >
+                  <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
                   </a>
                   <h4 className="card-title">Douglas Crockford</h4>
                   <p className="card-text">
                     Douglas Crockford discovered the JSON Data Interchange
                     Format. He is also the author of _JavaScript: The Good
-                    Parts_. He has been called a guru, but he is actually more
-                    of a mahatma.
+                    Parts_. He has been called a guru, but he is actually
+                    more of a mahatma.
                   </p>
                 </div>
               </div>
 
               <div className="card col-4 cardmin">
-                <img
-                  className="card-img-top"
-                  src="/static/speakers/Speaker-39062.jpg"
-                />
+                <img className="card-img-top" src="/static/speakers/Speaker-39062.jpg" />
                 <div className="card-body">
-                  <a
-                    href="#"
-                    className="btn btn-lg btn-block btn-outline-primary margintopbottom10"
-                  >
+                  <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
                   </a>
                   <h4 className="card-title">Mike North</h4>
                   <p className="card-text">
                     Mike trains web development teams all over the world, at
-                    companies ranging from tiny stealth-mode startups to Silicon
-                    Valley tech giants.
+                    companies ranging from tiny stealth-mode startups to
+                    Silicon Valley tech giants.
                   </p>
                 </div>
               </div>
@@ -172,12 +152,9 @@ class bootstrap extends Component {
                   </h4>
                   <h6 className="card-title">Douglas Crockford</h6>
                   <p className="card-text">
-                    Douglas Crockford is the author of{" "}
-                    <b>How JavaScript Works</b>, the shocking best seller that
-                    rips the lid off behind the scenes. In this light-hearted
-                    romp thru the world's most misunderstood programming
-                    language, Crockford reveals what is actually going on, and
-                    how we can use this to write better programs. "
+                    Douglas Crockford is the author of <b>
+                      How JavaScript Works
+                    </b>, the shocking best seller that rips the lid off behind the scenes. In this light-hearted romp thru the world's most misunderstood programming language, Crockford reveals what is actually going on, and how we can use this to write better programs. "
                   </p>
                 </div>
               </div>
@@ -189,11 +166,11 @@ class bootstrap extends Component {
                   </h4>
                   <h6 className="card-title">Ron Lichty</h6>
                   <p className="card-text">
-                    Managers have critical roles to play enabling agile adoption
-                    and agile success. While “self-organizing” does not mean no
-                    managers, the old manager roles and rules no longer apply.
-                    This session is about manager roles that make agile teams
-                    thrive
+                    Managers have critical roles to play enabling agile
+                    adoption and agile success. While “self-organizing” does
+                    not mean no managers, the old manager roles and rules no
+                    longer apply. This session is about manager roles that
+                    make agile teams thrive
                   </p>
                 </div>
               </div>
@@ -206,9 +183,10 @@ class bootstrap extends Component {
                   <h6 className="card-title">Gayle Laakmann McDowell</h6>
                   <p className="card-text">
                     Programmer & best-selling author of Cracking the Coding
-                    Interview presents a technical talk on how coding interviews
-                    work and how to do well on them. This will be a deeply
-                    technical talk covering data structures and algorithms."
+                    Interview presents a technical talk on how coding
+                    interviews work and how to do well on them. This will be
+                    a deeply technical talk covering data structures and
+                    algorithms."
                   </p>
                 </div>
               </div>
@@ -218,13 +196,12 @@ class bootstrap extends Component {
 
         <div className="jumbotron text-center">
           <h7>
-            <b>Silicon Valley Code Camp 2018</b> is Hosted by PayPal in San Jose
-            at their Town Hall location. 2121 North First Street.{" "}
-            <b>October 13-14 2018</b>
+            <b>Silicon Valley Code Camp 2018</b> is Hosted by PayPal in San Jose at their Town Hall location. 2121 North First Street. <b>
+              October 13-14 2018
+            </b>
           </h7>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
