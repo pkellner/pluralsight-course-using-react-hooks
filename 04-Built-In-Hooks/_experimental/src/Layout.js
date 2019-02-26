@@ -15,7 +15,6 @@ export class Layout extends React.Component {
         return (
             <React.Fragment>
                 <Header/>
-                <SignMeUp/>
                 <Menu/>
                 {children}
                 <Footer/>

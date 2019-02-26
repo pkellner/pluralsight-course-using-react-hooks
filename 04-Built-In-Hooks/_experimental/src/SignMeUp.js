@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function SignMeUp() {
   const [email, setEmail] = useState("");
@@ -12,7 +12,8 @@ function SignMeUp() {
     return re.test(email);
   }
 
-  const notify = () => toast.info(`You will be notified of upcoming events ${email}`);
+  const notify = () =>
+    toast.info(`You will be notified of upcoming events ${email}`);
 
   function sendEmailToBackend() {
     setSendProcessing(true);
@@ -20,8 +21,7 @@ function SignMeUp() {
       setTimeout(function() {
         setSendProcessing(false);
         resolve();
-        notify()
-        //alert(email);
+        notify();
       }, 2000);
     });
   }
@@ -30,38 +30,30 @@ function SignMeUp() {
 
   return (
     <div className="container">
-      <ToastContainer />
-      <div className="row marginbottom10">
-        <div className="col-sm-2" />
-        <div className="col-sm-8">
-          <div className="content">
-            <div className="input-group">
-              <input
-                value={email}
-                onChange={e => {
-                  setEmailValid(validateEmail(e.target.value));
-                  return setEmail(e.target.value);
-                }}
-                placeholder="Email address"
-                type="email"
-                name="email"
-                required
-              />
-              &nbsp;&nbsp;&nbsp;
-              <span className="input-group-btn">
-                <button
-                  disabled={!emailValid || sendProcessing}
-                  className="btn"
-                  onClick={sendEmailToBackend}
-                  type="submit"
-                >
-                  {buttonText}
-                </button>
-              </span>
-            </div>
-          </div>
+      <div>
+        <ToastContainer />
+        <div className="content">
+          <input
+            value={email}
+            onChange={e => {
+              setEmailValid(validateEmail(e.target.value));
+              return setEmail(e.target.value);
+            }}
+            placeholder="Enter Email"
+            type="email"
+            name="email"
+            required
+          />
+          &nbsp;
+          <button
+            disabled={!emailValid || sendProcessing}
+            className="btn"
+            onClick={sendEmailToBackend}
+            type="submit"
+          >
+            {buttonText}
+          </button>
         </div>
-        <div className="col-sm-2" />
       </div>
     </div>
   );
