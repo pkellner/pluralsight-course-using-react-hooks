@@ -1,12 +1,4 @@
 {
-  "./noop": [
-    {
-      "id": "./node_modules/next/dist/client/noop.js",
-      "name": "./node_modules/next/dist/client/noop.js",
-      "file": "static/chunks/0.js",
-      "publicPath": "static/chunks/0.js"
-    }
-  ],
   "bootstrap/dist/css/bootstrap.min.css": [
     {
       "id": "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -33,6 +25,12 @@
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 8,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
     }
   ],
   "../css/site.css": [
@@ -49,6 +47,22 @@
       "name": "./node_modules/react-toastify/dist/ReactToastify.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
+    }
+  ],
+  "react-placeholder/lib/reactPlaceholder.css": [
+    {
+      "id": "./node_modules/react-placeholder/lib/reactPlaceholder.css",
+      "name": "./node_modules/react-placeholder/lib/reactPlaceholder.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    }
+  ],
+  "./noop": [
+    {
+      "id": "./node_modules/next/dist/client/noop.js",
+      "name": "./node_modules/next/dist/client/noop.js",
+      "file": "static/chunks/0.js",
+      "publicPath": "static/chunks/0.js"
     }
   ]
 }
