@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -6,6 +6,7 @@ import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 
 import axios from "axios";
+import {ConfigContext} from "./App";
 
 const Speakers = () => {
   const [speakers, setSpeakers] = useState([]);
@@ -75,17 +76,22 @@ const Speakers = () => {
         json-server"
       </div>
     );
-  // if (isLoading) return <div>loading...</div>;
+
+  const context = useContext(ConfigContext);
 
   const speakingDays = speaker => {
-    if (speaker.speakingSaturday && speaker.speakingSunday)
-      return "Speaking Saturday and Sunday";
-    if (speaker.speakingSaturday && !speaker.speakingSunday)
-      return "Speaking Saturday";
-    if (!speaker.speakingSaturday && speaker.speakingSunday)
-      return "Speaking Sunday";
-    if (!speaker.speakingSaturday && !speaker.speakingSunday)
-      return "Not Speaking";
+    if (context.showSpeakerSpeakingDays) {
+      if (speaker.speakingSaturday && speaker.speakingSunday)
+        return "Speaking Saturday and Sunday";
+      if (speaker.speakingSaturday && !speaker.speakingSunday)
+        return "Speaking Saturday";
+      if (!speaker.speakingSaturday && speaker.speakingSunday)
+        return "Speaking Sunday";
+      if (!speaker.speakingSaturday && !speaker.speakingSunday)
+        return "Not Speaking";
+    } else {
+      return null;
+    }
   };
 
   const filterData = rec => {
