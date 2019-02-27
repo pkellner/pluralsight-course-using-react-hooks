@@ -1,11 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
+import emailReducer from './emailReducer'
 
 function SignMeUp() {
-  const [email, setEmail] = useState("");
-  const [emailValid, setEmailValid] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const [emailValid, setEmailValid] = useState(false);
+
+  //https://medium.com/crowdbotics/how-to-use-usereducer-in-react-hooks-for-performance-optimization-ecafca9e7bf5
+
+  //const reducer = (state, action) => action;
+
+  // const reducer = (state, action) => {
+  //   return action;
+  // };
+
+  const reducer = (state, action) => {
+  debugger;
+    switch (action.type) {
+      case "setEmail": {
+        return {
+          ...state,
+          email: action.email,
+          emailValid: validateEmail(action.email)
+        };
+      }
+      // case 'decrement': return state - 1;
+      // case 'reset': return 0;
+      default:
+        throw new Error("Unexpected action");
+    }
+  };
+
+  // const [email, setEmail] = useReducer(reducer, "");
+  // const [emailValid, setEmailValid] = useReducer(reducer, false);
+
+  const initialState = {
+    email: "",
+    emailValid: false
+  };
+
+  //const [{ email, emailValid }, dispatch] = useReducer(reducer, initialState);
+ const [{ email, emailValid }, dispatch] = useReducer(emailReducer, initialState);
+
   const [sendProcessing, setSendProcessing] = useState(false);
 
   function validateEmail(email) {
@@ -37,8 +75,9 @@ function SignMeUp() {
           <input
             value={email}
             onChange={e => {
-              setEmailValid(validateEmail(e.target.value));
-              return setEmail(e.target.value);
+              dispatch({type: "setEmail",email: e.target.value});
+              //setEmailValid(validateEmail(e.target.value));
+              //return setEmail(e.target.value);
             }}
             placeholder="Enter Email"
             type="email"

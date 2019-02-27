@@ -69,13 +69,7 @@ const Speakers = () => {
     serverSideFilter ? [searchText, speakingSaturday] : []
   );
 
-  if (isError)
-    return (
-      <div>
-        Error: {errorMessage} (likely json-server not running. To run: "npm run
-        json-server"
-      </div>
-    );
+
 
   const context = useContext(ConfigContext);
 
@@ -124,6 +118,14 @@ const Speakers = () => {
   //   setSpeakingSunday(true);
   //   setServerSideFilter(!serverSideFilter);
   // }
+
+  if (isError)
+    return (
+        <div>
+          Error: {errorMessage} (likely json-server not running. To run: "npm run
+          json-server"
+        </div>
+    );
 
   return (
     <div>
