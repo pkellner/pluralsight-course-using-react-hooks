@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
+import React, { useState, useEffect, useContext, useReducer, useCallback,useMemo } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/site.css";
@@ -81,20 +81,43 @@ const Speakers = () => {
 
   const context = useContext(ConfigContext);
 
-  const speakingDays = speaker => {
-    if (context.showSpeakerSpeakingDays) {
-      if (speaker.speakingSaturday && speaker.speakingSunday)
-        return "Speaking Saturday and Sunday";
-      if (speaker.speakingSaturday && !speaker.speakingSunday)
-        return "Speaking Saturday";
-      if (!speaker.speakingSaturday && speaker.speakingSunday)
-        return "Speaking Sunday";
-      if (!speaker.speakingSaturday && !speaker.speakingSunday)
-        return "Not Speaking";
-    } else {
-      return null;
-    }
+  // const speakingDays = speaker => {
+  //   console.log(`speakingDays: called`);
+  //   if (context.showSpeakerSpeakingDays && speaker.speakingSaturday && speaker.speakingSunday) {
+  //     if (speaker.speakingSaturday && speaker.speakingSunday)
+  //       return "Speaking Saturday and Sunday";
+  //     if (speaker.speakingSaturday && !speaker.speakingSunday)
+  //       return "Speaking Saturday";
+  //     if (!speaker.speakingSaturday && speaker.speakingSunday)
+  //       return "Speaking Sunday";
+  //     if (!speaker.speakingSaturday && !speaker.speakingSunday)
+  //       return "Not Speaking";
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+  const speakingDays = function (showSpeakerSpeakingDays,speakingSaturday,speakingSunday) {
+    console.log(`speakingDays: called: ${showSpeakerSpeakingDays===true} ${speakingSaturday===true}  ${speakingSunday===true}`);
+    if (!context.showSpeakerSpeakingDays===true) return null;
+
+    if (speakingSaturday===true && speakingSunday===true)
+      return "Speaking Saturday and Sunday";
+    if (speakingSaturday===true && !speakingSunday===true)
+      return "Speaking Saturday";
+    if (!speakingSaturday===true && speakingSunday===true)
+      return "Speaking Sunday";
+    if (!speakingSaturday===true && !speakingSunday===true)
+      return "Not Speaking";
   };
+
+  // const memoizedCallback = useCallback(
+  //     () => {
+  //       speakingDays(context.showSpeakerSpeakingDays,speakingSaturday,speakingSunday);
+  //     },
+  //     [context.showSpeakerSpeakingDays,speakingSaturday,speakingSunday],
+  // );
+
 
   const filterData = rec => {
     if (
@@ -151,6 +174,8 @@ const Speakers = () => {
     });
   }
 
+
+
   return (
     <div>
       <Header />
@@ -206,49 +231,54 @@ const Speakers = () => {
           <div className="card-deck">
             {speakers
               .filter(!serverSideFilter ? new1 : () => true)
-              .map(speaker => (
-                <div
-                  className="card col-4 cardmin margintopbottom20"
-                  key={speaker.id}
-                >
-                  <img
-                    className="card-img-top"
-                    src={`/static/speakers/Speaker-${speaker.id}.jpg`}
-                  />
-                  <div className="card-body">
-                    <h4 className="card-title">
-                      <div className="clearfix">
-                        <p className="float-left">
-                          {speaker.firstName} {speaker.lastName}{" "}
-                        </p>
+              .map(speaker => {
+                debugger;
+                return (
+                    <div
+                        className="card col-4 cardmin margintopbottom20"
+                        key={speaker.id}
+                    >
+                      <img
+                          className="card-img-top"
+                          src={`/static/speakers/Speaker-${speaker.id}.jpg`}
+                      />
+                      <div className="card-body">
+                        <h4 className="card-title">
+                          <div className="clearfix">
+                            <p className="float-left">
+                              {speaker.firstName} {speaker.lastName}{" "}
+                            </p>
 
-                        {/*<div className="heartredbutton">*/}
-                        {/*</div>*/}
+                            {/*<div className="heartredbutton">*/}
+                            {/*</div>*/}
 
-                        <p className="float-right">
-                          {speaker.favorite ? (
-                            <button
-                              data-sessionid={speaker.id}
-                              className="heartredbutton"
-                              onClick={heartUnFavoriteHandler}
-                            />
-                          ) : (
-                            <button
-                              data-sessionid={speaker.id}
-                              className="heartdarkbutton"
-                              onClick={heartFavoriteHandler}
-                            />
-                          )}
+                            <p className="float-right">
+                              {speaker.favorite ? (
+                                  <button
+                                      data-sessionid={speaker.id}
+                                      className="heartredbutton"
+                                      onClick={heartUnFavoriteHandler}
+                                  />
+                              ) : (
+                                  <button
+                                      data-sessionid={speaker.id}
+                                      className="heartdarkbutton"
+                                      onClick={heartFavoriteHandler}
+                                  />
+                              )}
+                            </p>
+                          </div>
+                        </h4>
+                        <p className="card-text">{speaker.bioShort}</p>
+                        <p>
+                          <i>
+                            {speakingDays(context.showSpeakerSpeakingDays, speaker.speakingSaturday,speaker.speakingSunday)}
+                          </i>
                         </p>
                       </div>
-                    </h4>
-                    <p className="card-text">{speaker.bioShort}</p>
-                    <p>
-                      <i>{speakingDays(speaker)}</i>
-                    </p>
-                  </div>
-                </div>
-              ))}
+                    </div>
+                );
+              })}
           </div>
         </div>
       </div>
