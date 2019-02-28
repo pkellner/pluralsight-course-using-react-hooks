@@ -4,27 +4,27 @@ const speakersReducer = (state, action) => {
       return action.data;
     }
     case "favorite": {
-      debugger;
-      const x = state.map((item,index) => {
-        if (item.id === action.sessionId){
-          let speakerToUpdate = Object.assign(item);
-          speakerToUpdate.favorite = 1;
-          return speakerToUpdate;
-          //return state[index].favorite = 1;
-        } else {
+      return state.map((item,index) => {
+        if (item.id === action.sessionId) {
+          // let speakerToUpdate = Object.assign(item);
+          // speakerToUpdate.favorite = 1;
+          item.favorite = 1;
           return item;
+          // return speakerToUpdate;
         }
+        return item;
       });
-      return x;
     }
     case "unfavorite": {
       return state.map((item,index) => {
-        if (item.id === action.sessionId){
-          return (Object.assign(state[index])).favorite = 0;
-          //return state[index].favorite = 0;
-        } else {
+        if (item.id === action.sessionId) {
+          // let speakerToUpdate = Object.assign(item);
+          // speakerToUpdate.favorite = 1;
+          item.favorite = 0;
           return item;
+          // return speakerToUpdate;
         }
+        return item;
       });
     }
     // case 'decrement': return state - 1;
