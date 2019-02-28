@@ -1,15 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
+import "../css/site.css";
+
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 
 import axios from "axios";
-import {ConfigContext} from "./App";
+import { ConfigContext } from "./App";
+
+import speakersReducer from "./speakersReducer";
 
 const Speakers = () => {
-  const [speakers, setSpeakers] = useState([]);
+  //const [speakers, setSpeakers] = useState([]);
+
+  const [speakers, dispatch] = useReducer(speakersReducer, []);
+
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -49,7 +55,11 @@ const Speakers = () => {
               const speakerDataFilter = speakerData.filter(new1);
               setSpeakers(speakerDataFilter);
             } else {
-              setSpeakers(a.data);
+              //setSpeakers(a.data);
+              dispatch({
+                type: "loadspeakers",
+                data: a.data
+              });
             }
             setIsLoading(false);
           }
@@ -68,8 +78,6 @@ const Speakers = () => {
     },
     serverSideFilter ? [searchText, speakingSaturday] : []
   );
-
-
 
   const context = useContext(ConfigContext);
 
@@ -119,15 +127,29 @@ const Speakers = () => {
   //   setServerSideFilter(!serverSideFilter);
   // }
 
-
   if (isError)
     return (
-        <div>
-          Error: {errorMessage} (likely json-server not running. To run: "npm run
-          json-server"
-        </div>
+      <div>
+        Error: {errorMessage} (likely json-server not running. To run: "npm run
+        json-server"
+      </div>
     );
 
+  function heartUnFavoriteHandler(e) {
+    e.preventDefault();
+    dispatch({
+      type: "unfavorite",
+      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
+    });
+  }
+
+  function heartFavoriteHandler(e) {
+    e.preventDefault();
+    dispatch({
+      type: "favorite",
+      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
+    });
+  }
 
   return (
     <div>
@@ -195,7 +217,30 @@ const Speakers = () => {
                   />
                   <div className="card-body">
                     <h4 className="card-title">
-                      {speaker.firstName} {speaker.lastName}{" "}
+                      <div className="clearfix">
+                        <p className="float-left">
+                          {speaker.firstName} {speaker.lastName}{" "}
+                        </p>
+
+                        {/*<div className="heartredbutton">*/}
+                        {/*</div>*/}
+
+                        <p className="float-right">
+                          {speaker.favorite ? (
+                            <button
+                              data-sessionid={speaker.id}
+                              className="heartredbutton"
+                              onClick={heartUnFavoriteHandler}
+                            />
+                          ) : (
+                            <button
+                              data-sessionid={speaker.id}
+                              className="heartdarkbutton"
+                              onClick={heartFavoriteHandler}
+                            />
+                          )}
+                        </p>
+                      </div>
                     </h4>
                     <p className="card-text">{speaker.bioShort}</p>
                     <p>

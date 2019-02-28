@@ -25,3 +25,27 @@
 .jumbotronheight {
     height: 200px;
 }
+
+
+
+.heartredbutton
+{
+    background-image:  url('/static/heart-red.png');
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+.heartdarkbutton
+{
+    background-image:  url('/static/heart-dark.png');
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+}

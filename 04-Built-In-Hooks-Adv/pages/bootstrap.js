@@ -6,7 +6,7 @@ import "../css/site.css";
 class bootstrap extends Component {
   render() {
     return <div>
-        <div className="jumbotron">
+      <div className="jumbotron">
           <div className="row">
             <div className="col-12 col-sm-4 text-center">
               <h6 className="text-uppercase">
