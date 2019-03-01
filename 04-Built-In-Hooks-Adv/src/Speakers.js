@@ -22,8 +22,6 @@ import speakersReducer from "./speakersReducer";
 import SpeakerDays from "./SpeakerDays";
 
 const Speakers = () => {
-  //const [speakers, setSpeakers] = useState([]);
-
   const [speakers, dispatch] = useReducer(speakersReducer, []);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -96,28 +94,11 @@ const Speakers = () => {
 
   const context = useContext(ConfigContext);
 
-  // const speakingDays = speaker => {
-  //   console.log(`speakingDays: called`);
-  //   if (context.showSpeakerSpeakingDays && speaker.speakingSaturday && speaker.speakingSunday) {
-  //     if (speaker.speakingSaturday && speaker.speakingSunday)
-  //       return "Speaking Saturday and Sunday";
-  //     if (speaker.speakingSaturday && !speaker.speakingSunday)
-  //       return "Speaking Saturday";
-  //     if (!speaker.speakingSaturday && speaker.speakingSunday)
-  //       return "Speaking Sunday";
-  //     if (!speaker.speakingSaturday && !speaker.speakingSunday)
-  //       return "Not Speaking";
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
   const speakingDays = function(
     showSpeakerSpeakingDays,
     speakingSaturday,
     speakingSunday
   ) {
-    //console.log(`speakingDays: called: ${showSpeakerSpeakingDays===true} ${speakingSaturday===true}  ${speakingSunday===true}`);
     if (!context.showSpeakerSpeakingDays === true) return null;
 
     if (speakingSaturday === true && speakingSunday === true)
@@ -129,13 +110,6 @@ const Speakers = () => {
     if (!speakingSaturday === true && !speakingSunday === true)
       return "Not Speaking";
   };
-
-  // const memoizedCallback = useCallback(
-  //     () => {
-  //       speakingDays(context.showSpeakerSpeakingDays,speakingSaturday,speakingSunday);
-  //     },
-  //     [context.showSpeakerSpeakingDays,speakingSaturday,speakingSunday],
-  // );
 
   const filterData = rec => {
     if (
@@ -160,13 +134,7 @@ const Speakers = () => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  // THIS DOES NOT WORK RIGHT, NEED TO MAKE SEPARATE LOAD FROM SERVER, LOAD FROM CLIENT WIHTOUT CHECKBOX TOGGLE
-  // function handleChangeServerSideFilter() {
-  //   setSearchText("");
-  //   setSpeakingSaturday(true);
-  //   setSpeakingSunday(true);
-  //   setServerSideFilter(!serverSideFilter);
-  // }
+
 
   if (isError)
     return (
@@ -184,25 +152,13 @@ const Speakers = () => {
     });
   }
 
-  // function heartFavoriteHandler(e) {
-  //   e.preventDefault();
-  //   dispatch({
-  //     type: "favorite",
-  //     sessionId: parseInt(e.target.attributes["data-sessionid"].value)
-  //   });
-  // }
-
   const heartFavoriteHandler = e => {
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     e.preventDefault();
-
-
     dispatch({
       type: "favorite",
       sessionId
     });
-
-
   };
 
   return (
@@ -300,7 +256,6 @@ const Speakers = () => {
                       <p className="card-text">{speaker.bioShort}</p>
                       <p>
                         <i>
-                          {/*{speakingDays(context.showSpeakerSpeakingDays, speaker.speakingSaturday,speaker.speakingSunday)}*/}
                           <SpeakerDays
                             show={context.showSpeakerSpeakingDays}
                             saturday={speaker.speakingSaturday}
@@ -320,3 +275,14 @@ const Speakers = () => {
 };
 
 export default Speakers;
+
+
+
+
+// THIS DOES NOT WORK RIGHT, NEED TO MAKE SEPARATE LOAD FROM SERVER, LOAD FROM CLIENT WIHTOUT CHECKBOX TOGGLE
+// function handleChangeServerSideFilter() {
+//   setSearchText("");
+//   setSpeakingSaturday(true);
+//   setSpeakingSunday(true);
+//   setServerSideFilter(!serverSideFilter);
+// }
