@@ -1,4 +1,12 @@
-import React, { useState, useEffect, useContext, useReducer, useCallback,useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+  useCallback,
+  useMemo,
+  useRef
+} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/site.css";
@@ -10,6 +18,8 @@ import axios from "axios";
 import { ConfigContext } from "./App";
 
 import speakersReducer from "./speakersReducer";
+
+import SpeakerDays from "./SpeakerDays";
 
 const Speakers = () => {
   //const [speakers, setSpeakers] = useState([]);
@@ -23,6 +33,8 @@ const Speakers = () => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const [serverSideFilter, setServerSideFilter] = useState(false);
+
+  const numRendersRef = useRef(1);
 
   function new1(rec) {
     if (
@@ -41,6 +53,9 @@ const Speakers = () => {
 
   useEffect(
     () => {
+      numRendersRef.current++;
+      console.log(`Speakers.js:numRendersRef:${numRendersRef.current}`);
+
       let mounted = true;
       let source = axios.CancelToken.source();
       setIsLoading(true);
@@ -58,7 +73,7 @@ const Speakers = () => {
               //setSpeakers(a.data);
               dispatch({
                 type: "loadspeakers",
-                data: a.data
+                data: a.data.slice(0, 3)
               });
             }
             setIsLoading(false);
@@ -97,17 +112,21 @@ const Speakers = () => {
   //   }
   // };
 
-  const speakingDays = function (showSpeakerSpeakingDays,speakingSaturday,speakingSunday) {
-    console.log(`speakingDays: called: ${showSpeakerSpeakingDays===true} ${speakingSaturday===true}  ${speakingSunday===true}`);
-    if (!context.showSpeakerSpeakingDays===true) return null;
+  const speakingDays = function(
+    showSpeakerSpeakingDays,
+    speakingSaturday,
+    speakingSunday
+  ) {
+    //console.log(`speakingDays: called: ${showSpeakerSpeakingDays===true} ${speakingSaturday===true}  ${speakingSunday===true}`);
+    if (!context.showSpeakerSpeakingDays === true) return null;
 
-    if (speakingSaturday===true && speakingSunday===true)
+    if (speakingSaturday === true && speakingSunday === true)
       return "Speaking Saturday and Sunday";
-    if (speakingSaturday===true && !speakingSunday===true)
+    if (speakingSaturday === true && !speakingSunday === true)
       return "Speaking Saturday";
-    if (!speakingSaturday===true && speakingSunday===true)
+    if (!speakingSaturday === true && speakingSunday === true)
       return "Speaking Sunday";
-    if (!speakingSaturday===true && !speakingSunday===true)
+    if (!speakingSaturday === true && !speakingSunday === true)
       return "Not Speaking";
   };
 
@@ -117,7 +136,6 @@ const Speakers = () => {
   //     },
   //     [context.showSpeakerSpeakingDays,speakingSaturday,speakingSunday],
   // );
-
 
   const filterData = rec => {
     if (
@@ -166,15 +184,26 @@ const Speakers = () => {
     });
   }
 
-  function heartFavoriteHandler(e) {
+  // function heartFavoriteHandler(e) {
+  //   e.preventDefault();
+  //   dispatch({
+  //     type: "favorite",
+  //     sessionId: parseInt(e.target.attributes["data-sessionid"].value)
+  //   });
+  // }
+
+  const heartFavoriteHandler = e => {
+    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     e.preventDefault();
+
+
     dispatch({
       type: "favorite",
-      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
+      sessionId
     });
-  }
 
 
+  };
 
   return (
     <div>
@@ -232,51 +261,55 @@ const Speakers = () => {
             {speakers
               .filter(!serverSideFilter ? new1 : () => true)
               .map(speaker => {
-                debugger;
                 return (
-                    <div
-                        className="card col-4 cardmin margintopbottom20"
-                        key={speaker.id}
-                    >
-                      <img
-                          className="card-img-top"
-                          src={`/static/speakers/Speaker-${speaker.id}.jpg`}
-                      />
-                      <div className="card-body">
-                        <h4 className="card-title">
-                          <div className="clearfix">
-                            <p className="float-left">
-                              {speaker.firstName} {speaker.lastName}{" "}
-                            </p>
+                  <div
+                    className="card col-4 cardmin margintopbottom20"
+                    key={speaker.id}
+                  >
+                    <img
+                      className="card-img-top"
+                      src={`/static/speakers/Speaker-${speaker.id}.jpg`}
+                    />
+                    <div className="card-body">
+                      <h4 className="card-title">
+                        <div className="clearfix">
+                          <p className="float-left">
+                            {speaker.firstName} {speaker.lastName}{" "}
+                          </p>
 
-                            {/*<div className="heartredbutton">*/}
-                            {/*</div>*/}
+                          {/*<div className="heartredbutton">*/}
+                          {/*</div>*/}
 
-                            <p className="float-right">
-                              {speaker.favorite ? (
-                                  <button
-                                      data-sessionid={speaker.id}
-                                      className="heartredbutton"
-                                      onClick={heartUnFavoriteHandler}
-                                  />
-                              ) : (
-                                  <button
-                                      data-sessionid={speaker.id}
-                                      className="heartdarkbutton"
-                                      onClick={heartFavoriteHandler}
-                                  />
-                              )}
-                            </p>
-                          </div>
-                        </h4>
-                        <p className="card-text">{speaker.bioShort}</p>
-                        <p>
-                          <i>
-                            {speakingDays(context.showSpeakerSpeakingDays, speaker.speakingSaturday,speaker.speakingSunday)}
-                          </i>
-                        </p>
-                      </div>
+                          <p className="float-right">
+                            {speaker.favorite ? (
+                              <button
+                                data-sessionid={speaker.id}
+                                className="heartredbutton"
+                                onClick={heartUnFavoriteHandler}
+                              />
+                            ) : (
+                              <button
+                                data-sessionid={speaker.id}
+                                className="heartdarkbutton"
+                                onClick={heartFavoriteHandler}
+                              />
+                            )}
+                          </p>
+                        </div>
+                      </h4>
+                      <p className="card-text">{speaker.bioShort}</p>
+                      <p>
+                        <i>
+                          {/*{speakingDays(context.showSpeakerSpeakingDays, speaker.speakingSaturday,speaker.speakingSunday)}*/}
+                          <SpeakerDays
+                            show={context.showSpeakerSpeakingDays}
+                            saturday={speaker.speakingSaturday}
+                            sunday={speaker.speakingSunday}
+                          />
+                        </i>
+                      </p>
                     </div>
+                  </div>
                 );
               })}
           </div>
