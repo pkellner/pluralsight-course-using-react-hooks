@@ -8,7 +8,6 @@ const SpeakerCardDetail = React.memo(({ id, firstName, lastName,bioShort, speaki
   const context = useContext(ConfigContext);
 
   const numRendersRef = useRef(1);
-
   useEffect(() => {
     numRendersRef.current++;
     console.log(

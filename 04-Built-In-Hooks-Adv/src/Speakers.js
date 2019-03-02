@@ -221,7 +221,7 @@ const Speakers = () => {
               .map(speaker => {
                 return (
                   <SpeakerCardDetail
-                    id={speaker.id} favorite={speaker.favorite}
+                    {...speaker}
                     heartFavorite={heartFavoriteHandler}
                   />
                 );
