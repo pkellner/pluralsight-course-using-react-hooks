@@ -213,17 +213,7 @@ const Speakers = () => {
             </span>
           </div>
         </div>
-        <div className="row">
-          {speakers
-            .filter(!serverSideFilter ? new1 : () => true)
-            .map(speaker => {
-              return (
-                <div>
-                  &nbsp;&nbsp;{speaker.favorite === true ? "true " : "false "}
-                </div>
-              );
-            })}
-        </div>
+
         <div className="row">
           <div className="card-deck">
             {speakers
@@ -231,8 +221,7 @@ const Speakers = () => {
               .map(speaker => {
                 return (
                   <SpeakerCardDetail
-                    speaker={speaker}
-                    favorite={speaker.favorite}
+                    id={speaker.id} favorite={speaker.favorite}
                     heartFavorite={heartFavoriteHandler}
                   />
                 );
