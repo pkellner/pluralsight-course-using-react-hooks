@@ -1,19 +1,25 @@
-import React, { useContext,useRef,useEffect } from "react";
-import SpeakerDays from "./Speakers";
+import React, { useContext, useRef, useEffect } from "react";
+import SpeakerDays from './SpeakerDays';
 import { ConfigContext } from "./App";
 
+//const SpeakerCardDetail = ({ speaker, favorite, heartFavorite }) => {  WITHOUT REACT.MEMO
+const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite }) => {
 
-const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => {
-//const SpeakerCardDetail = ({ speaker, favorite, heartFavorite }) => {
   const context = useContext(ConfigContext);
 
   const numRendersRef = useRef(1);
 
   useEffect(() => {
     numRendersRef.current++;
-    console.log(`SpeakerCardDetail.js:numRendersRef:${numRendersRef.current} ${speaker.id} ${Math.random().toString(36).substring(7)}   favorite:${favorite}`);
-
+    console.log(
+      `SpeakerCardDetail.js:numRendersRef:${numRendersRef.current} ${
+        speaker.id
+      }  ${speaker.favorite}     ${Math.random()
+        .toString(36)
+        .substring(3)}`
+    );
   });
+  debugger;
 
   return (
     <div className="card col-4 cardmin margintopbottom20" key={speaker.id}>
@@ -30,17 +36,17 @@ const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => 
 
             <p className="float-right">
               {speaker.favorite ? (
-              <button
-              data-sessionid={speaker.id}
-              className="heartredbutton"
-
-              />
+                <button
+                  data-sessionid={speaker.id}
+                  className="heartredbutton"
+                  onClick={(e) => heartFavorite(e,false)}
+                />
               ) : (
-              <button
-              data-sessionid={speaker.id}
-              className="heartdarkbutton"
-              onClick={heartFavorite}
-              />
+                <button
+                  data-sessionid={speaker.id}
+                  className="heartdarkbutton"
+                  onClick={(e) => heartFavorite(e,true)}
+                />
               )}
             </p>
           </div>
@@ -48,12 +54,11 @@ const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => 
         <p className="card-text">{speaker.bioShort}</p>
         <p>
           <i>
-
-            <div
+            <SpeakerDays
               show={context.showSpeakerSpeakingDays}
               saturday={speaker.speakingSaturday}
               sunday={speaker.speakingSunday}
-            >aaaaa</div>
+             />
           </i>
         </p>
       </div>

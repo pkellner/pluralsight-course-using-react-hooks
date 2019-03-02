@@ -135,30 +135,22 @@ const Speakers = () => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  const heartUnFavoriteHandler = e => {
-    e.preventDefault();
-    dispatch({
-      type: "unfavorite",
-      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
-    });
-  };
-
-
-
-  // const heartFavoriteHandler = e => {
+  // WITHOUT useCallback
+  // const heartFavoriteHandler = function (e,favorite) {
   //   const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
   //   e.preventDefault();
+  //   console.log(`Speakers.js:heartFavoriteHandler:favorite:${favorite}`);
   //   dispatch({
-  //     type: "favorite",
+  //     type: favorite === true ? "favorite" : "unfavorite",
   //     sessionId
   //   });
   // };
 
-  const heartFavoriteHandler = useCallback(e => {
+  const heartFavoriteHandler = useCallback(function(e, favorite) {
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     e.preventDefault();
     dispatch({
-      type: "favorite",
+      type: favorite === true ? "favorite" : "unfavorite",
       sessionId
     });
   }, []);
@@ -223,24 +215,29 @@ const Speakers = () => {
         </div>
         <div className="row">
           {speakers
-              .filter(!serverSideFilter ? new1 : () => true)
-              .map(speaker => {
-                return (
-                    <div>&nbsp;&nbsp;{speaker.favorite === true ? "true " : "false "}</div>
-                );
-              })}
+            .filter(!serverSideFilter ? new1 : () => true)
+            .map(speaker => {
+              return (
+                <div>
+                  &nbsp;&nbsp;{speaker.favorite === true ? "true " : "false "}
+                </div>
+              );
+            })}
         </div>
         <div className="row">
           <div className="card-deck">
-          {speakers
+            {speakers
               .filter(!serverSideFilter ? new1 : () => true)
               .map(speaker => {
                 return (
-                    <SpeakerCardDetail speaker={speaker} favorite={speaker.favorite}
-                                       heartFavorite={heartFavoriteHandler}   />
+                  <SpeakerCardDetail
+                    speaker={speaker}
+                    favorite={speaker.favorite}
+                    heartFavorite={heartFavoriteHandler}
+                  />
                 );
               })}
-        </div>
+          </div>
         </div>
       </div>
     </div>

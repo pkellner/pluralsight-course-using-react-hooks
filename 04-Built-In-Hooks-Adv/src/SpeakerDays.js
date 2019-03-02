@@ -6,6 +6,7 @@ const SpeakerDays = ({ show, saturday, sunday }) => {
     numRendersRef.current++;
     console.log(`SpeakerDays.js:numRendersRef:${numRendersRef.current} ${Math.random().toString(36).substring(7)}`);
   });
+
   if (saturday && sunday) return "Speaking Saturday and Sunday";
   if (saturday && !sunday) return "Speaking Saturday";
   if (!saturday && sunday) return "Speaking Sunday";
