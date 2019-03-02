@@ -214,15 +214,25 @@ const Speakers = () => {
           </div>
         </div>
         <div className="row">
-          <div className="card-deck">
-            {speakers
+          {speakers
               .filter(!serverSideFilter ? new1 : () => true)
               .map(speaker => {
                 return (
-                  <SpeakerCardDetail speaker={speaker}/>
+                    <div>&nbsp;&nbsp;{speaker.favorite === true ? "true " : "false "}</div>
                 );
               })}
-          </div>
+        </div>
+        <div className="row">
+          <div className="card-deck">
+          {speakers
+              .filter(!serverSideFilter ? new1 : () => true)
+              .map(speaker => {
+                return (
+                    <SpeakerCardDetail speaker={speaker} favorite={speaker.favorite}
+                                       heartFavorite={heartFavoriteHandler}   />
+                );
+              })}
+        </div>
         </div>
       </div>
     </div>
@@ -230,16 +240,3 @@ const Speakers = () => {
 };
 
 export default Speakers;
-
-
-//memo...=> ....(    ,[session.id,session.favorite])
-
-
-
-// THIS DOES NOT WORK RIGHT, NEED TO MAKE SEPARATE LOAD FROM SERVER, LOAD FROM CLIENT WIHTOUT CHECKBOX TOGGLE
-// function handleChangeServerSideFilter() {
-//   setSearchText("");
-//   setSpeakingSaturday(true);
-//   setSpeakingSunday(true);
-//   setServerSideFilter(!serverSideFilter);
-// }

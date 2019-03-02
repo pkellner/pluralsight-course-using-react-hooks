@@ -1,31 +1,18 @@
-import React, { useContext,useRef,useEffect,useState } from "react";
+import React, { useContext,useRef,useEffect } from "react";
 import SpeakerDays from "./Speakers";
 import { ConfigContext } from "./App";
 
 
-
-const SpeakerCardDetail = ({ speaker } ) => {
+//const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => {
+const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => {
   const context = useContext(ConfigContext);
 
   const numRendersRef = useRef(1);
 
-  const [favored,setFavored] = useState(speaker.favorite);
-
-  // const heartFavoriteHandler = useCallback(e => {
-  //   debugger;
-  //   const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-  //   e.preventDefault();
-  //   dispatch({
-  //     type: "favorite",
-  //     sessionId
-  //   });
-  // }, []);
-
-
-
   useEffect(() => {
     numRendersRef.current++;
-    console.log(`SpeakerCardDetail.js:numRendersRef:${numRendersRef.current} ${speaker.id} ${Math.random().toString(36).substring(7)}`);
+    console.log(`SpeakerCardDetail.js:numRendersRef:${numRendersRef.current} ${speaker.id} ${Math.random().toString(36).substring(7)}   favorite:${favorite}`);
+
   });
 
   return (
@@ -42,7 +29,7 @@ const SpeakerCardDetail = ({ speaker } ) => {
             </p>
 
             <p className="float-right">
-              {favored ? (
+              {speaker.favorite ? (
               <button
               data-sessionid={speaker.id}
               className="heartredbutton"
@@ -52,7 +39,7 @@ const SpeakerCardDetail = ({ speaker } ) => {
               <button
               data-sessionid={speaker.id}
               className="heartdarkbutton"
-              onClick={() => setFavored(true)}
+              onClick={heartFavorite}
               />
               )}
             </p>
@@ -72,6 +59,6 @@ const SpeakerCardDetail = ({ speaker } ) => {
       </div>
     </div>
   );
-};
+});
 
 export default SpeakerCardDetail;
