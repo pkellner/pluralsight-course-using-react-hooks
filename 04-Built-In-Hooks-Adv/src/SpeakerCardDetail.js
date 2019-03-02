@@ -1,17 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext,useRef,useEffect,useState } from "react";
 import SpeakerDays from "./Speakers";
 import { ConfigContext } from "./App";
 
-function SpeakerCardDetail({ speaker }, heartFavoriteHandler) {
+
+
+const SpeakerCardDetail = ({ speaker } ) => {
   const context = useContext(ConfigContext);
 
-  const heartFavorite = function() {
-    heartFavoriteHandler(1);
-  };
+  const numRendersRef = useRef(1);
 
-  const heartUnFavorite = function() {
-    heartFavoriteHandler(0);
-  };
+  const [favored,setFavored] = useState(speaker.favorite);
+
+  // const heartFavoriteHandler = useCallback(e => {
+  //   debugger;
+  //   const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+  //   e.preventDefault();
+  //   dispatch({
+  //     type: "favorite",
+  //     sessionId
+  //   });
+  // }, []);
+
+
+
+  useEffect(() => {
+    numRendersRef.current++;
+    console.log(`SpeakerCardDetail.js:numRendersRef:${numRendersRef.current} ${speaker.id} ${Math.random().toString(36).substring(7)}`);
+  });
 
   return (
     <div className="card col-4 cardmin margintopbottom20" key={speaker.id}>
@@ -27,17 +42,17 @@ function SpeakerCardDetail({ speaker }, heartFavoriteHandler) {
             </p>
 
             <p className="float-right">
-              {speaker.favorite ? (
+              {favored ? (
               <button
               data-sessionid={speaker.id}
               className="heartredbutton"
-              onClick={heartUnFavorite}
+
               />
               ) : (
               <button
               data-sessionid={speaker.id}
               className="heartdarkbutton"
-              onClick={heartFavorite}
+              onClick={() => setFavored(true)}
               />
               )}
             </p>
@@ -46,17 +61,17 @@ function SpeakerCardDetail({ speaker }, heartFavoriteHandler) {
         <p className="card-text">{speaker.bioShort}</p>
         <p>
           <i>
-            {/*{speakingDays(context.showSpeakerSpeakingDays, speaker.speakingSaturday,speaker.speakingSunday)}*/}
-            <SpeakerDays
+
+            <div
               show={context.showSpeakerSpeakingDays}
               saturday={speaker.speakingSaturday}
               sunday={speaker.speakingSunday}
-            />
+            >aaaaa</div>
           </i>
         </p>
       </div>
     </div>
   );
-}
+};
 
 export default SpeakerCardDetail;

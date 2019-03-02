@@ -20,6 +20,7 @@ import { ConfigContext } from "./App";
 import speakersReducer from "./speakersReducer";
 
 import SpeakerDays from "./SpeakerDays";
+import SpeakerCardDetail from "./SpeakerCardDetail";
 
 const Speakers = () => {
   const [speakers, dispatch] = useReducer(speakersReducer, []);
@@ -134,7 +135,25 @@ const Speakers = () => {
     setSpeakingSunday(!speakingSunday);
   };
 
+  const heartUnFavoriteHandler = e => {
+    e.preventDefault();
+    dispatch({
+      type: "unfavorite",
+      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
+    });
+  };
 
+  // = useCallback(() =>
+
+  const heartFavoriteHandler = useCallback(e => {
+    debugger;
+    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+    e.preventDefault();
+    dispatch({
+      type: "favorite",
+      sessionId
+    });
+  }, []);
 
   if (isError)
     return (
@@ -143,24 +162,6 @@ const Speakers = () => {
         json-server"
       </div>
     );
-
-  function heartUnFavoriteHandler(e) {
-    e.preventDefault();
-    dispatch({
-      type: "unfavorite",
-      sessionId: parseInt(e.target.attributes["data-sessionid"].value)
-    });
-  }
-
-  const heartFavoriteHandler = e => {
-    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-    e.preventDefault();
-    dispatch({
-      type: "favorite",
-      sessionId
-    });
-  };
-
   return (
     <div>
       <Header />
@@ -218,53 +219,7 @@ const Speakers = () => {
               .filter(!serverSideFilter ? new1 : () => true)
               .map(speaker => {
                 return (
-                  <div
-                    className="card col-4 cardmin margintopbottom20"
-                    key={speaker.id}
-                  >
-                    <img
-                      className="card-img-top"
-                      src={`/static/speakers/Speaker-${speaker.id}.jpg`}
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">
-                        <div className="clearfix">
-                          <p className="float-left">
-                            {speaker.firstName} {speaker.lastName}{" "}
-                          </p>
-
-                          {/*<div className="heartredbutton">*/}
-                          {/*</div>*/}
-
-                          <p className="float-right">
-                            {speaker.favorite ? (
-                              <button
-                                data-sessionid={speaker.id}
-                                className="heartredbutton"
-                                onClick={heartUnFavoriteHandler}
-                              />
-                            ) : (
-                              <button
-                                data-sessionid={speaker.id}
-                                className="heartdarkbutton"
-                                onClick={heartFavoriteHandler}
-                              />
-                            )}
-                          </p>
-                        </div>
-                      </h4>
-                      <p className="card-text">{speaker.bioShort}</p>
-                      <p>
-                        <i>
-                          <SpeakerDays
-                            show={context.showSpeakerSpeakingDays}
-                            saturday={speaker.speakingSaturday}
-                            sunday={speaker.speakingSunday}
-                          />
-                        </i>
-                      </p>
-                    </div>
-                  </div>
+                  <SpeakerCardDetail speaker={speaker}/>
                 );
               })}
           </div>
@@ -276,6 +231,8 @@ const Speakers = () => {
 
 export default Speakers;
 
+
+//memo...=> ....(    ,[session.id,session.favorite])
 
 
 
