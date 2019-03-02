@@ -3,8 +3,8 @@ import SpeakerDays from "./Speakers";
 import { ConfigContext } from "./App";
 
 
-//const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => {
 const SpeakerCardDetail = React.memo(({ speaker, favorite, heartFavorite } ) => {
+//const SpeakerCardDetail = ({ speaker, favorite, heartFavorite }) => {
   const context = useContext(ConfigContext);
 
   const numRendersRef = useRef(1);

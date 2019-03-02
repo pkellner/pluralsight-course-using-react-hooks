@@ -5,7 +5,6 @@ const speakersReducer = (state, action) => {
       return action.data;
     }
     case "favorite": {
-      debugger;
       let map = state.map((item, index) => {
         if (item.id === action.sessionId) {
           // let speakerToUpdate = Object.assign(item);
@@ -16,7 +15,6 @@ const speakersReducer = (state, action) => {
         }
         return item;
       });
-      debugger;
       return map;
     }
     case "unfavorite": {

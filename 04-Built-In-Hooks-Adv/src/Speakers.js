@@ -143,10 +143,18 @@ const Speakers = () => {
     });
   };
 
-  // = useCallback(() =>
+
+
+  // const heartFavoriteHandler = e => {
+  //   const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+  //   e.preventDefault();
+  //   dispatch({
+  //     type: "favorite",
+  //     sessionId
+  //   });
+  // };
 
   const heartFavoriteHandler = useCallback(e => {
-    debugger;
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     e.preventDefault();
     dispatch({
