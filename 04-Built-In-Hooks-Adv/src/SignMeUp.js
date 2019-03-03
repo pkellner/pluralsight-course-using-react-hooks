@@ -2,7 +2,7 @@ import React, { useState, useReducer } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
-import emailReducer from './emailReducer'
+import emailReducer from "./emailReducer";
 
 function SignMeUp() {
   // const [email, setEmail] = useState("");
@@ -16,8 +16,9 @@ function SignMeUp() {
   //   return action;
   // };
 
+
+
   const reducer = (state, action) => {
-  debugger;
     switch (action.type) {
       case "setEmail": {
         return {
@@ -42,7 +43,10 @@ function SignMeUp() {
   };
 
   //const [{ email, emailValid }, dispatch] = useReducer(reducer, initialState);
- const [{ email, emailValid }, dispatch] = useReducer(emailReducer, initialState);
+  const [{ email, emailValid }, dispatch] = useReducer(
+    emailReducer,
+    initialState
+  );
 
   const [sendProcessing, setSendProcessing] = useState(false);
 
@@ -75,7 +79,7 @@ function SignMeUp() {
           <input
             value={email}
             onChange={e => {
-              dispatch({type: "setEmail",email: e.target.value});
+              dispatch({ type: "setEmail", email: e.target.value });
               //setEmailValid(validateEmail(e.target.value));
               //return setEmail(e.target.value);
             }}
