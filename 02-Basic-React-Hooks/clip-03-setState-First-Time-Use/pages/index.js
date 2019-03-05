@@ -6,7 +6,7 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-const signMeUp = () => {
+const Index = () => {
   const [email, setEmail] = useState("");
   const [emailValid, setEmailValid] = useState(false);
   const [sendProcessing, setSendProcessing] = useState(false);
@@ -27,6 +27,10 @@ const signMeUp = () => {
   return (
     <div className="container">
       <br />
+      <h3>
+        Silicon Valley Code Camp 2019&nbsp;&nbsp;
+        <img src="/static/SVCClogo.png" />
+      </h3>
       <div>
         <input
           value={email}
@@ -55,27 +59,37 @@ const signMeUp = () => {
           {buttonText}
         </button>
       </div>
-      <hr />
-      <h2>State Updates</h2>
 
-      <table className="table table-bordered table-dark">
-        <thead>
-          <tr>
-            <th>Current STATE</th>
-            <th>Is Email Valid?</th>
-          </tr>
-        </thead>
-        {historyList.map(function(rec) {
-          return (
+      <div className={historyList.length == 0 ? "d-none" : ""}>
+          <div>Current State: {email}</div>
+        <table className="table table-bordered table-dark col-8">
+          <thead>
             <tr>
-              <td className="small">{rec.emailValid ? "true" : "false"}</td>
-              <td className="small">{rec.email}</td>
+              <th>Current STATE history</th>
+              <th>Is Email Valid?</th>
             </tr>
-          );
-        })}
-      </table>
+          </thead>
+          {historyList.map(function(rec) {
+            return (
+              <tr>
+                <td className="small">{rec.emailValid ? "true" : "false"}</td>
+                <td className="small">{rec.email}</td>
+              </tr>
+            );
+          })}
+        </table>
+
+        <div className="footer__disclaimer">
+          <br />
+          <br />
+          <i>
+            Code Stars Summit and Silicon Valley Code Camp (tm) are trademarks
+            of 73rd Street Associates (Copyright ©)
+          </i>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default signMeUp;
+export default Index;
