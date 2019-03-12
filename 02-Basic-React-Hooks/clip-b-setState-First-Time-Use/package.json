@@ -1,5 +1,5 @@
 {
-  "name": "clip-02-NextJS-App-Setup",
+  "name": "React-App-Learning-React-Hooks",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,5 +17,10 @@
     "next": "^8.0.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-plugin-react": "^7.12.4",
+    "react-hooks": "^1.0.1"
   }
 }
