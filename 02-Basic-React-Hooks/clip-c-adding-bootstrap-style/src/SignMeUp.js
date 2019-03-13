@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
-function SignMeUp() {
+//const MemodFuncComponent = React.memo(FunComponent)
 
+//const SignMeUp = ({ signupCallback }) => {
+const SignMeUp = React.memo(({ signupCallback }) => {
   useEffect(() => {
     console.log(`SignMeUp:useEffect called`);
   });
@@ -17,17 +19,23 @@ function SignMeUp() {
     return re.test(email);
   }
 
-  const notify = () =>
+  const notify = () => {
     toast.info(`You will be notified of upcoming events ${email}`);
+    console.log("SignMeUp:after toast.info");
+  };
 
   function sendEmailToBackend() {
     setSendProcessing(true);
     new Promise(function(resolve) {
       setTimeout(function() {
         setSendProcessing(false);
+        setEmail("");
         resolve();
       }, 2000);
-    }).then(() => {notify()});
+    }).then(() => {
+      notify();
+      signupCallback(email);
+    });
   }
 
   const buttonText = sendProcessing ? "processing..." : "Get Updates";
@@ -61,6 +69,6 @@ function SignMeUp() {
       </div>
     </div>
   );
-}
+});
 
 export default SignMeUp;

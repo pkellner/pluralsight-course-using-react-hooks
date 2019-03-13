@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
-import "../css/site.css";
+//import "/static/site.css";
 
 class bootstrap extends Component {
   render() {

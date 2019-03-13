@@ -1,8 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 const InputElement = () => {
-
-
   const [inputText, setInputText] = useState("");
 
   return (
