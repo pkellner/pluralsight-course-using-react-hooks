@@ -2,13 +2,13 @@ import React, { useCallback } from "react";
 import SignMeUp from "./SignMeUp";
 
 export const Header = () => {
-  const signupCallback = email => {
-    return console.log(`sign up called with email ${email}`);
-  };
+    const signupCallback = email => {
+      return console.log(`sign up called with email ${email}`);
+    };
 
-  const memoizedsignupCallback = useCallback(() => {
-    signupCallback();
-  }, []);
+    const memoizedsignupCallback = useCallback(() => {
+      signupCallback();
+    }, []);
 
   return (
     <div className="jumbotron jumbotronheight">
