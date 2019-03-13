@@ -5,16 +5,23 @@ import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 
-const Speakers = () => {
+const Speakers = ({}) => {
 
 
   return (
     <div>
-      <Header />
+      <Header></Header>
       <Menu />
-      <div className="container" >
-        <h2>Speakers</h2>
-      </div>
+        <div className="container">
+            <div className="row">
+                <div className="col margintopbottom">
+                    <h2>Speakers</h2>
+                    <h6 className="margintopbottom20">
+                        Code Camp has the best speakers from the around the world.
+                    </h6>
+                </div>
+            </div>
+        </div>
     </div>
   );
 };

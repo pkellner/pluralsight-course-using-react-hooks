@@ -14,10 +14,10 @@ export const Header = () => {
             <img src="/static/SVCClogo.png" />
           </div>
           <h2>Silicon Valley Code Camp 2019</h2>
-          <div className="row col-12 text-lg-right">
-            <SignMeUp />
-          </div>
         </div>
+      </div>
+      <div className="row col-12 text-right">
+        <SignMeUp />
       </div>
     </div>
   );

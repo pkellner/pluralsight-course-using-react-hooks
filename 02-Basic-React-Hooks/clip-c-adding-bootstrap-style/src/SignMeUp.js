@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
-
 function SignMeUp() {
+
+  useEffect(() => {
+    console.log(`SignMeUp:useEffect called`);
+  });
+
   const [email, setEmail] = useState("");
   const [emailValid, setEmailValid] = useState(false);
   const [sendProcessing, setSendProcessing] = useState(false);
 
   function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
 
@@ -22,9 +26,8 @@ function SignMeUp() {
       setTimeout(function() {
         setSendProcessing(false);
         resolve();
-        notify();
       }, 2000);
-    });
+    }).then(() => {notify()});
   }
 
   const buttonText = sendProcessing ? "processing..." : "Get Updates";

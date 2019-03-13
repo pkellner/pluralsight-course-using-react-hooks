@@ -1,0 +1,17 @@
+.large {
+    padding: 50px
+}
+.cardwidth {
+    width: 20rem;
+}
+.margintopbottom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.margintopbottom10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cardmin {
+    min-width: 300px;
+}
