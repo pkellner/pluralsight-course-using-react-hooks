@@ -5,18 +5,32 @@ import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
+import ImageToggler from "./ImageToggler";
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const [speakerList, setSpeakerList] = useState([]);
+  const [isLoading,setIsLoading] = useState(true);
 
   useEffect(() => {
-    setSpeakerList(SpeakerData);
+
+    setIsLoading(true);
+    new Promise(function(resolve) {
+      setTimeout(function() {
+        resolve();
+      }, 2000);
+    }).then(() => {
+      setIsLoading(false);
+      const speakerListServerFilter = SpeakerData.filter(({sat,sun})=> {
+         return (speakingSaturday && sat) || (speakingSunday && sun)
+      });
+      setSpeakerList(speakerListServerFilter);
+    });
     return () => {
       console.log('cleanup');
     }
-  },[]);
+  },[speakingSunday,speakingSaturday]);
 
   const handleChangeSaturday = () => {
     console.log("Speaker.js:handleChangeSaturday called");
@@ -27,6 +41,8 @@ const Speakers = ({}) => {
     console.log("Speaker.js:handleChangeSunday called");
     setSpeakingSunday(!speakingSunday);
   };
+
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <div>
@@ -60,19 +76,20 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerList
-              .filter(
-                ({ sat, sun }) =>
-                  (speakingSaturday && sat) || (speakingSunday && sun)
-              )
+              // .filter(
+              //   ({ sat, sun }) =>
+              //     (speakingSaturday && sat) || (speakingSunday && sun)
+              // )
               .map(({ id, firstName, lastName }) => {
                 return (
                   <div
                     className="card col-4 cardmin margintopbottom20"
                     key={id}
                   >
-                    <img
+                    <ImageToggler
                       className="card-img-top"
-                      src={`/static/speakers/Speaker-${id}.jpg`}
+                      primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
+                      mouseOverImg={`/static/speakers/Speaker-${id}.jpg`}
                       alt="{firstName} {lastName}"
                     />
                     <div className="card-body">

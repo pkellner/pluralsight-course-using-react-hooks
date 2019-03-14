@@ -1,4 +1,4 @@
-export default [
+const speakerData = [
   {
     id: 1124,
     firstName: "Douglas",
@@ -22,3 +22,4 @@ export default [
     sun: true
   }
 ];
+export default speakerData;

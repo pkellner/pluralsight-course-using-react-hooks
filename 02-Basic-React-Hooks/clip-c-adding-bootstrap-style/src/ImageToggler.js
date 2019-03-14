@@ -24,7 +24,7 @@ const ImageToggler = ({ primaryImg, mouseOverImg }) => {
     };
   }, []);
 
-  return <img ref={imageRef} src={primaryImg} alt="image here" />;
+  return <img className="card-img-top" ref={imageRef} src={primaryImg} alt="image here" />;
 };
 
 export default ImageToggler;
