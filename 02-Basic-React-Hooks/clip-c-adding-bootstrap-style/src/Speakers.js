@@ -4,10 +4,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
+import SpeakerData from "./SpeakerData";
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
+  const [speakerList, setSpeakerList] = useState([]);
+
+  useEffect(() => {
+    setSpeakerList(SpeakerData);
+    return () => {
+      console.log('cleanup');
+    }
+  },[]);
 
   const handleChangeSaturday = () => {
     console.log("Speaker.js:handleChangeSaturday called");
@@ -18,31 +27,6 @@ const Speakers = ({}) => {
     console.log("Speaker.js:handleChangeSunday called");
     setSpeakingSunday(!speakingSunday);
   };
-
-  const speakerList = [
-    {
-      id: 1124,
-      firstName: "Douglas",
-      lastName: "Crockford",
-      sat: true,
-      sun: false
-    },
-    {
-      id: 8367,
-      firstName: "Gayle",
-      lastName: "Laakmann McDowell",
-      sat: false,
-      sun: true
-    },
-    { id: 823, firstName: "Kevin", lastName: "Nilson", sat: true, sun: true },
-    {
-      id: 8590,
-      firstName: "Chris",
-      lastName: "Richardson",
-      sat: false,
-      sun: true
-    }
-  ];
 
   return (
     <div>
@@ -76,7 +60,10 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerList
-              .filter(({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun))
+              .filter(
+                ({ sat, sun }) =>
+                  (speakingSaturday && sat) || (speakingSunday && sun)
+              )
               .map(({ id, firstName, lastName }) => {
                 return (
                   <div
