@@ -12,6 +12,19 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.margintopbottom5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .cardmin {
     min-width: 300px;
+}
+
+.large-text {
+    font-size: x-large;
+}
+
+.checkbox-bigger {
+    zoom:2.0;
 }
