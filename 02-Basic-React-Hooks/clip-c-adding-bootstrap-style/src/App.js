@@ -8,8 +8,18 @@ const pageToShow = pageName => {
   return <div>Not Found</div>;
 };
 
+export const ConfigContext = React.createContext();
+
 const App = ({ pageName }) => {
-  return <div>{pageToShow(pageName)}</div>;
+  const configValue = {
+    showSignMeUp: true,
+    showSpeakerSpeakingDays: true
+  };
+  return (
+    <ConfigContext.Provider value={configValue}>
+      <div>{pageToShow(pageName)}</div>
+    </ConfigContext.Provider>
+  );
 };
 
 export default App;

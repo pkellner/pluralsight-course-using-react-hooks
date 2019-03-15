@@ -1,14 +1,17 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import SignMeUp from "./SignMeUp";
+import { ConfigContext } from "./App";
 
 export const Header = () => {
-    const signupCallback = email => {
-      return console.log(`sign up called with email ${email}`);
-    };
+  const context = useContext(ConfigContext);
 
-    const memoizedsignupCallback = useCallback(() => {
-      signupCallback();
-    }, []);
+  const signupCallback = email => {
+    return console.log(`sign up called with email ${email}`);
+  };
+
+  const memoizedsignupCallback = useCallback(() => {
+    signupCallback();
+  }, []);
 
   return (
     <div className="jumbotron jumbotronheight">
@@ -23,7 +26,9 @@ export const Header = () => {
           </div>
           <h2>Silicon Valley Code Camp 2019</h2>
           <div className="row col-12 text-lg-right">
-            <SignMeUp signupCallback={memoizedsignupCallback} />
+            {context.showSignMeUp ? (
+              <SignMeUp signupCallback={memoizedsignupCallback} />
+            ) : null}
           </div>
         </div>
       </div>
