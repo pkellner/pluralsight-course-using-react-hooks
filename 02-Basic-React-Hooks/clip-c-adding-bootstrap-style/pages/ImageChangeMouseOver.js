@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import ImageToggler from "../src/ImageToggler";
+import ImageTogglerMouseOver from "../src/ImageTogglerMouseOver";
 
-const ImageChange = () => {
+const ImageChangeMouseOver = () => {
   return (
     <div>
-      <ImageToggler
+      <ImageTogglerMouseOver
         primaryImg="/static/speakers/bw/Speaker-1124.jpg"
         mouseOverImg="/static/speakers/Speaker-1124.jpg"
       />
         &nbsp;&nbsp;&nbsp;
-        <ImageToggler
+        <ImageTogglerMouseOver
             primaryImg="/static/speakers/bw/Speaker-187.jpg"
             mouseOverImg="/static/speakers/Speaker-187.jpg"
         />
@@ -17,4 +17,4 @@ const ImageChange = () => {
   );
 };
 
-export default ImageChange;
+export default ImageChangeMouseOver;

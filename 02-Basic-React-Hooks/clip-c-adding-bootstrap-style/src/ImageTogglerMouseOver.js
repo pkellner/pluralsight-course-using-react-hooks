@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-    const ImageToggler = ({ primaryImg, mouseOverImg }) => {
+    const ImageTogglerMouseOver = ({ primaryImg, mouseOverImg }) => {
       const imageRef = useRef(null);
 
       const handleMouseOverHandler = () => {
@@ -42,4 +42,4 @@ import React, { useState, useEffect, useRef } from "react";
   );
 };
 
-export default ImageToggler;
+export default ImageTogglerMouseOver;

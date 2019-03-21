@@ -5,7 +5,7 @@ import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
-import ImageToggler from "./ImageToggler";
+import ImageTogglerMouseOver from "./ImageTogglerMouseOver";
 import { ConfigContext } from "./App";
 
 const Speakers = ({}) => {
@@ -96,7 +96,7 @@ const Speakers = ({}) => {
                     className="card col-4 cardmin margintopbottom20"
                     key={id}
                   >
-                    <ImageToggler
+                    <ImageTogglerMouseOver
                       className="card-img-top"
                       primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
                       mouseOverImg={`/static/speakers/Speaker-${id}.jpg`}
