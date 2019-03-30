@@ -3,15 +3,16 @@
     // primaryImg is black and white, secondaryImg is color
     const ImageToggleOnMouseOver = ({ primaryImg, secondaryImg }) => {
         const imageRef = useRef(null);
+        const [isLoading,setIsLoading] = useState(true);
 
         useEffect(() => {
             setInView(isInView());
             window.addEventListener("scroll", scrollHandler);
-
+            setIsLoading(false)
             return () => {
                 window.removeEventListener("scroll", scrollHandler);
             };
-        }, []);
+        }, [isLoading]);
 
         const isInView = () => {
             if (imageRef.current) {
@@ -28,7 +29,7 @@
             });
         };
 
-        return (
+        return isLoading ? null : (
             <img
                 ref={imageRef}
                 src={inView ? secondaryImg : primaryImg}

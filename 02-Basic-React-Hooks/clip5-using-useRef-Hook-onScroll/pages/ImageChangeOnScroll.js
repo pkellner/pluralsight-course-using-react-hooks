@@ -13,9 +13,6 @@ const ImageChangeOnScroll = () => {
                             secondaryImg={`/static/speakers/Speaker-${speakerId}.jpg`}
                             alt=""
                         />
-                        <br />
-                        <br />
-                        <hr />
                     </div>
                 );
             })}
