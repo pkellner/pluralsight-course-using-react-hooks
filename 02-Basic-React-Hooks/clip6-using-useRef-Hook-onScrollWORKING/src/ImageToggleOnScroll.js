@@ -1,7 +1,7 @@
     import React, {useState,useRef,useEffect} from "react";
 
     // primaryImg is black and white, secondaryImg is color
-    const ImageToggleOnMouseOver = ({ primaryImg, secondaryImg }) => {
+    const ImageToggleOnScroll = ({ primaryImg, secondaryImg }) => {
         const imageRef = useRef(null);
         const [isLoading,setIsLoading] = useState(true);
 
@@ -10,9 +10,11 @@
             window.addEventListener("scroll", scrollHandler);
             setIsLoading(false)
             return () => {
-                window.removeEventListener("scroll", scrollHandler);
+                 
             };
         }, [isLoading]);
+
+         (false);
 
         const isInView = () => {
             if (imageRef.current) {
@@ -22,7 +24,7 @@
             return false;
         };
 
-        const [inView, setInView] = useState(false);
+        
         const scrollHandler = () => {
             setInView(() => {
                 return isInView();
@@ -33,9 +35,9 @@
             <img
                 ref={imageRef}
                 src={inView ? secondaryImg : primaryImg}
-                alt=""
+                alt="" width="200" height="200"
             />
         );
     };
 
-    export default ImageToggleOnMouseOver;
+    export default ImageToggleOnScroll;
