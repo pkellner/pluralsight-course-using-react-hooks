@@ -89,40 +89,29 @@ const SignMeUp = React.memo(({ signupCallback }) => {
       <div>
         <ToastContainer />
         <div className="content">
-          <table className="float-right">
-            <tr>
-              <td>
-                <input
-                  //value={email}
-                  value={state.email}
-                  onChange={e => {
-                    dispatch({ type: "UpdateEmail", email: e.target.value });
-                    // setEmailValid(validateEmail(e.target.value));
-                    // return setEmail(e.target.value);
-                  }}
-                  placeholder="Enter Email"
-                  type="email"
-                  name="email"
-                  required
-                />
-              </td>
-              <td>
-                <button
-                  // disabled={!emailValid || sendProcessing}
-                  disabled={!state.emailValid || sendProcessing}
-                  className="btn"
-                  onClick={sendEmailToBackend}
-                  type="submit"
-                >
-                  {buttonText}
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="float-left">{state.email}</td>
-              <td />
-            </tr>
-          </table>
+          <input
+            //value={email}
+            value={state.email}
+            onChange={e => {
+              dispatch({ type: "UpdateEmail", email: e.target.value });
+              // setEmailValid(validateEmail(e.target.value));
+              // return setEmail(e.target.value);
+            }}
+            placeholder="Enter Email"
+            type="email"
+            name="email"
+            required
+          />
+          &nbsp;
+          <button
+            // disabled={!emailValid || sendProcessing}
+            disabled={!state.emailValid || sendProcessing}
+            className="btn"
+            onClick={sendEmailToBackend}
+            type="submit"
+          >
+            {buttonText}
+          </button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -7,11 +7,17 @@ import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
 import ImageTogglerOnMouseOver from "./ImageTogglerOnMouseOver";
 import { ConfigContext } from "./App";
+import speakersReducer from "./speakersReducer";
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-  const [speakerList, setSpeakerList] = useState([]);
+
+  //const [speakerList, setSpeakerList] = useState([]);
+  const [speakerList, dispatch] = useReducer(speakersReducer, []);
+
+
+
   const [isLoading, setIsLoading] = useState(true);
 
   const context = useContext(ConfigContext);
@@ -27,7 +33,15 @@ const Speakers = ({}) => {
       const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
         return (speakingSaturday && sat) || (speakingSunday && sun);
       });
-      setSpeakerList(speakerListServerFilter);
+
+      //setSpeakerList(speakerListServerFilter);
+      dispatch({
+        type: "loadspeakers",
+        data: speakerListServerFilter
+      });
+
+
+
     });
     return () => {
       console.log("cleanup");
@@ -47,6 +61,15 @@ const Speakers = ({}) => {
   //const hideSpeakerSessionDays = context.showSpeakerSpeakingDays ? "" : "hide";
 
   if (isLoading) return <div>Loading...</div>;
+
+  function heartFavorite(e, favoriteValue) {
+    e.preventDefault();
+    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+    dispatch({
+      type: favoriteValue === true ? "favorite" : "unfavorite",
+      sessionId
+    });
+  }
 
   return (
     <div>
@@ -96,7 +119,6 @@ const Speakers = ({}) => {
                     className="card col-4 cardmin"
                     key={id}
                   >
-
                     <ImageTogglerOnMouseOver
                       className="card-img-top"
                       primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
