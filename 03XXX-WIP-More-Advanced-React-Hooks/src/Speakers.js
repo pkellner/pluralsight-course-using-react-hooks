@@ -72,7 +72,7 @@ const Speakers = () => {
               //setSpeakers(a.data);
               dispatch({
                 type: "loadspeakers",
-                data: a.data.slice(0, 3)
+                data: a.data // a.data.slice(0, 3)
               });
             }
             setIsLoading(false);
@@ -162,6 +162,27 @@ const Speakers = () => {
         json-server"
       </div>
     );
+
+
+  const zNew = []
+  const z = speakers.map((sp) => {
+    zNew.push({
+      id: sp.id,
+      firstName: sp.firstName,
+      lastName: sp.lastName,
+      sat: sp.speakingSaturday,
+      sun: sp.speakingSunday,
+      favorite: false,
+      bio: sp.bio
+
+    });
+  });
+
+  var zzz = JSON.stringify(zNew);
+  debugger;
+
+
+
   return (
     <div>
       <Header />

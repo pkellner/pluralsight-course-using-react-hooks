@@ -21,7 +21,7 @@ const Speakers = ({}) => {
     new Promise(function(resolve) {
       setTimeout(function() {
         resolve();
-      }, 2000);
+      }, 500);
     }).then(() => {
       setIsLoading(false);
       const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
@@ -32,7 +32,7 @@ const Speakers = ({}) => {
     return () => {
       console.log("cleanup");
     };
-  }, [speakingSunday, speakingSaturday]);
+  }, []); // [speakingSunday, speakingSaturday]);
 
   const handleChangeSaturday = () => {
     console.log("Speaker.js:handleChangeSaturday called");
@@ -86,26 +86,33 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerList
-              // .filter(
-              //   ({ sat, sun }) =>
-              //     (speakingSaturday && sat) || (speakingSunday && sun)
-              // )
-              .map(({ id, firstName, lastName }) => {
+              .filter(
+                ({ sat, sun }) =>
+                  (speakingSaturday && sat) || (speakingSunday && sun)
+              )
+              .map(({ id, firstName, lastName,bio,favorite }) => {
                 return (
                   <div
-                    className="card col-4 cardmin margintopbottom20"
+                    className="card col-4 cardmin"
                     key={id}
                   >
+
                     <ImageTogglerOnMouseOver
                       className="card-img-top"
                       primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
-                      mouseOverImg={`/static/speakers/Speaker-${id}.jpg`}
+                      secondaryImg={`/static/speakers/Speaker-${id}.jpg`}
                       alt="{firstName} {lastName}"
                     />
                     <div className="card-body">
                       <h4 className="card-title">
-                        {firstName} {lastName}
+                        <button
+                            data-sessionid={id}
+                            className= {favorite ? "heartredbutton" : "heartdarkbutton"}
+                            onClick={e => heartFavorite(e, !favorite)}
+                        /> <span>{firstName} {lastName}</span>
                       </h4>
+
+                      <span>{bio}</span>
                     </div>
                   </div>
                 );
