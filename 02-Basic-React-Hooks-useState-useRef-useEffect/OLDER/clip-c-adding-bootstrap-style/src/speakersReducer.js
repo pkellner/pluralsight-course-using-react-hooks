@@ -6,14 +6,13 @@ const speakersReducer = (state, action) => {
       return action.data;
     }
     case "favorite": {
-      let map = state.map((item, index) => {
+      return state.map((item, index) => {
         if (item.id === action.sessionId) {
           item.favorite = true;
           return item;
         }
         return item;
       });
-      return map;
     }
     case "unfavorite": {
       return state.map((item, index) => {
