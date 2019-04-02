@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
+import React, { useState, useEffect, useContext, useReducer,useCallback } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -71,16 +71,27 @@ const Speakers = ({}) => {
 
   //const hideSpeakerSessionDays = context.showSpeakerSpeakingDays ? "" : "hide";
 
-  if (isLoading) return <div>Loading...</div>;
 
-  function heartFavorite(e, favoriteValue) {
+
+  // const heartFavoriteHandler = (e, favoriteValue) => {
+  //   e.preventDefault();
+  //   const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+  //   dispatch({
+  //     type: favoriteValue === true ? "favorite" : "unfavorite",
+  //     sessionId
+  //   });
+  // };
+
+  const heartFavoriteHandler = useCallback( (e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     dispatch({
       type: favoriteValue === true ? "favorite" : "unfavorite",
       sessionId
     });
-  }
+  },[]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -126,7 +137,7 @@ const Speakers = ({}) => {
               )
               .map(({ id, firstName, lastName,bio,favorite }) => {
                 return (
-                  <SpeakerDetail key={id} id={id} favorite={favorite} onClick={e => heartFavorite(e, !favorite)}
+                  <SpeakerDetail key={id} id={id} favorite={favorite} onHeartFavoriteHandler={heartFavoriteHandler}
                                  firstName={firstName} lastName={lastName} bio={bio}/>
                 );
               })}
