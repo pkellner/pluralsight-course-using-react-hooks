@@ -5,10 +5,21 @@ import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
-import ImageTogglerOnMouseOver from "./ImageTogglerOnMouseOver";
 import { ConfigContext } from "./App";
 import speakersReducer from "./speakersReducer";
+import * as PropTypes from "prop-types";
+import SpeakerDetail from "./SpeakerDetail";
 
+
+
+SpeakerDetail.propTypes = {
+  id: PropTypes.any,
+  favorite: PropTypes.any,
+  onClick: PropTypes.func,
+  firstName: PropTypes.any,
+  lastName: PropTypes.any,
+  bio: PropTypes.any
+};
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
@@ -115,28 +126,8 @@ const Speakers = ({}) => {
               )
               .map(({ id, firstName, lastName,bio,favorite }) => {
                 return (
-                  <div
-                    className="card col-4 cardmin"
-                    key={id}
-                  >
-                    <ImageTogglerOnMouseOver
-                      className="card-img-top"
-                      primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
-                      secondaryImg={`/static/speakers/Speaker-${id}.jpg`}
-                      alt="{firstName} {lastName}"
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">
-                        <button
-                            data-sessionid={id}
-                            className= {favorite ? "heartredbutton" : "heartdarkbutton"}
-                            onClick={e => heartFavorite(e, !favorite)}
-                        /> <span>{firstName} {lastName}</span>
-                      </h4>
-
-                      <span>{bio}</span>
-                    </div>
-                  </div>
+                  <SpeakerDetail key={id} id={id} favorite={favorite} onClick={e => heartFavorite(e, !favorite)}
+                                 firstName={firstName} lastName={lastName} bio={bio}/>
                 );
               })}
           </div>
