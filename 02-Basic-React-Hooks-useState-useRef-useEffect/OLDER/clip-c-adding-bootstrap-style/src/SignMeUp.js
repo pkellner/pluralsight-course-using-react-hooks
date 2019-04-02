@@ -73,7 +73,7 @@ const SignMeUp = React.memo(({ signupCallback }) => {
         //setEmail("");
 
         resolve();
-      }, 2000);
+      }, 1000);
     }).then(() => {
       notify();
       //signupCallback(email);
@@ -83,6 +83,8 @@ const SignMeUp = React.memo(({ signupCallback }) => {
   }
 
   const buttonText = sendProcessing ? "processing..." : "Get Updates";
+
+  console.log("src/SignMeUp called");
 
   return (
     <div className="container">
@@ -100,6 +102,7 @@ const SignMeUp = React.memo(({ signupCallback }) => {
             placeholder="Enter Email"
             type="email"
             name="email"
+            required
             required
           />
           &nbsp;
