@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useContext, useReducer,useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+  useCallback,
+    useMemo
+} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -9,8 +16,6 @@ import { ConfigContext } from "./App";
 import speakersReducer from "./speakersReducer";
 import * as PropTypes from "prop-types";
 import SpeakerDetail from "./SpeakerDetail";
-
-
 
 SpeakerDetail.propTypes = {
   id: PropTypes.any,
@@ -26,8 +31,6 @@ const Speakers = ({}) => {
 
   //const [speakerList, setSpeakerList] = useState([]);
   const [speakerList, dispatch] = useReducer(speakersReducer, []);
-
-
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,9 +53,6 @@ const Speakers = ({}) => {
         type: "loadspeakers",
         data: speakerListServerFilter
       });
-
-
-
     });
     return () => {
       console.log("cleanup");
@@ -64,14 +64,30 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
+  const speakerListFiltered = useMemo(
+      () =>
+          speakerList
+              .filter(
+                  ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+              )
+              .sort((a, b) => {
+                if (a.firstName < b.firstName) {
+                  return -1;
+                }
+                if (a.firstName > b.firstName) {
+                  return 1;
+                }
+                return 0;
+              }),
+      [speakingSaturday, speakingSunday, speakerList]
+  );
+
   const handleChangeSunday = () => {
     console.log("Speaker.js:handleChangeSunday called");
     setSpeakingSunday(!speakingSunday);
   };
 
   //const hideSpeakerSessionDays = context.showSpeakerSpeakingDays ? "" : "hide";
-
-
 
   // const heartFavoriteHandler = (e, favoriteValue) => {
   //   e.preventDefault();
@@ -82,16 +98,18 @@ const Speakers = ({}) => {
   //   });
   // };
 
-  const heartFavoriteHandler = useCallback( (e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     dispatch({
       type: favoriteValue === true ? "favorite" : "unfavorite",
       sessionId
     });
-  },[]);
+  }, []);
 
   if (isLoading) return <div>Loading...</div>;
+
+
 
   return (
     <div>
@@ -99,9 +117,7 @@ const Speakers = ({}) => {
       <Menu />
       <div className="container">
         <div className="btn-toolbar  margintopbottom5 checkbox-bigger">
-          {context.showSpeakerSpeakingDays === false ? (
-            null
-          ) : (
+          {context.showSpeakerSpeakingDays === false ? null : (
             <div className="hide">
               <div className="form-check-inline">
                 <label className="form-check-label">
@@ -130,15 +146,18 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerList
-              .filter(
-                ({ sat, sun }) =>
-                  (speakingSaturday && sat) || (speakingSunday && sun)
-              )
-              .map(({ id, firstName, lastName,bio,favorite }) => {
+            {speakerListFiltered
+              .map(({ id, firstName, lastName, bio, favorite }) => {
                 return (
-                  <SpeakerDetail key={id} id={id} favorite={favorite} onHeartFavoriteHandler={heartFavoriteHandler}
-                                 firstName={firstName} lastName={lastName} bio={bio}/>
+                  <SpeakerDetail
+                    key={id}
+                    id={id}
+                    favorite={favorite}
+                    onHeartFavoriteHandler={heartFavoriteHandler}
+                    firstName={firstName}
+                    lastName={lastName}
+                    bio={bio}
+                  />
                 );
               })}
           </div>
