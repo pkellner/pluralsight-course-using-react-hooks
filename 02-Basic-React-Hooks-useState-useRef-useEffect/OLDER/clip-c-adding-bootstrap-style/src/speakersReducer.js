@@ -1,7 +1,7 @@
 const speakersReducer = (state, action) => {
-
-  console.log(`speakersReducer:action:${action.type}`);
+  //console.log(`speakersReducer:action:${action.type}`);
   switch (action.type) {
+
     case "loadspeakers": {
       return action.data;
     }

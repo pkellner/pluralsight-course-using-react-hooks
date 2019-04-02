@@ -2,7 +2,7 @@ import ImageTogglerOnMouseOver from "./ImageTogglerOnMouseOver";
 
 const SpeakerDetail = React.memo(
   ({ id, firstName, lastName, favorite, bio, onHeartFavoriteHandler }) => {
-    console.log(`SpeakerDetail:${id} ${firstName} ${lastName}`);
+    console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
     return (
       <div className="card col-4 cardmin">
         <ImageTogglerOnMouseOver

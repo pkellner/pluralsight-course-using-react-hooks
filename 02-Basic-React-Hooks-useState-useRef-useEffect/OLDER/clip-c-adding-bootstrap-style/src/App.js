@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./Home";
 import Speakers from "./Speakers";
+
+
 
 const pageToShow = pageName => {
   if (pageName === "Home") return <Home />;
@@ -11,6 +13,7 @@ const pageToShow = pageName => {
 export const ConfigContext = React.createContext();
 
 const App = ({ pageName }) => {
+
   const configValue = {
     showSignMeUp: true,
     showSpeakerSpeakingDays: true

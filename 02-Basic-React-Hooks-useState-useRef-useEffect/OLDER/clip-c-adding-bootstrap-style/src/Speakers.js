@@ -4,7 +4,7 @@ import React, {
   useContext,
   useReducer,
   useCallback,
-    useMemo
+  useMemo
 } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,6 +31,7 @@ const Speakers = ({}) => {
 
   //const [speakerList, setSpeakerList] = useState([]);
   const [speakerList, dispatch] = useReducer(speakersReducer, []);
+
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -65,21 +66,21 @@ const Speakers = ({}) => {
   };
 
   const speakerListFiltered = useMemo(
-      () =>
-          speakerList
-              .filter(
-                  ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
-              )
-              .sort((a, b) => {
-                if (a.firstName < b.firstName) {
-                  return -1;
-                }
-                if (a.firstName > b.firstName) {
-                  return 1;
-                }
-                return 0;
-              }),
-      [speakingSaturday, speakingSunday, speakerList]
+    () =>
+      speakerList
+        .filter(
+          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+        )
+        .sort(function(a, b) {
+          if (a.firstName < b.firstName) {
+            return -1;
+          }
+          if (a.firstName > b.firstName) {
+            return 1;
+          }
+          return 0;
+        }),
+    [speakingSaturday, speakingSunday, speakerList]
   );
 
   const handleChangeSunday = () => {
@@ -108,8 +109,6 @@ const Speakers = ({}) => {
   }, []);
 
   if (isLoading) return <div>Loading...</div>;
-
-
 
   return (
     <div>
@@ -146,8 +145,8 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered
-              .map(({ id, firstName, lastName, bio, favorite }) => {
+            {speakerListFiltered.map(
+              ({ id, firstName, lastName, bio, favorite }) => {
                 return (
                   <SpeakerDetail
                     key={id}
@@ -159,7 +158,8 @@ const Speakers = ({}) => {
                     bio={bio}
                   />
                 );
-              })}
+              }
+            )}
           </div>
         </div>
       </div>
