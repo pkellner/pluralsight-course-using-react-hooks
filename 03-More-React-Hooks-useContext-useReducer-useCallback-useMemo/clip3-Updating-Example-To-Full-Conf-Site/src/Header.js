@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React from "react";
 import SignMeUp from "./SignMeUp";
 
 export const Header = () => {

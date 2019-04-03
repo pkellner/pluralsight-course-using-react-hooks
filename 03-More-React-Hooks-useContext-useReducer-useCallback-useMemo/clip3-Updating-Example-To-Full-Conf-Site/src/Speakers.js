@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -19,7 +19,7 @@ const Speakers = ({}) => {
     new Promise(function(resolve) {
       setTimeout(function() {
         resolve();
-      }, 500);
+      }, 1000);
     }).then(() => {
       setIsLoading(false);
       const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
@@ -66,7 +66,7 @@ const Speakers = ({}) => {
       }
       return item;
     }));
-    console.log("need to change session favorte to " + favoriteValue);
+    //console.log("changing session favorte to " + favoriteValue);
   };
 
   if (isLoading) return <div>Loading...</div>;
