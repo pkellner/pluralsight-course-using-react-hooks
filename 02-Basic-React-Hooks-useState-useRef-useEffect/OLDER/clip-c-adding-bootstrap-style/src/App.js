@@ -16,7 +16,7 @@ const App = ({ pageName }) => {
 
   const configValue = {
     showSignMeUp: true,
-    showSpeakerSpeakingDays: true
+    showSpeakerSpeakingDays: false
   };
   return (
     <ConfigContext.Provider value={configValue}>
