@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-
 import { ConfigContext } from "./App";
 
 const SignMeUp = ({ signupCallback }) => {
@@ -9,11 +8,11 @@ const SignMeUp = ({ signupCallback }) => {
     console.log(`SignMeUp:useEffect called`);
   });
 
-  const context = useContext(ConfigContext);
-
   const [email, setEmail] = useState();
   const [emailValid, setEmailValid] = useState(false);
   const [sendProcessing, setSendProcessing] = useState(false);
+
+  const context = useContext(ConfigContext);
 
   function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
