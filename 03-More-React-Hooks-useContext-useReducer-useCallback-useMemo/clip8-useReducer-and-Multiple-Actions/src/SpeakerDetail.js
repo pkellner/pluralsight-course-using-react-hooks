@@ -1,4 +1,4 @@
-import ImageToggleOnMouseOver from "./ImageToggleOnScroll";
+import ImageToggleOnScroll from "./ImageToggleOnScroll";
 
 const SpeakerDetail = ({
                            id,
@@ -11,7 +11,7 @@ const SpeakerDetail = ({
     //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
     return (
         <div className="card col-4 cardmin">
-            <ImageToggleOnMouseOver
+            <ImageToggleOnScroll
                 className="card-img-top"
                 primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
                 secondaryImg={`/static/speakers/Speaker-${id}.jpg`}

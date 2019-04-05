@@ -1,4 +1,4 @@
-import ImageToggleOnMouseOver from "./ImageToggleOnScroll";
+import ImageToggleOnScroll from "./ImageToggleOnScroll";
 
 const SpeakerDetail = React.memo( ({
   id,
@@ -13,7 +13,7 @@ const SpeakerDetail = React.memo( ({
 
   return (
     <div className="card col-4 cardmin">
-      <ImageToggleOnMouseOver
+      <ImageToggleOnScroll
         className="card-img-top"
         primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
         secondaryImg={`/static/speakers/Speaker-${id}.jpg`}

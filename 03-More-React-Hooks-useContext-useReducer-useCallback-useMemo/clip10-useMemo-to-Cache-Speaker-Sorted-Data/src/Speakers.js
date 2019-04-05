@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer,useCallback} from "react";
+import React, { useState, useEffect, useContext, useReducer,useCallback, useMemo} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -41,8 +41,12 @@ const Speakers = ({}) => {
     };
   }, []); // [speakingSunday, speakingSaturday]);
 
-
-
+  const handleChangeSaturday = () => {
+    setSpeakingSaturday(!speakingSaturday);
+  };
+  const handleChangeSunday = () => {
+    setSpeakingSunday(!speakingSunday);
+  };
   const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
@@ -52,30 +56,23 @@ const Speakers = ({}) => {
     });
   },[]);
 
-  const handleChangeSaturday = () => {
-    setSpeakingSaturday(!speakingSaturday);
-  };
-
-
-  const handleChangeSunday = () => {
-    setSpeakingSunday(!speakingSunday);
-  };
+  const newSpeakerList = useMemo(() => speakerList
+      .filter(
+          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+      )
+      .sort(function(a, b) {
+        if (a.firstName < b.firstName) {
+          return -1;
+        }
+        if (a.firstName > b.firstName) {
+          return 1;
+        }
+        return 0;
+      }),[speakingSaturday, speakingSunday, speakerList])
 
   const speakerListFiltered = isLoading
     ? []
-    : useMemo(() => speakerList
-          .filter(
-              ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
-          )
-          .sort(function(a, b) {
-            if (a.firstName < b.firstName) {
-              return -1;
-            }
-            if (a.firstName > b.firstName) {
-              return 1;
-            }
-            return 0;
-          }),[speakingSaturday, speakingSunday, speakerList])
+    : newSpeakerList;
 
   if (isLoading) return <div>Loading...</div>;
 
