@@ -1,14 +1,22 @@
 import ImageToggleOnMouseOver from "./ImageToggleOnScroll";
 
-const SpeakerDetail = ({
+import {StateContext,DispatchContext} from './Speakers'
+
+
+const  SpeakerDetail = React.memo( ({
                            id,
                            firstName,
                            lastName,
                            favorite,
-                           bio,
-                           onHeartFavoriteHandler
+                           bio
                        }) => {
-    //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+    console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+
+
+    const appState = React.useContext(StateContext)
+    const dispatch = React.useContext(DispatchContext)
+
+
     return (
         <div className="card col-4 cardmin">
             <ImageToggleOnMouseOver
@@ -22,9 +30,14 @@ const SpeakerDetail = ({
                     <button
                         data-sessionid={id}
                         className={favorite ? "heartredbutton" : "heartdarkbutton"}
+
                         onClick={e => {
-                            onHeartFavoriteHandler(e, !favorite);
+                            dispatch({
+                                type: favorite === true ? "favorite" : "unfavorite",
+                                sessionid: id
+                            });
                         }}
+
                     />
                     <span>
             {firstName} {lastName}
@@ -35,6 +48,6 @@ const SpeakerDetail = ({
             </div>
         </div>
     );
-};
+});
 
 export default SpeakerDetail;
