@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer} from "react";
+import React, { useState, useEffect, useContext, useReducer,useCallback} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -31,7 +31,6 @@ const Speakers = ({}) => {
       const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
         return (speakingSaturday && sat) || (speakingSunday && sun);
       });
-      //setSpeakerList(speakerListServerFilter);
       dispatch({
         type: "setSpeakerList",
         data: speakerListServerFilter
@@ -66,22 +65,14 @@ const Speakers = ({}) => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  const heartFavoriteHandler = (e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     dispatch({
       type: favoriteValue === true ? "favorite" : "unfavorite",
       sessionId
     });
-
-    // setSpeakerList(speakerList.map(item => {
-    //   if (item.id === sessionId) {
-    //     item.favorite = favoriteValue;
-    //     return item;
-    //   }
-    //   return item;
-    // }));
-  };
+  },[]);
 
   if (isLoading) return <div>Loading...</div>;
 
