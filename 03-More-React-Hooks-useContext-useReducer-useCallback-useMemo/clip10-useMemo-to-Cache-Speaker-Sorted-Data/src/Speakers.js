@@ -41,29 +41,7 @@ const Speakers = ({}) => {
     };
   }, []); // [speakingSunday, speakingSaturday]);
 
-  const handleChangeSaturday = () => {
-    setSpeakingSaturday(!speakingSaturday);
-  };
 
-  const speakerListFiltered = isLoading
-    ? []
-    : speakerList
-        .filter(
-          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
-        )
-        .sort(function(a, b) {
-          if (a.firstName < b.firstName) {
-            return -1;
-          }
-          if (a.firstName > b.firstName) {
-            return 1;
-          }
-          return 0;
-        });
-
-  const handleChangeSunday = () => {
-    setSpeakingSunday(!speakingSunday);
-  };
 
   const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
@@ -73,6 +51,31 @@ const Speakers = ({}) => {
       sessionId
     });
   },[]);
+
+  const handleChangeSaturday = () => {
+    setSpeakingSaturday(!speakingSaturday);
+  };
+
+
+  const handleChangeSunday = () => {
+    setSpeakingSunday(!speakingSunday);
+  };
+
+  const speakerListFiltered = isLoading
+    ? []
+    : useMemo(() => speakerList
+          .filter(
+              ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+          )
+          .sort(function(a, b) {
+            if (a.firstName < b.firstName) {
+              return -1;
+            }
+            if (a.firstName > b.firstName) {
+              return 1;
+            }
+            return 0;
+          }),[speakingSaturday, speakingSunday, speakerList])
 
   if (isLoading) return <div>Loading...</div>;
 

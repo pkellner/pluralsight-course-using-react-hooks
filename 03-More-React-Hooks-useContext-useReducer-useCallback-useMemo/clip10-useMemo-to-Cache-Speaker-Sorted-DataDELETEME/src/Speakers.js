@@ -58,7 +58,7 @@ const Speakers = ({}) => {
         }
         return 0;
       }),[speakingSaturday, speakingSunday, speakerList]);
-  
+
   const speakerListFiltered = isLoading
     ? []
     : speakerListMemo;
