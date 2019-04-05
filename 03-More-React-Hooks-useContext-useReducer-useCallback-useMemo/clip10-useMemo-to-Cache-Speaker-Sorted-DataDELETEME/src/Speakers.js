@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer,useCallback} from "react";
+import React, { useState, useEffect, useContext, useReducer,useCallback,useMemo} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -45,21 +45,23 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
+  var speakerListMemo = useMemo(() => speakerList
+      .filter(
+          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+      )
+      .sort(function(a, b) {
+        if (a.firstName < b.firstName) {
+          return -1;
+        }
+        if (a.firstName > b.firstName) {
+          return 1;
+        }
+        return 0;
+      }),[speakingSaturday, speakingSunday, speakerList]);
+  
   const speakerListFiltered = isLoading
     ? []
-    : speakerList
-        .filter(
-          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
-        )
-        .sort(function(a, b) {
-          if (a.firstName < b.firstName) {
-            return -1;
-          }
-          if (a.firstName > b.firstName) {
-            return 1;
-          }
-          return 0;
-        });
+    : speakerListMemo;
 
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
