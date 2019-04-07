@@ -10,16 +10,22 @@ function EmailValidatingForm() {
     return re.test(email);
   };
 
-  const [email, setEmail] = useState();
-  const [emailValid, setEmailValid] = useState(false);
-  const [count, setCount] = useState(7);
+  function useTimeoutForm(secondsFormValid) {
 
-  useInterval(
-    () => {
-      setCount(count - 1);
-    },
-    count > 0 ? 1000 : null
-  );
+    const [email, setEmail] = useState();
+    const [emailValid, setEmailValid] = useState(false);
+    const [count, setCount] = useState(secondsFormValid);
+
+    useInterval(
+        () => {
+          setCount(count - 1);
+        },
+        count > 0 ? 1000 : null
+    );
+    return {email, setEmail, emailValid, setEmailValid, count};
+  }
+
+  const {email, setEmail, emailValid, setEmailValid, count} = useTimeoutForm(10);
 
   return (
     <div className="container">
@@ -46,7 +52,11 @@ function EmailValidatingForm() {
           >
             PRESS ME!
           </button>
-          <div>{ count > 0 ? `You Have ${count} Seconds To Enter Your Email` : "Times Up"}</div>
+          <div>
+            {count > 0
+              ? `You Have ${count} Seconds To Enter Your Email`
+              : "Times Up"}
+          </div>
         </div>
       </div>
     </div>
