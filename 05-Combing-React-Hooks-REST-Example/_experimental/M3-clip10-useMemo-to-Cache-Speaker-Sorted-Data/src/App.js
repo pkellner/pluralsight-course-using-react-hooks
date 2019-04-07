@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./Home";
-import Speakers from "./Speakers";
+import Speakers from "./SpeakersWithAxios";
 
 export const ConfigContext = React.createContext();
 
