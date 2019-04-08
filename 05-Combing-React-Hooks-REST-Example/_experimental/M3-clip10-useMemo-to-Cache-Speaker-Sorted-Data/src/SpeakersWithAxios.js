@@ -29,34 +29,18 @@ const Speakers = ({}) => {
 
   useEffect(() => {
     setIsLoading(true);
-
-    axios.get("http://localhost:4000/speakers")
+    axios
+      .get("http://localhost:4000/speakers")
       .then(function(response) {
-          setIsLoading(false);
-          dispatch({
-            type: "setSpeakerList",
-            data: response.data
-          });
+        setIsLoading(false);
+        dispatch({
+          type: "setSpeakerList",
+          data: response.data
+        });
       })
       .catch(function(error) {
-        debugger;
         console.log(error);
       });
-
-    // new Promise(function(resolve) {
-    //   setTimeout(function() {
-    //     resolve();
-    //   }, 1000);
-    // }).then(() => {
-    //   setIsLoading(false);
-    //   const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
-    //     return (speakingSaturday && sat) || (speakingSunday && sun);
-    //   });
-    //   dispatch({
-    //     type: "setSpeakerList",
-    //     data: speakerListServerFilter
-    //   });
-    // });
     return () => {
       console.log("cleanup");
     };
@@ -89,8 +73,6 @@ const Speakers = ({}) => {
       .catch(function(error) {
         console.log(error);
       });
-
-
   }, []);
 
   // const newSpeakerList = useMemo(
