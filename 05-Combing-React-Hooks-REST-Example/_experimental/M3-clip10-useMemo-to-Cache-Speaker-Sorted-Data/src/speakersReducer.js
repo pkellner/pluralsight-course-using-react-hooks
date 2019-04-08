@@ -13,6 +13,7 @@ const speakersReducer = (state, action) => {
             return item;
         });
     }
+
     switch (action.type) {
         case "setSpeakerList": {
             return action.data;

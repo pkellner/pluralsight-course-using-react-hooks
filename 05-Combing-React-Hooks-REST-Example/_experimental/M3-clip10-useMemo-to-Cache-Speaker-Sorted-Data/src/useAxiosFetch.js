@@ -6,49 +6,33 @@ about state downstream being affected one at a time.  no such thing as a transac
 setState's together. But, you can make an object and set that at the same time and ahieve the same result
  */
 
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const useAxiosFetch = (
   url,
-  method,
-  data,
   timeout,
-  emptyDataReturn,
-  withCredentials,
-  toggleForceUpdate
+  emptyDataReturn
 ) => {
   const initAxiosResult = {
     isLoading: true,
     hasErrored: false,
     errorMessage: null,
-    data: emptyDataReturn,
-    forceUpdate: true
+    data: emptyDataReturn
   };
 
   const [axiosResult, setAxiosResult] = useState(initAxiosResult);
-  const [forceUpdate, setForceUpdate] = useState(false);
-
-  toggleForceUpdate = () => {
-    console.log(`initAxiosResult.toggleForceUpdate called ${forceUpdate}`);
-    setForceUpdate(!forceUpdate);
-  };
-
-  //https://stackoverflow.com/questions/53059059/react-hooks-making-an-ajax-request
 
   useEffect(() => {
-    console.log("useAxiosFetch:useEffect");
-
     let mounted = true;
     let source = axios.CancelToken.source();
-    axios({
-      method,
-      url,
-      withCredentials,
-      cancelToken: source.token,
-      timeout: timeout
-    })
-      .then(a => {
+    axios
+      .get(url, {
+        cancelToken: source.token,
+        timeout: timeout
+      })
+      .then((a) => {
+
         if (mounted) {
           setAxiosResult({
             isLoading: false,
@@ -59,6 +43,7 @@ const useAxiosFetch = (
         }
       })
       .catch(function(e) {
+
         if (mounted) {
           setAxiosResult({
             isLoading: false,
@@ -70,9 +55,9 @@ const useAxiosFetch = (
       });
     return function() {
       mounted = false;
-      source.cancel("Cancelling in cleanup");
+      source.cancel('Cancelling in cleanup');
     };
-  }, [forceUpdate]);
+  }, []);
   return axiosResult;
 };
 
