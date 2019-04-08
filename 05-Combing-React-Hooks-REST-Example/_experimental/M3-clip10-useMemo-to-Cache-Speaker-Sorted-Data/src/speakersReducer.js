@@ -2,7 +2,12 @@ const speakersReducer = (state, action) => {
     function updateFavorite(favoriteValue) {
         return state.map((item, index) => {
             if (item.id === action.sessionId) {
-                item.favorite = favoriteValue;
+                if (favoriteValue === null) {
+                    item.favoriteChanging = true;
+                } else {
+                    item.favorite = favoriteValue;
+                    item.favoriteChanging = false;
+                }
                 return item;
             }
             return item;
@@ -17,6 +22,9 @@ const speakersReducer = (state, action) => {
         }
         case "unfavorite": {
             return updateFavorite(false);
+        }
+        case "favoritechanging": {
+            return updateFavorite(null);
         }
         default:
             return state;

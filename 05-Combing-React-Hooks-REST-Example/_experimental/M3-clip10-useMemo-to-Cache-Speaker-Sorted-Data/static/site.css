@@ -55,4 +55,16 @@
 }
 
 
+.heartorangebutton
+{
+    background-image:  url('/static/heart-orange.png');
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    float: right;
+}
+
 

@@ -7,12 +7,13 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 4000 --delay 200"
+    "json-server": "json-server --watch db.json --port 4000 --delay 1000"
   },
   "keywords": [],
   "author": "Peter Kellner",
   "license": "ISC",
   "dependencies": {
+    "@use-hooks/axios": "^1.1.3",
     "@zeit/next-css": "^1.0.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
