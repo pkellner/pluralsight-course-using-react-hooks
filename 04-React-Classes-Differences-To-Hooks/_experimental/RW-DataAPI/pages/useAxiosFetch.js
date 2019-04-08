@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { Fragment, useState, useEffect, useReducer } from "react";
 import axios from "axios";
 
 const dataFetchReducer = (state, action) => {
@@ -18,18 +18,15 @@ const dataFetchReducer = (state, action) => {
         ...state,
         isLoading: false,
         hasErrored: true,
-        errorMessage: "Data Retrieve Failure"
+        errorMessage: "need to find ERROR message"
       };
     case "REPLACE_DATA":
-      const newData = state.data.map(rec => {
-        return rec.id === action.replacerecord.id ? action.replacerecord : rec;
-      });
       return {
         ...state,
         isLoading: false,
         hasErrored: false,
         errorMessage: "",
-        data: newData
+        data: action.newdata
       };
     default:
       throw new Error();
@@ -72,21 +69,14 @@ const useAxiosFetch = (initialUrl, initialData) => {
     };
   }, [url]);
 
-  const updateDataRecord = record => {
-    debugger;
-    // const newData = state.data.map(rec => {
-    //   return rec.id === speakerRec.id ? speakerRec : rec;
-    // });
-    // dispatch({
-    //   type: "REPLACE_DATA",
-    //   newdata: newData
-    // });
-
-    // record must have "id"
+  const updateDataRecord = speakerRec => {
+    const newData = state.data.map(rec => {
+      return rec.id === speakerRec.id ? speakerRec : rec;
+    });
     dispatch({
       type: "REPLACE_DATA",
-      replacerecord: record
-    })
+      newdata: newData
+    });
   };
 
   return { ...state, updateDataRecord };

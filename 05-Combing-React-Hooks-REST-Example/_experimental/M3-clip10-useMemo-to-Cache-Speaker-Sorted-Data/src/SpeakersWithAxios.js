@@ -1,48 +1,26 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  useCallback,
-  useMemo
-} from "react";
+import React, { useState, useContext, useCallback } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
-import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
-import speakersReducer from "./speakersReducer";
+import useAxiosFetch from "./useAxiosFetch";
+import axios from "axios";
 
-const SpeakersWithAxios = ({ data, isLoading, hasErrored, errorMessage }) => {
+const SpeakersWithAxios = () => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-
-  //const [speakerList, dispatch] = useReducer(speakersReducer);
-  debugger;
-  const [speakerList,setSpeakerList] = useState(data);
-
-  const [isLoadingLocal, setIsLoadingLocal] = useState(isLoading);
-
   const context = useContext(ConfigContext);
 
-  console.log("speakersWithAxios:top");
-
-  useEffect(() => {
-    console.log("speakersWithAxios:useEffectxxxxxx:" + data.length);
-    // dispatch({
-    //   type: "setSpeakerList",
-    //   data: data
-    // });
-  });
-
-  // const { data, isLoading: isLoading1, hasErrored, errorMessage } = useAxiosFetch(
-  //   "http://localhost:4000/speakers",
-  //   1000,
-  //   []
-  // );
+  const {
+    data,
+    isLoading,
+    hasErrored,
+    errorMessage,
+    updateDataRecord
+  } = useAxiosFetch("http://localhost:4000/speakers", []);
 
   // useEffect(() => {
   //   setIsLoading(true);
@@ -71,18 +49,26 @@ const SpeakersWithAxios = ({ data, isLoading, hasErrored, errorMessage }) => {
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
   };
-  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-    dispatch({
-      type: favoriteValue === true ? "favorite" : "unfavorite",
-      sessionId
-    });
+    const toggledRec = { ...speakerRec, favorite: !speakerRec.favorite };
+
+    // do the axios PUT then updateDataRecord on success
+    axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
+      .then(function(response) {
+        updateDataRecord(toggledRec);
+        console.log(response);
+      })
+      .catch(function(error) {
+        debugger;
+        console.log(error);
+      });
+
+
   }, []);
 
- // if (!speakerListFiltered) return <div>no speakerListFiltered...</div>;
-
-  const newSpeakerList = speakerList
+  const newSpeakerList = data
     .filter(
       ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
     )
@@ -96,15 +82,9 @@ const SpeakersWithAxios = ({ data, isLoading, hasErrored, errorMessage }) => {
       return 0;
     });
 
-  const speakerListFiltered = isLoadingLocal ? [] : newSpeakerList;
+  const speakerListFiltered = isLoading ? [] : newSpeakerList;
 
-  //if (setIsLoadingLocal) return <div>Loading...</div>;
-
-  console.log(
-    "speakerswithaxios:about to render:len:" + speakerListFiltered.length
-  );
-
-  debugger;
+  if (isLoading === true) return <div>Loading...</div>;
 
   return (
     <div>
@@ -141,23 +121,25 @@ const SpeakersWithAxios = ({ data, isLoading, hasErrored, errorMessage }) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {!speakerListFiltered ? [] : speakerListFiltered.map(
-              ({ id, firstName, lastName, sat, sun, bio, favorite }) => {
-                return (
-                  <SpeakerDetail
-                    key={id}
-                    id={id}
-                    favorite={favorite}
-                    onHeartFavoriteHandler={heartFavoriteHandler}
-                    firstName={firstName}
-                    lastName={lastName}
-                    bio={bio}
-                    sat={sat}
-                    sun={sun}
-                  />
-                );
-              }
-            )}
+            {!speakerListFiltered
+              ? []
+              : speakerListFiltered.map(
+                  ({ id, firstName, lastName, sat, sun, bio, favorite }) => {
+                    return (
+                      <SpeakerDetail
+                        key={id}
+                        id={id}
+                        favorite={favorite}
+                        onHeartFavoriteHandler={heartFavoriteHandler}
+                        firstName={firstName}
+                        lastName={lastName}
+                        bio={bio}
+                        sat={sat}
+                        sun={sun}
+                      />
+                    );
+                  }
+                )}
           </div>
         </div>
       </div>
