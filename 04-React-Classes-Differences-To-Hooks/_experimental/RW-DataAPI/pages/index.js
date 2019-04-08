@@ -65,11 +65,23 @@ const useDataApi = (initialUrl, initialData) => {
     };
   }, [url]);
 
+  // const updateDataRecord = speakerRec => {
+  //   const newData = state.data.map(rec => {
+  //     return rec.id === speakerRec.id
+  //       ? { ...speakerRec, favorite: !speakerRec.favorite }
+  //       : rec;
+  //   });
+  //   dispatch({
+  //     type: "REPLACE_DATA",
+  //     newdata: newData
+  //   });
+  // };
+
   const updateDataRecord = speakerRec => {
     const newData = state.data.map(rec => {
       return rec.id === speakerRec.id
-        ? { ...speakerRec, favorite: !speakerRec.favorite }
-        : rec;
+          ? speakerRec
+          : rec;
     });
     dispatch({
       type: "REPLACE_DATA",
@@ -86,11 +98,12 @@ function App() {
     []
   );
 
-  const doUpdateDataRecord = rec => {
-    updateDataRecord(rec);
+  const toggleFavorite = speakerRec => {
+    const toggledRec = { ...speakerRec, favorite: !speakerRec.favorite }
+    updateDataRecord(toggledRec);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading......</div>;
 
   return (
     <div>
@@ -101,7 +114,7 @@ function App() {
             {item.favorite === true ? "TRUE" : "FALSE"}
             <button
               onClick={() => {
-                doUpdateDataRecord(item);
+                toggleFavorite(item);
               }}
             >
               ClickMe
