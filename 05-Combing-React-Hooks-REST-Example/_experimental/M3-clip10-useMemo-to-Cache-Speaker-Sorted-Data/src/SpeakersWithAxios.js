@@ -58,10 +58,8 @@ const SpeakersWithAxios = () => {
     axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
       .then(function(response) {
         updateDataRecord(toggledRec);
-        console.log(response);
       })
       .catch(function(error) {
-        debugger;
         console.log(error);
       });
 
@@ -84,6 +82,7 @@ const SpeakersWithAxios = () => {
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;
 
+  if (hasErrored === true) return <div>Error Loading {errorMessage}...</div>
   if (isLoading === true) return <div>Loading...</div>;
 
   return (

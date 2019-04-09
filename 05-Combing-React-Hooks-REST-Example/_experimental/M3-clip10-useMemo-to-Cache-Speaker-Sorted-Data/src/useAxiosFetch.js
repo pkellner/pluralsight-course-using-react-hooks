@@ -37,7 +37,7 @@ const dataFetchReducer = (state, action) => {
 };
 
 const useAxiosFetch = (initialUrl, initialData) => {
-  const [url, setUrl] = useState(initialUrl);
+  const [url] = useState(initialUrl);
 
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
@@ -49,16 +49,28 @@ const useAxiosFetch = (initialUrl, initialData) => {
   useEffect(() => {
     let didCancel = false;
 
+    // axios.interceptors.response.use(function (response) {
+    //   // Do something with response data
+    //   debgger;
+    //   return response;
+    // }, function (error) {
+    //   // Do something with response error
+    //   debugger;
+    //   return Promise.reject(error);
+    // });
+
     const fetchData = async () => {
       dispatch({ type: "FETCH_INIT" });
 
       try {
-        const result = await axios(url);
+        let result = null;
+        result = await axios.get(url);
 
         if (!didCancel) {
           dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         }
-      } catch (error) {
+      } catch (err) {
+        // tnis err object does not work well, see interceptor above but no luck with that.
         if (!didCancel) {
           dispatch({ type: "FETCH_FAILURE" });
         }

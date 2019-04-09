@@ -13,10 +13,10 @@
       "id": 5996,
       "firstName": "Craig",
       "lastName": "Berntson",
+      "favorite": true,
+      "bio": "Craig has a passion for community and helping other developers improve their skills. He writes the column \"Software Gardening\" in DotNet Curry Magazine and is the co-author of \"Continuous Integration in .NET\" available from Manning.",
       "sat": true,
-      "sun": true,
-      "favorite": false,
-      "bio": "Craig has a passion for community and helping other developers improve their skills. He writes the column \"Software Gardening\" in DotNet Curry Magazine and is the co-author of \"Continuous Integration in .NET\" available from Manning."
+      "sun": true
     },
     {
       "id": 10803,
@@ -49,7 +49,7 @@
       "id": 1269,
       "firstName": "Arun",
       "lastName": "Gupta",
-      "favorite": true,
+      "favorite": false,
       "bio": "Arun Gupta is a Principal Open Source Technologist at Amazon Web Services. He has built and led developer communities for 12+ years at Sun, Oracle, Red Hat and Couchbase.",
       "sat": false,
       "sun": true
@@ -58,7 +58,7 @@
       "id": 1725,
       "firstName": "Brad",
       "lastName": "Irby",
-      "favorite": true,
+      "favorite": false,
       "bio": "Brad is an accomplished .NET software architect specializing in Domain Driven Design and Event Driven Architectures.",
       "sat": true,
       "sun": false
@@ -85,10 +85,10 @@
       "id": 187,
       "firstName": "Dave",
       "lastName": "Nielsen",
-      "sat": true,
-      "sun": true,
       "favorite": false,
-      "bio": "As Head of Ecosystem Programs, Dave uses emerging technologies and open source projects like Microservices, Serverless & Kubernetes to bring the magic of Redis to the broader community."
+      "bio": "As Head of Ecosystem Programs, Dave uses emerging technologies and open source projects like Microservices, Serverless & Kubernetes to bring the magic of Redis to the broader community.",
+      "sat": true,
+      "sun": true
     },
     {
       "id": 823,
@@ -103,16 +103,16 @@
       "id": 8590,
       "firstName": "Chris",
       "lastName": "Richardson",
-      "sat": true,
-      "sun": false,
       "favorite": false,
-      "bio": "Chris Richardson is a developer and architect. He is a Java Champion, a JavaOne rock star and the author of POJOs in Action, which describes how to build enterprise Java applications with frameworks such as Spring and Hibernate."
+      "bio": "Chris Richardson is a developer and architect. He is a Java Champion, a JavaOne rock star and the author of POJOs in Action, which describes how to build enterprise Java applications with frameworks such as Spring and Hibernate.",
+      "sat": true,
+      "sun": false
     },
     {
       "id": 10808,
       "firstName": "Antony",
       "lastName": "Ross",
-      "favorite": false,
+      "favorite": true,
       "bio": "Antony Ross is a consultant specializing in data science and machine learning applied to sports performance. He has worked closely with USC and UCLA and is presently involved with the Recurse Center in New York researching deep learning and voice recognition.",
       "sat": true,
       "sun": false
