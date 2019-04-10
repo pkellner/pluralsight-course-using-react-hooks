@@ -1,5 +1,5 @@
 import React from "react";
-import ImageToggleOnScroll from "../src/ImageToggleOnScroll";
+import ImageToggleOnScroll from "../src/ImageToggleOnScrollCC";
 
 
 const ImageChangeOnScroll = () => {

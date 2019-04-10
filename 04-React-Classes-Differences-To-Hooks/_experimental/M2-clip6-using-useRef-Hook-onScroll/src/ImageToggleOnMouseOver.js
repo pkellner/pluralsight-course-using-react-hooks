@@ -1,19 +1,24 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 
-const ImageTogglerOnMouseOver = ({ primaryImg, secondaryImg }) => {
+const ImageToggleOnMouseOver = ({ primaryImg, secondaryImg }) => {
+  const imageRef = useRef(null);
 
-    const imageRef = useRef(null);
-
-    return (
-        <img onMouseOver={() => {
-            imageRef.current.src = secondaryImg;
-        }} onMouseOut={() => {
-            imageRef.current.src = primaryImg;
+  return (
+    <div>
+      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i><br/>
+      <img
+        onMouseOver={() => {
+          imageRef.current.src = secondaryImg;
         }}
-            src={primaryImg}
-            alt="" ref={imageRef}
-        />
-    );
+        onMouseOut={() => {
+          imageRef.current.src = primaryImg;
+        }}
+        src={primaryImg}
+        alt=""
+        ref={imageRef}
+      />
+    </div>
+  );
 };
 
-export default ImageTogglerOnMouseOver;
+export default ImageToggleOnMouseOver;
