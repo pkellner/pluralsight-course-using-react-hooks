@@ -1,3 +1,5 @@
+import * as React from "react";
+
 class ImageToggleOnScrollCC extends React.Component {
   constructor(props) {
     super(props);
@@ -5,17 +7,10 @@ class ImageToggleOnScrollCC extends React.Component {
       inView: false,
       isLoading: true
     };
-
-    console.log("setting this.imageRef...");
     this.imageRef = React.createRef();
-    //this.isInView()
   }
 
   isInView = () => {
-    console.log(
-      `isInView:imageRef:imageRer:${this.imageRef ? "true" : "false"}`
-    );
-    debugger;
     if (this.imageRef.current) {
       const rect = this.imageRef.current.getBoundingClientRect();
       return rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -29,28 +24,7 @@ class ImageToggleOnScrollCC extends React.Component {
     });
   };
 
-  componentDidMount() {
-    //console.log("cdm called");
-    //window.addEventListener("scroll", this.scrollHandler);
-    const isInViewNow = this.isInView();
-
-    console.log(
-      `cdm:imageRef:imageRer:${
-        this.imageRef ? "true" : "false"
-      }:isInViewNow:${isInViewNow}`
-    );
-
-    this.setState(previousState => {
-      return {
-        inView: isInViewNow,
-        isLoading: false
-      };
-    });
-  }
-
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    //console.log("componentDidUpdate");
     if (this.props.isLoading !== prevProps.isLoading) {
       //console.log("componentDidUpdate");
       //this.fetchData(this.props.userID);
@@ -58,40 +32,58 @@ class ImageToggleOnScrollCC extends React.Component {
   }
 
   componentWillUnmount() {
-    // remove listener
+    window.removeEventListener("scroll", scrollHandler);
   }
 
+  componentDidMount() {
+    //console.log("cdm called");
+
+    console.log(`cdm:imageRef:${this.imageRef ? "true" : "false"}`);
+
+    console.log(`cdm:isInView():${this.isInView()}`);
+
+    this.setState({
+      inView: this.isInView(),
+      isLoading: false
+    });
+
+    window.addEventListener("scroll", this.scrollHandler);
+    // debugger;
+    // const isInViewNow = this.isInView();
+    // this.setState(previousState => {
+    //   return {
+    //     inView: isInViewNow,
+    //     isLoading: false
+    //   };
+    // });
+  }
 
   render() {
     console.log(`this.state.isLoading:${this.state.isLoading}`);
-    if (this.state.isLoading === true) {
-      return <div>isLoading true</div>;
-    } else {
-      return (
-        <div>
-          <i>ImageToggleOnScrollCC - Class Component</i>
-          <br />
-          <img
-            src={
-              this.state.inView
-                ? this.props.secondaryImg
-                : this.props.primaryImg
-            }
-            alt=""
-            ref={this.imageRef}
-            width="200"
-            height="200"
-          />
-        </div>
-      );
-    }
+    // if (this.state.isLoading === true) {
+    //   return <div>isLoading true</div>;
+    // } else {
+
+    return (
+      <div>
+        <i>ImageToggleOnScrollCC - Class Component</i>
+        <br />
+        <img
+          src={
+            this.state.inView ? this.props.secondaryImg : this.props.primaryImg
+          }
+          alt=""
+          ref={this.imageRef}
+          width="200"
+          height="200"
+        />
+      </div>
+    );
+    //}
 
     // return this.state.isLoading === false ? (
     //   <div>Loading...</div>
     // ) : (
-
-    console.log(`isInView:${this.isInView()}`);
-
     return (
       <div>
         <i>ImageToggleOnScrollCC - Class Component</i>

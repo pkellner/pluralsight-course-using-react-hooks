@@ -1,23 +1,22 @@
 import React from "react";
-import ImageToggleOnScroll from "../src/ImageToggleOnScrollCC";
-
+import ImageToggleOnScroll from "../src/ImageToggleOnScrollCCTry";
 
 const ImageChangeOnScroll = () => {
-    return (
-        <div>
-            {[1124, 187, 823, 1269, 1530].map(speakerId => {
-                return (
-                    <div key={speakerId}>
-                        <ImageToggleOnScroll
-                            primaryImg={`/static/speakers/bw/Speaker-${speakerId}.jpg`}
-                            secondaryImg={`/static/speakers/Speaker-${speakerId}.jpg`}
-                            alt=""
-                        />
-                    </div>
-                );
-            })}
-        </div>
-    );
+  return (
+    <div>
+      {[1124, 187, 823, 1269, 1530].slice(0,2).map(speakerId => {
+        return (
+          <div key={speakerId}>
+            <ImageToggleOnScroll
+              primaryImg={`/static/speakers/bw/Speaker-${speakerId}.jpg`}
+              secondaryImg={`/static/speakers/Speaker-${speakerId}.jpg`}
+              alt=""
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ImageChangeOnScroll;
