@@ -1,10 +1,10 @@
 import React from "react";
-import ImageToggleOnScroll from "../src/ImageToggleOnScrollCCTry";
+import ImageToggleOnScroll from "../src/ImageToggleOnScrollCC";
 
 const ImageChangeOnScroll = () => {
   return (
     <div>
-      {[1124, 187, 823, 1269, 1530].slice(0,2).map(speakerId => {
+      {[1124, 187, 823, 1269, 1530].map(speakerId => {
         return (
           <div key={speakerId}>
             <ImageToggleOnScroll
