@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const InputElement1 = () => {
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] =
+    useState("");
 
   return (
     <div>
