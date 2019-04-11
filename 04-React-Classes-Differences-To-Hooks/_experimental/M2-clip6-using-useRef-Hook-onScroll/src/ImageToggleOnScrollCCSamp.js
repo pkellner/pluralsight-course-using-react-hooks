@@ -1,6 +1,6 @@
 import * as React from "react";
 
-class ImageToggleOnScrollCCTry extends React.Component {
+class ImageToggleOnScrollCCSamp extends React.Component {
   constructor(props) {
     super(props);
     this.imgRef = React.createRef();
@@ -54,26 +54,32 @@ class ImageToggleOnScrollCCTry extends React.Component {
     } else {
       return (
         <div>
-          <i>ImageToggleOnScrollCC - Class Component</i>
-          <br />
-          <img
-            src={
-              this.state.inView
-                ? 'https://via.placeholder.com/200x200.png/0000FF/808080?text=ON-SCREEN'
-                : 'https://via.placeholder.com/200x200.png?text=OFF-SCREEN'
-            }
-            alt=""
-            ref={this.imgRef}
-            width="200"
-            height="200"
-          />
+          {[1, 2, 3, 4, 5].map(id => {
+            return (
+              <div key={id}>
+                <i>ImageToggleOnScrollCC - Class Component</i>
+                <br />
+                <img
+                  src={
+                    this.state.inView
+                      ? "https://via.placeholder.com/200x200.png/0000FF/808080?text=ON-SCREEN"
+                      : "https://via.placeholder.com/200x200.png?text=OFF-SCREEN"
+                  }
+                  alt=""
+                  ref={this.imgRef}
+                  width="200"
+                  height="200"
+                />
+              </div>
+            );
+          })}
         </div>
       );
     }
   }
 }
 
-export default ImageToggleOnScrollCCTry;
+export default ImageToggleOnScrollCCSamp;
 
 // import React, { useRef, useEffect, useState } from "react";
 //
