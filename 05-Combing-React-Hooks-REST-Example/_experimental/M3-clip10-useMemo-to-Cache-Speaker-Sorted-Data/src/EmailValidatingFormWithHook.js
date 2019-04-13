@@ -1,11 +1,10 @@
-import React, { useState,useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import useInterval from "./useInterval";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
 
 function EmailValidatingFormWithHook() {
-
   const useTimeoutForm = secondsFormValidFor => {
     const [count, setCount] = useState(secondsFormValidFor);
     useInterval(
@@ -14,23 +13,23 @@ function EmailValidatingFormWithHook() {
       },
       count > 0 ? 1000 : null
     );
-    return { count };
+
+    const validateEmail = email => {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    };
+
+    const [emailValid, setEmailValid] = useState(false);
+    const reducer = (state, action) => {
+      setEmailValid(validateEmail(state));
+      return action;
+    };
+    const [email, setEmail] = useReducer(reducer, "");
+
+    return { count, email, setEmail, emailValid };
   };
 
-  const validateEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  };
-
-  const [emailValid, setEmailValid] = useState(false);
-  const reducer = (state,action) => {
-    setEmailValid(validateEmail(state));
-    return action;
-  };
-  const [email,setEmail] = useReducer(reducer,"");
-
-
-  const { count } = useTimeoutForm(10);
+  const { count, email, setEmail, emailValid } = useTimeoutForm(10);
 
   return (
     <div className="container">
