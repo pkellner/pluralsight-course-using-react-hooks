@@ -10,18 +10,20 @@ const handle = app.getRequestHandler();
 
 passport.use(
   new Strategy(function(username, password, done) {
-    console.log(`passport.use`);
-    return username === password ? done(null, {id: 903}) : done(false, false); // done(.. sends to serialize)
+    //console.log(`passport.use`);
+    return username === password
+      ? done(null, { email: username })
+      : done(false, false); // done(.. sends to serialize)
   })
 );
 
 passport.serializeUser(function(userInfo, done) {
-  console.log(`serializeUser`);
+  //console.log(`serializeUser`);
   done(null, userInfo);
 });
 
 passport.deserializeUser(function(userInfo, cb) {
-  console.log(`deserializeUser`);
+  //console.log(`deserializeUser`);
   cb(null, userInfo);
 });
 
@@ -45,13 +47,6 @@ app
     app.use(passport.initialize());
     app.use(passport.session());
 
-
-    // app.get("/login", (req, res) => {
-    //   //console.log('in server.js login GET called...');
-    //   return app.render(req, res, "/login");
-    // });
-
-
     app.post(
       "/login",
       passport.authenticate("local", { failureRedirect: "/login" }),
@@ -60,45 +55,30 @@ app
       }
     );
 
-    // app.post(
-    //   "/login",
-    //   passport.authenticate("local", {
-    //     failureRedirect: "/login",
-    //     successRedirect: "/",
-    //     successFlash: "Welcome!",
-    //     failureFlash: true
-    //   }),
-    //   () => {
-    //     console.log(`server.post:/login`);
-    //
-    //     // console.log(
-    //     //   `success: server.post login   req.user.username:${
-    //     //     req.user.username
-    //     //     }  req.authInfo.message:${req.authInfo.message}`
-    //     // );
-    //   }
-    // );
-
-    // middleware function to check for logged-in users
     var sessionChecker = (req, res, next) => {
-      console.log(`req.isAuthenticated:${req.isAuthenticated()}:${req.session.passport.user.id}`);
-
-      // if (req.session.user && req.cookies.user_sid) {
-      //   req.session.passport.user;
-      //   res.redirect("/speakers");
-      //} else {
-        next();
-      //}
+      console.log(`req.isAuthenticated:${req.isAuthenticated()}`);
+      next();
     };
 
     app.get("/authcheck", sessionChecker, (req, res) => {
-      res.redirect("/login");
+      if (req.isAuthenticated()) {
+        res.send(
+          `<h1>Authenticated ${req.session.passport.user.email}</h1>`
+        );
+      } else {
+        res.send(`<h2>Not Authenticated</h2>`);
+      }
+    });
+
+    app.get("/logout", (req, res) => {
+      //console.log('in server.js logout called...');
+      req.logout();
+      res.redirect("/");
     });
 
     app.get("*", (req, res) => {
       return handle(req, res);
     });
-
 
     app.listen(3000, err => {
       if (err) throw err;

@@ -1,6 +1,6 @@
-import React from 'react';
-import App, { Container } from 'next/app';
-import ls from 'local-storage';
+import React from "react";
+import App, { Container } from "next/app";
+import ls from "local-storage";
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -22,12 +22,7 @@ export default class MyApp extends App {
           pageProps.user = ctx.req.user;
         }
       }
-      else if (ctx.req.userDefault) {
-        console.log(`_app.js:getInitialProps:ctx.req.userDefault Exists`);
-        if (ctx && ctx.req && ctx.req.userDefault) {
-          pageProps.user = ctx.req.userDefault;
-        }
-      }
+
       if (pageProps && pageProps.isServer) {
         pageProps.isServer = true;
       }
@@ -35,7 +30,7 @@ export default class MyApp extends App {
       //  get from local storage
       let user;
       try {
-        user = ls.get('userInfo');
+        user = ls.get("userInfo");
       } catch (e) {
         user = {};
       }
@@ -48,12 +43,12 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-    const isBrowser = typeof window !== 'undefined';
+    const isBrowser = typeof window !== "undefined";
 
     // this means that we are now running on client but it is first page load, not
     // a redirect to this page
     if (pageProps && pageProps.isServer && isBrowser) {
-      ls.set('userInfo', pageProps.user);
+      ls.set("userInfo", pageProps.user);
     }
 
     return (
