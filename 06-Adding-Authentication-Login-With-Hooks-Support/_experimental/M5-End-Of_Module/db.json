@@ -58,7 +58,7 @@
       "id": 1725,
       "firstName": "Brad",
       "lastName": "Irby",
-      "favorite": false,
+      "favorite": true,
       "bio": "Brad is an accomplished .NET software architect specializing in Domain Driven Design and Event Driven Architectures.",
       "sat": true,
       "sun": false
