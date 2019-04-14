@@ -49,7 +49,7 @@
       "id": 1269,
       "firstName": "Arun",
       "lastName": "Gupta",
-      "favorite": false,
+      "favorite": true,
       "bio": "Arun Gupta is a Principal Open Source Technologist at Amazon Web Services. He has built and led developer communities for 12+ years at Sun, Oracle, Red Hat and Couchbase.",
       "sat": false,
       "sun": true
@@ -58,7 +58,7 @@
       "id": 1725,
       "firstName": "Brad",
       "lastName": "Irby",
-      "favorite": true,
+      "favorite": false,
       "bio": "Brad is an accomplished .NET software architect specializing in Domain Driven Design and Event Driven Architectures.",
       "sat": true,
       "sun": false
@@ -112,7 +112,7 @@
       "id": 10808,
       "firstName": "Antony",
       "lastName": "Ross",
-      "favorite": true,
+      "favorite": false,
       "bio": "Antony Ross is a consultant specializing in data science and machine learning applied to sports performance. He has worked closely with USC and UCLA and is presently involved with the Recurse Center in New York researching deep learning and voice recognition.",
       "sat": true,
       "sun": false
