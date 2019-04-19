@@ -23,6 +23,12 @@ function Index(props) {
         <li>
           <a href="/indexchangeonmouseoverclass">ImageToggleOnMouseOverClass</a>
         </li>
+        <li>
+          <a href="/indexchangeonscrollhook">ImageToggleOnScrollHook</a>
+        </li>
+        <li>
+          <a href="/indexchangeonscrollclass">ImageToggleOnScrollClass</a>
+        </li>
       </ul>
     </div>
   );
