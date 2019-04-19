@@ -1,24 +1,47 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-const ImageToggleOnMouseOverHook = ({ primaryImg, secondaryImg }) => {
+const ImageTogglerOnScrollHook = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    setInView(isInView());
+    setIsLoading(false);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, [isLoading]);
+
+  const [inView, setInView] = useState(false);
+
+  const isInView = () => {
+    if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    }
+    return false;
+  };
+
+  const scrollHandler = () => {
+    setInView(() => {
+      return isInView();
+    });
+  };
+
+  return isLoading ? null : (
     <div>
-      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i><br/>
+      <i>ImageToggleOnScroll - Functional Component React Hooks</i>
+      <br />
       <img
-        onMouseOver={() => {
-          imageRef.current.src = secondaryImg;
-        }}
-        onMouseOut={() => {
-          imageRef.current.src = primaryImg;
-        }}
-        src={primaryImg}
+        src={inView ? secondaryImg : primaryImg}
         alt=""
         ref={imageRef}
+        width="200"
+        height="200"
       />
     </div>
   );
 };
 
-export default ImageToggleOnMouseOverHook;
+export default ImageTogglerOnScrollHook;

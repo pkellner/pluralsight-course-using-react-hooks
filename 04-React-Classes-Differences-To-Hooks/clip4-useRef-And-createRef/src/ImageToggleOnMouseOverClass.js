@@ -1,24 +1,24 @@
-import React, { useRef } from "react";
+class ImageToggleOnMouseOverClass extends React.Component {
+  render() {
+    const imageRef = React.createRef();
+    return (
+      <div>
+        <i>ImageToggleOnMouseOver - Class Component</i>
+        <br />
+        <img
+          onMouseOver={() => {
+            imageRef.current.src = this.props.secondaryImg;
+          }}
+          onMouseOut={() => {
+            imageRef.current.src = this.props.primaryImg;
+          }}
+          src={this.props.primaryImg}
+          alt=""
+          ref={imageRef}
+        />
+      </div>
+    );
+  }
+}
 
-const ImageToggleOnMouseOverHook = ({ primaryImg, secondaryImg }) => {
-  const imageRef = useRef(null);
-
-  return (
-    <div>
-      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i><br/>
-      <img
-        onMouseOver={() => {
-          imageRef.current.src = secondaryImg;
-        }}
-        onMouseOut={() => {
-          imageRef.current.src = primaryImg;
-        }}
-        src={primaryImg}
-        alt=""
-        ref={imageRef}
-      />
-    </div>
-  );
-};
-
-export default ImageToggleOnMouseOverHook;
+export default ImageToggleOnMouseOverClass;

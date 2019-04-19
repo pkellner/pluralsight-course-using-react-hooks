@@ -1,19 +1,22 @@
-import ImageToggleOnMouseOverHook from "../src/ImageToggleOnMouseOverHook";
+import React from "react";
+import ImageToggleOnScrollClass from "../src/ImageToggleOnScrollClass";
 
-const indexchangeonmouseoverhook = () => {
-  return <div>
-    <ImageToggleOnMouseOverHook
-      primaryImg="/static/speakers/bw/Speaker-187.jpg"
-      secondaryImg="/static/speakers/Speaker-187.jpg"
-      alt=""
-    />
-    &nbsp;&nbsp;&nbsp;
-    <ImageToggleOnMouseOverHook
-      primaryImg="/static/speakers/bw/Speaker-1124.jpg"
-      secondaryImg="/static/speakers/Speaker-1124.jpg"
-      alt=""
-    />
-  </div>;
+const ImageChangeOnScrollClass = () => {
+  return (
+    <div>
+      {[1124, 187, 823, 1269, 1530].map(speakerId => {
+        return (
+          <div key={speakerId}>
+            <ImageToggleOnScrollClass
+              primaryImg={`/static/speakers/bw/Speaker-${speakerId}.jpg`}
+              secondaryImg={`/static/speakers/Speaker-${speakerId}.jpg`}
+              alt=""
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
-export default indexchangeonmouseoverhook;
+export default ImageChangeOnScrollClass;

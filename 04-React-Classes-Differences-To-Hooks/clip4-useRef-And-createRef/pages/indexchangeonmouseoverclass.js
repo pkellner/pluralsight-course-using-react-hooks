@@ -1,14 +1,14 @@
-import ImageToggleOnMouseOverHook from "../src/ImageToggleOnMouseOverHook";
+import ImageToggleOnMouseOverClass from "../src/ImageToggleOnMouseOverClass";
 
-const indexchangeonmouseoverhook = () => {
+const indexchangeonmouseoverclass = () => {
   return <div>
-    <ImageToggleOnMouseOverHook
+    <ImageToggleOnMouseOverClass
       primaryImg="/static/speakers/bw/Speaker-187.jpg"
       secondaryImg="/static/speakers/Speaker-187.jpg"
       alt=""
     />
     &nbsp;&nbsp;&nbsp;
-    <ImageToggleOnMouseOverHook
+    <ImageToggleOnMouseOverClass
       primaryImg="/static/speakers/bw/Speaker-1124.jpg"
       secondaryImg="/static/speakers/Speaker-1124.jpg"
       alt=""
@@ -16,4 +16,4 @@ const indexchangeonmouseoverhook = () => {
   </div>;
 };
 
-export default indexchangeonmouseoverhook;
+export default indexchangeonmouseoverclass;

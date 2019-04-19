@@ -1,47 +1,70 @@
-import React, { useRef, useEffect, useState } from "react";
-
-const ImageTogglerOnScrollHook = ({ primaryImg, secondaryImg }) => {
-  const imageRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-    setInView(isInView());
-    setIsLoading(false);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
+class ImageToggleOnScrollCC extends React.Component {
+  constructor(props) {
+    super(props);
+    this.imgRef = React.createRef();
+    this.state = {
+      inView: false,
+      isLoading: true
     };
-  }, [isLoading]);
+  }
 
-  const [inView, setInView] = useState(false);
-
-  const isInView = () => {
-    if (imageRef.current) {
-      const rect = imageRef.current.getBoundingClientRect();
+  isInView = imageRefx => {
+    if (this.imgRef.current) {
+      const rect = this.imgRef.current.getBoundingClientRect();
       return rect.top >= 0 && rect.bottom <= window.innerHeight;
     }
     return false;
   };
 
-  const scrollHandler = () => {
-    setInView(() => {
-      return isInView();
+  scrollHandler = () => {
+    this.setState({
+      inView: this.isInView()
     });
   };
 
-  return isLoading ? null : (
-    <div>
-      <i>ImageToggleOnScroll - Functional Component React Hooks</i>
-      <br />
-      <img
-        src={inView ? secondaryImg : primaryImg}
-        alt=""
-        ref={imageRef}
-        width="200"
-        height="200"
-      />
-    </div>
-  );
-};
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isLoading !== prevState.isLoading) {
+      this.setState({
+        inView: this.isInView()
+      });
+    }
+  }
 
-export default ImageTogglerOnScrollHook;
+  componentWillUnmount() {
+    window.removeEventListener("scroll", scrollHandler);
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.scrollHandler);
+    this.setState({
+      inView: this.isInView(),
+      isLoading: false
+    });
+  }
+
+  render() {
+    if (this.state.isLoading === true) {
+      return null;
+    } else {
+      return (
+        <div>
+          <i>ImageToggleOnScrollCC - Class Component</i>
+          <br />
+          <img
+            src={
+              this.state.inView
+                ? this.props.secondaryImg
+                : this.props.primaryImg
+            }
+            alt=""
+            ref={this.imgRef}
+            width="200"
+            height="200"
+          />
+        </div>
+      );
+    }
+  }
+}
+
+export default ImageToggleOnScrollCC;
