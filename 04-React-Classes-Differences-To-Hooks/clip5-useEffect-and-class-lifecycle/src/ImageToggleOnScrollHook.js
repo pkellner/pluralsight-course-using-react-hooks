@@ -4,14 +4,16 @@ const ImageTogglerOnScrollHook = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-    setInView(isInView());
-    setIsLoading(false);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
-    };
-  }, [isLoading]);
+  useEffect(
+    () => {
+      window.addEventListener("scroll", scrollHandler);
+      setInView(isInView());
+      setIsLoading(false);
+      return () => {
+        window.removeEventListener("scroll", scrollHandler);
+      };
+    },
+    [isLoading]);
 
   const [inView, setInView] = useState(false);
 
@@ -31,7 +33,7 @@ const ImageTogglerOnScrollHook = ({ primaryImg, secondaryImg }) => {
 
   return isLoading ? null : (
     <div>
-      <i>ImageToggleOnScroll - Functional Component React Hooks</i>
+      <i>ImageToggleOnScrollHook - Functional Component React Hooks</i>
       <br />
       <img
         src={inView ? secondaryImg : primaryImg}

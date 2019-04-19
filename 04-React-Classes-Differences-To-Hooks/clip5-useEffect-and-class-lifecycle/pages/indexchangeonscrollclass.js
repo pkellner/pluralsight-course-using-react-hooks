@@ -1,13 +1,13 @@
 import React from "react";
-import ImageToggleOnScrollHook from "../src/ImageToggleOnScrollHook";
+import ImageToggleOnScrollClass from "../src/ImageToggleOnScrollClass";
 
-const ImageChangeOnScrollHook = () => {
+const ImageChangeOnScrollClass = () => {
   return (
     <div>
       {[1124, 187, 823, 1269, 1530].map(speakerId => {
         return (
           <div key={speakerId}>
-            <ImageToggleOnScrollHook
+            <ImageToggleOnScrollClass
               primaryImg={`/static/speakers/bw/Speaker-${speakerId}.jpg`}
               secondaryImg={`/static/speakers/Speaker-${speakerId}.jpg`}
               alt=""
@@ -19,4 +19,4 @@ const ImageChangeOnScrollHook = () => {
   );
 };
 
-export default ImageChangeOnScrollHook;
+export default ImageChangeOnScrollClass;

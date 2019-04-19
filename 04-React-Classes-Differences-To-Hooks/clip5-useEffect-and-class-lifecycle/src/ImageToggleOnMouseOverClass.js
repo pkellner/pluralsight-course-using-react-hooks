@@ -3,7 +3,7 @@ class ImageToggleOnMouseOverClass extends React.Component {
     const imageRef = React.createRef();
     return (
       <div>
-        <i>ImageToggleOnMouseOver - Class Component</i>
+        <i>ImageToggleOnMouseOverClass - Class Component</i>
         <br />
         <img
           onMouseOver={() => {

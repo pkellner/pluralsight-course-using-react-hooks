@@ -1,4 +1,4 @@
-class ImageToggleOnScrollCC extends React.Component {
+class ImageToggleOnScrollClass extends React.Component {
   constructor(props) {
     super(props);
     this.imgRef = React.createRef();
@@ -8,7 +8,7 @@ class ImageToggleOnScrollCC extends React.Component {
     };
   }
 
-  isInView = imageRefx => {
+  isInView = () => {
     if (this.imgRef.current) {
       const rect = this.imgRef.current.getBoundingClientRect();
       return rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -48,7 +48,7 @@ class ImageToggleOnScrollCC extends React.Component {
     } else {
       return (
         <div>
-          <i>ImageToggleOnScrollCC - Class Component</i>
+          <i>ImageToggleOnScrollClass - Class Component</i>
           <br />
           <img
             src={
@@ -67,4 +67,4 @@ class ImageToggleOnScrollCC extends React.Component {
   }
 }
 
-export default ImageToggleOnScrollCC;
+export default ImageToggleOnScrollClass;

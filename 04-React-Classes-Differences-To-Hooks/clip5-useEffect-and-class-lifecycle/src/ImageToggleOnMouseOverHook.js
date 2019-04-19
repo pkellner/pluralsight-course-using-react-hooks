@@ -5,7 +5,7 @@ const ImageToggleOnMouseOverHook = ({ primaryImg, secondaryImg }) => {
 
   return (
     <div>
-      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i><br/>
+      <i>ImageToggleOnMouseOverHook - Functional Component React Hooks</i><br/>
       <img
         onMouseOver={() => {
           imageRef.current.src = secondaryImg;
