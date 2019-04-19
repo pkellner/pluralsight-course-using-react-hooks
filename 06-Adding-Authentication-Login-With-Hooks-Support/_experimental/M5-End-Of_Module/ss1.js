@@ -10,7 +10,13 @@ const handle = app.getRequestHandler();
 
 passport.use(
   new Strategy(function(username, password, done) {
-    return username === password ? done(null, userInfo) : done(false, false); // done(.. sends to serialize)
+    function validateUser(username, password) {
+      return username === password;
+    }
+    //console.log(`passport.use`);
+    return validateUser(username,password)
+      ? done(null, { email: username })
+      : done(false, false); // done(.. sends to serialize)
   })
 );
 
