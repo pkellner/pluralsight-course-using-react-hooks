@@ -18,7 +18,7 @@ function EmailValidatingForm() {
   };
   const [email,setEmail] = useReducer(reducer,"");
 
-  const secondsFormValidFor = 10;
+  const secondsFormValidFor = 30;
   const [count, setCount] = useState(secondsFormValidFor);
   useInterval(
       () => {
