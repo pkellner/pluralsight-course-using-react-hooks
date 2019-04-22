@@ -6,6 +6,7 @@ import { Menu } from "../src/Menu";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
 import useAxiosFetch from "./useAxiosFetch";
+import axios from 'axios';
 
 const Speakers = ({}) => {
   const {data, isLoading, hasErrored, errorMessage, updateDataRecord
@@ -21,13 +22,16 @@ const Speakers = ({}) => {
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
   };
-  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
-    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-    dispatch({
-      type: favoriteValue === true ? "favorite" : "unfavorite",
-      sessionId
-    });
+    const toggledRec = { ...speakerRec, favorite: !speakerRec.favorite };
+    axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
+      .then(function(response) {
+        updateDataRecord(toggledRec);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }, []);
 
   const newSpeakerList = useMemo(
@@ -88,7 +92,7 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerListFiltered.map(
-              ({ id, firstName, lastName, bio, favorite }) => {
+              ({ id, firstName, lastName,sat,sun, bio, favorite }) => {
                 return (
                   <SpeakerDetail
                     key={id}
@@ -98,6 +102,8 @@ const Speakers = ({}) => {
                     firstName={firstName}
                     lastName={lastName}
                     bio={bio}
+                    sat={sat}
+                    sun={sun}
                   />
                 );
               }
