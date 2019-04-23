@@ -14,20 +14,17 @@ passport.use(
       return username === password;
     }
 
-    //console.log(`passport.use`);
-    return validateUser(username,password)
+    return validateUser(username, password)
       ? done(null, { email: username })
       : done(false, false); // done(.. sends to serialize)
   })
 );
 
 passport.serializeUser(function(userInfo, done) {
-  //console.log(`serializeUser`);
   done(null, userInfo);
 });
 
 passport.deserializeUser(function(userInfo, cb) {
-  //console.log(`deserializeUser`);
   cb(null, userInfo);
 });
 
@@ -66,9 +63,7 @@ app
 
     app.get("/authcheck", sessionChecker, (req, res) => {
       if (req.isAuthenticated()) {
-        res.send(
-          `<h1>Authenticated ${req.session.passport.user.email}</h1>`
-        );
+        res.send(`<h1>Authenticated ${req.session.passport.user.email}</h1>`);
       } else {
         res.send(`<h2>Not Authenticated</h2>`);
       }

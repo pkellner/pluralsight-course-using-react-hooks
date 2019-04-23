@@ -12,4 +12,4 @@ const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 
 
-npm i express path body-parser cookie-parser express-session passport passport-local connect-flash local-storage
+npm install express path body-parser cookie-parser express-session passport passport-local connect-flash local-storage --save

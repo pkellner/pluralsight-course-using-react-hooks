@@ -11,16 +11,17 @@ const pageToShow = pageName => {
 };
 
 const configValue = {
-    showSignMeUp: true,
-    showSpeakerSpeakingDays: true
+  showSignMeUp: true,
+  showSpeakerSpeakingDays: true,
+  loggedInUserEmail: 'peter@test.co'
 };
 
 const App = ({ pageName }) => {
   return (
-      <ConfigContext.Provider value={configValue} >
-        <div>{pageToShow(pageName)}</div>
-      </ConfigContext.Provider>
-  )
+    <ConfigContext.Provider value={configValue}>
+      <div>{pageToShow(pageName)}</div>
+    </ConfigContext.Provider>
+  );
 };
 
 export default App;

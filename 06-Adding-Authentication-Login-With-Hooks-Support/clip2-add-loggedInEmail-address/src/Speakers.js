@@ -6,11 +6,16 @@ import { Menu } from "../src/Menu";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
 import useAxiosFetch from "./useAxiosFetch";
-import axios from 'axios';
+import axios from "axios";
 
 const Speakers = ({}) => {
-  const {data, isLoading, hasErrored, errorMessage, updateDataRecord
-    } = useAxiosFetch("http://localhost:4000/speakers", []);
+  const {
+    data,
+    isLoading,
+    hasErrored,
+    errorMessage,
+    updateDataRecord
+  } = useAxiosFetch("http://localhost:4000/speakers", []);
 
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
@@ -25,7 +30,8 @@ const Speakers = ({}) => {
   const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
     const toggledRec = { ...speakerRec, favorite: !speakerRec.favorite };
-    axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
+    axios
+      .put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
       .then(function(response) {
         updateDataRecord(toggledRec);
       })
@@ -53,6 +59,13 @@ const Speakers = ({}) => {
   );
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;
+
+  if (hasErrored)
+    return (
+      <div>
+        {errorMessage}&nbsp;"Make sure you have launched "npm run json-server"
+      </div>
+    );
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -92,7 +105,7 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerListFiltered.map(
-              ({ id, firstName, lastName,sat,sun, bio, favorite }) => {
+              ({ id, firstName, lastName, sat, sun, bio, favorite }) => {
                 return (
                   <SpeakerDetail
                     key={id}
