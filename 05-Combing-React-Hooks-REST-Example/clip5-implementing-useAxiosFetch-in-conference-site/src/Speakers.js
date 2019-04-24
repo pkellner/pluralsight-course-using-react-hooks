@@ -92,6 +92,14 @@ const Speakers = ({}) => {
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;
 
+  if (hasErrored)
+    return (
+      <div>
+        {errorMessage}&nbsp;"Make sure you have launched "npm run json-server"
+      </div>
+    );
+
+
   if (isLoading) return <div>Loading...</div>;
 
   return (
