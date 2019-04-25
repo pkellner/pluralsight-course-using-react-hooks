@@ -18,8 +18,8 @@ const InputElementHookHistory = () => {
       <hr />
       <br />
       <ul>
-        {historyList.map(rec => {
-          return <div>{rec}</div>;
+        {historyList.map((rec,index) => {
+          return <div key={index}>{rec}</div>;
         })}
       </ul>
     </div>

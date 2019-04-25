@@ -25,8 +25,8 @@ class InputElementClassHistory extends
         <hr />
         <br />
         <ul>
-          {this.state.historyList.map(rec => {
-            return <div>{rec}</div>;
+          {this.state.historyList.map((rec,index) => {
+            return <div key={index}>{rec}</div>;
           })}
         </ul>
       </div>
