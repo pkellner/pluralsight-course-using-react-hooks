@@ -66,6 +66,8 @@ const Speakers = ({}) => {
   const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+
+    // PLURALSIGHT COURSE NOTE: DISPATCH IS BROKEN HERE BECAUSE IT HAS MOVED TO useAxiosFetch. See next clip for details
     dispatch({
       type: favoriteValue === true ? "favorite" : "unfavorite",
       sessionId

@@ -12,6 +12,10 @@ const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
 
+  // CODE ONLY LEFT HERE COMMENTED OUT FOR TEACH PURPOSES.
+  // BEST PRACTICE WOULD BE TO REMOVE COMMENTED CODE OUT AS IT
+  //   WOULD BE IN SOURCE CONTROL AND NOT NECESSARY.
+
   //const [speakerList, setSpeakerList] = useState([]);
 
   function speakersReducer(state, action) {
@@ -78,6 +82,8 @@ const Speakers = ({}) => {
   const heartFavoriteHandler = (e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+
+    // PLURALSIGHT COURSE NOTE: setSpeakerList IS BROKEN ON PURPOSE.  THIS IS FIXED IN NEXT CLIP
     setSpeakerList(speakerList.map(item => {
       if (item.id === sessionId) {
         item.favorite = favoriteValue;
