@@ -8,7 +8,6 @@ const speakersReducer = (state, action) => {
                     item.favorite = favoriteValue;
                     item.favoriteChanging = false;
                 }
-                return item;
             }
             return item;
         });
