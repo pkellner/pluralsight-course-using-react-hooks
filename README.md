@@ -9,6 +9,9 @@ This GitHub repo includes the final code for all the modules in the course
 Before you start, you should install node on either your Windows or Mac computer (those are the two environments that are tested). Below, in
 "Getting Started" are the basics to get module 6 up and running as fast as possible.
 
+
+*[A new React Course from Peter Kellner "Designing React Components"](https://app.pluralsight.com/library/courses/react-components-designing)*
+
 ## Course Description
 
 React versions 16.8 and higher, include React Hooks which solve several problems that went unaddressed in previous versions. React Hooks provide a direct API to React concepts you already know about. Those concepts include props, state, context, refs and lifecycle events. React Hooks are designed for use in React Functional Components where previously there was no good way to manage state or lifecycle events.
