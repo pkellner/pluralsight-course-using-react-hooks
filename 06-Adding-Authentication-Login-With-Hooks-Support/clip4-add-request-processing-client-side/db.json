@@ -58,7 +58,7 @@
       "id": 1725,
       "firstName": "Brad",
       "lastName": "Irby",
-      "favorite": true,
+      "favorite": false,
       "bio": "Brad is an accomplished .NET software architect specializing in Domain Driven Design and Event Driven Architectures.",
       "sat": true,
       "sun": false
@@ -103,7 +103,7 @@
       "id": 8590,
       "firstName": "Chris",
       "lastName": "Richardson",
-      "favorite": false,
+      "favorite": true,
       "bio": "Chris Richardson is a developer and architect. He is a Java Champion, a JavaOne rock star and the author of POJOs in Action, which describes how to build enterprise Java applications with frameworks such as Spring and Hibernate.",
       "sat": true,
       "sun": false
