@@ -68,4 +68,5 @@ typings/
 # next.js build output
 .next
 npm_check.sh
+npmCheck
 file_list.txt
