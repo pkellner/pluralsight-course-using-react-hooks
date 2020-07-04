@@ -4,37 +4,43 @@ const ImageTogglerOnScroll = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const calcInView = () => {
+  const isInView = () => {
     const rect = imageRef.current.getBoundingClientRect();
     return rect.top >= 0 && rect.bottom <= window.innerHeight;
   };
 
   useEffect(() => {
+  
+    console.log(`useEffect called ImageToggleOnScroll ${new Date()} ${primaryImg} ${isLoading}`);
+  
     window.addEventListener("scroll", scrollHandler);
-    
+
     // setIsLoading(false);
-    // setInView(calcInView());
+    // setInView(isInView());
 
     setTimeout(() => {
       setIsLoading(false);
-      setInView(calcInView());
+      setInView(isInView());
     }, 1000);
-    
+
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
+  });
 
   const [inView, setInView] = useState(false);
 
   const scrollHandler = () => {
-    setInView(calcInView());
+    setInView(isInView());
   };
-
-  return <img
+  
+  console.log(`Rendering ImageToggleOnScroll ${new Date()} ${primaryImg} ${isLoading}`);
+  
+  return (
+    <img
       src={
         isLoading
-          ? "https://i.gifer.com/4V0b.gif"
+          ? "static/LoadingImage.gif"
           : inView
           ? secondaryImg
           : primaryImg
@@ -44,7 +50,7 @@ const ImageTogglerOnScroll = ({ primaryImg, secondaryImg }) => {
       width="200"
       height="200"
     />
-  
+  );
 };
 
 export default ImageTogglerOnScroll;
