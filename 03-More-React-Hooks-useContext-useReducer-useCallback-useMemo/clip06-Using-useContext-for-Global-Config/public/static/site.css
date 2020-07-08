@@ -32,7 +32,7 @@
 
 .heartredbutton
 {
-    background-image:  url('/static/heart-red.png');
+    background-image:  url('/public/static/static/heart-red.png');
     background-color: transparent;
     cursor: pointer;
     border: none;
@@ -44,7 +44,7 @@
 
 .heartdarkbutton
 {
-    background-image:  url('/static/heart-dark.png');
+    background-image:  url('/public/static/static/heart-dark.png');
     background-color: transparent;
     cursor: pointer;
     border: none;

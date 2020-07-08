@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import "bootstrap/dist/css/bootstrap.css";
-//import "/static/site.css";
 
 class bootstrap extends Component {
   render() {
@@ -16,7 +14,7 @@ class bootstrap extends Component {
             </div>
             <div className="col-12 col-sm-8 text-lg-right">
               <div>
-                <img src="/static/SVCClogo.png" />
+                <img src="/public/static/SVCClogo.png" />
               </div>
               <h2>Silicon Valley Code Camp 2019</h2>
             </div>
@@ -75,7 +73,7 @@ class bootstrap extends Component {
           <div className="row">
             <div className="card-deck">
               <div className="card col-4 cardmin">
-                <img className="card-img-top" src="/static/speakers/Speaker-8367.jpg" />
+                <img className="card-img-top" src="/public/static/speakers/Speaker-8367.jpg" />
                 <div className="card-body">
                   <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
@@ -90,7 +88,7 @@ class bootstrap extends Component {
               </div>
 
               <div className="card col-4 cardmin ">
-                <img className="card-img-top" src="/static/speakers/Speaker-2920.jpg" />
+                <img className="card-img-top" src="/public/static/speakers/Speaker-2920.jpg" />
                 <div className="card-body">
                   <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
@@ -104,7 +102,7 @@ class bootstrap extends Component {
               </div>
 
               <div className="card col-4 cardmin">
-                <img className="card-img-top" src="/static/speakers/Speaker-1124.jpg" />
+                <img className="card-img-top" src="/public/static/speakers/Speaker-1124.jpg" />
                 <div className="card-body">
                   <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
@@ -120,7 +118,7 @@ class bootstrap extends Component {
               </div>
 
               <div className="card col-4 cardmin">
-                <img className="card-img-top" src="/static/speakers/Speaker-39062.jpg" />
+                <img className="card-img-top" src="/public/static/speakers/Speaker-39062.jpg" />
                 <div className="card-body">
                   <a href="#" className="btn btn-lg btn-block btn-outline-primary margintopbottom10">
                     See Profile
