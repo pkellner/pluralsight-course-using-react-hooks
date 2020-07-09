@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext, useReducer} from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
@@ -82,6 +80,8 @@ const Speakers = ({}) => {
   const heartFavoriteHandler = (e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+    
+    alert('PLURALSIGHT COURSE NOTE: setSpeakerList IS BROKEN ON PURPOSE.  THIS IS FIXED IN NEXT CLIP');
 
     // PLURALSIGHT COURSE NOTE: setSpeakerList IS BROKEN ON PURPOSE.  THIS IS FIXED IN NEXT CLIP
     setSpeakerList(speakerList.map(item => {
