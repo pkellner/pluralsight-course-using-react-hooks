@@ -12,7 +12,6 @@
   "author": "Peter Kellner",
   "license": "ISC",
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "bootstrap": "^4.5.0",
     "next": "^9.4.4",
     "react": "^16.13.1",
