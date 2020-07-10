@@ -36,8 +36,8 @@ const ImageToggleOnScroll = ({ primaryImg, secondaryImg }) => {
       }
       alt=""
       ref={imageRef}
-      width={600}
-      height={600}
+      width="200"
+      height="200"
     />
   );
 };
