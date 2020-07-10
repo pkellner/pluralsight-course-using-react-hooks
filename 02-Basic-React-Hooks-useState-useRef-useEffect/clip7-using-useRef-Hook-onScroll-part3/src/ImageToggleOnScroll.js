@@ -1,19 +1,19 @@
 import React, { useRef, useEffect, useState } from "react";
 
-const ImageToggleOnScrollHook = ({ primaryImg, secondaryImg }) => {
+const ImageToggleOnScroll = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
-
+  
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const [isThumbnail, setIsThumbnail] = useState(true);
-
+  
   const isInView = () => {
     const rect = imageRef.current.getBoundingClientRect();
     return rect.top >= 0 && rect.bottom <= window.innerHeight;
   };
-
+  
   const [inView, setInView] = useState(false);
-
+  
   useEffect(() => {
     setIsLoading(false);
     window.addEventListener("scroll", scrollHandler);
@@ -21,15 +21,15 @@ const ImageToggleOnScrollHook = ({ primaryImg, secondaryImg }) => {
       window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
-
+  
   useEffect(() => {
     setInView(isInView());
   }, [isThumbnail]);
-
+  
   const scrollHandler = () => {
     setInView(isInView());
   };
-
+  
   return (
     <div>
       <img
@@ -55,4 +55,4 @@ const ImageToggleOnScrollHook = ({ primaryImg, secondaryImg }) => {
   );
 };
 
-export default ImageToggleOnScrollHook;
+export default ImageToggleOnScroll;
