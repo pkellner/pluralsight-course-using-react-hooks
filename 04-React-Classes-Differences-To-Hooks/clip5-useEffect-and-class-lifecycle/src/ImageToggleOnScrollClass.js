@@ -23,11 +23,11 @@ class ImageToggleOnScrollClass extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.isLoading !== prevState.isLoading) {
-      this.setState({
-        inView: this.isInView(),
-      });
-    }
+    // if (this.state.isLoading !== prevState.isLoading) {
+    //   this.setState({
+    //     inView: this.isInView(),
+    //   });
+    // }
   }
 
   componentWillUnmount() {
