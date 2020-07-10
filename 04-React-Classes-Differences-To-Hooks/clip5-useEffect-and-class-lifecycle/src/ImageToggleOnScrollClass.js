@@ -4,7 +4,7 @@ class ImageToggleOnScrollClass extends React.Component {
     this.imgRef = React.createRef();
     this.state = {
       inView: false,
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -18,14 +18,14 @@ class ImageToggleOnScrollClass extends React.Component {
 
   scrollHandler = () => {
     this.setState({
-      inView: this.isInView()
+      inView: this.isInView(),
     });
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.isLoading !== prevState.isLoading) {
       this.setState({
-        inView: this.isInView()
+        inView: this.isInView(),
       });
     }
   }
@@ -38,13 +38,27 @@ class ImageToggleOnScrollClass extends React.Component {
     window.addEventListener("scroll", this.scrollHandler);
     this.setState({
       inView: this.isInView(),
-      isLoading: false
+      isLoading: false,
     });
   }
 
   render() {
     if (this.state.isLoading === true) {
-      return null;
+      return (
+        <img
+          src={
+            this.state.isLoading
+              ? "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // 1x1gif
+              : inView
+              ? secondaryImg
+              : primaryImg
+          }
+          alt=""
+          ref={this.imgRef}
+          width="200"
+          height="200"
+        />
+      );
     } else {
       return (
         <div>
