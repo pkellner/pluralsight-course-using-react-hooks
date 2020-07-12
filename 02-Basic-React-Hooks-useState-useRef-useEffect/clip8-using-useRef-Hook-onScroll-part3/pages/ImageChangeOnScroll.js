@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageToggleOnScroll from "../src/ImageToggleOnScroll";
 
 const ImageChangeOnScroll = () => {
@@ -6,11 +6,11 @@ const ImageChangeOnScroll = () => {
   const [mouseEventCnt, setMouseEventCnt] = useState(0);
 
   useEffect(() => {
-    //if (currentSpeakerId != 0) {
+    if (currentSpeakerId != 0) {
       window.document.title = `SpeakerId: ${currentSpeakerId}`;
       console.log(`useEffect: setting title to ${currentSpeakerId}`);
-    //}
-  },[currentSpeakerId]);
+    }
+  }, [currentSpeakerId]);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const ImageChangeOnScroll = () => {
           <div
             key={speakerId}
             onMouseOver={() => {
-              console.log(`Enter:${speakerId}`);
+              console.log(`onMouseOver:${speakerId}`);
               setCurrentSpeakerId(speakerId);
               setMouseEventCnt(mouseEventCnt + 1);
             }}
