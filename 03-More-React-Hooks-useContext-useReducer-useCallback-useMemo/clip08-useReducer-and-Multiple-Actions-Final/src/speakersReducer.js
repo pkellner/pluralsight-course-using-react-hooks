@@ -12,7 +12,15 @@ const speakersReducer = (state, action) => {
             return action.data;
         }
         case "favorite": {
-            return updateFavorite(true);
+            const newState = state.map((item) => {
+                if (item.id === action.sessionId) {
+                    item.favorite = true;
+                }
+                return item;
+            });
+            return newState;
+            
+            //return updateFavorite(true);
         }
         case "unfavorite": {
             return updateFavorite(false);
