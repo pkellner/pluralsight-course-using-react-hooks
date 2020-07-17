@@ -9,11 +9,8 @@ class ImageToggleOnScrollClass extends React.Component {
   }
 
   isInView = () => {
-    if (this.imgRef.current) {
-      const rect = this.imgRef.current.getBoundingClientRect();
-      return rect.top >= 0 && rect.bottom <= window.innerHeight;
-    }
-    return false;
+    const rect = this.imgRef.current.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
   };
 
   scrollHandler = () => {
@@ -23,15 +20,12 @@ class ImageToggleOnScrollClass extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    // if (this.state.isLoading !== prevState.isLoading) {
-    //   this.setState({
-    //     inView: this.isInView(),
-    //   });
-    // }
+    // nothing to do hear since changes happen on scrolling and
+    //  we already have a listener for that.
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", scrollHandler);
+    window.removeEventListener("scroll", this.scrollHandler);
   }
 
   componentDidMount() {
