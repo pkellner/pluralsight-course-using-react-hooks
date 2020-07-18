@@ -26,7 +26,7 @@ class ImageToggleOnScrollClass
 
  componentDidUpdate(prevProps, prevState) {
   // nothing to do hear since changes
-  //  happen on scrolling and
+  //   happen on scrolling and
   //  we already have a listener for that.
  }
 

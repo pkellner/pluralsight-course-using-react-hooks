@@ -12,7 +12,7 @@ const ImageToggleOnScroll = ({
 
  const [isLoading, setIsLoading] =
    useState(true);
-
+ 
  const isInView = () => {
   const rect =
     imageRef.current.getBoundingClientRect();
