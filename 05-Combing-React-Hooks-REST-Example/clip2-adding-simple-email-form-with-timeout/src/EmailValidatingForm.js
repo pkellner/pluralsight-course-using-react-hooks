@@ -1,7 +1,5 @@
 import React, { useState, useReducer } from "react";
 import useInterval from "./useInterval";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
 
 function EmailValidatingForm() {
   const validateEmail = email => {

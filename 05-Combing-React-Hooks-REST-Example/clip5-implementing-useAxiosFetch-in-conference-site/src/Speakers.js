@@ -7,8 +7,6 @@ import React, {
   useMemo
 } from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
 import { Header } from "../src/Header";
 import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
@@ -67,6 +65,7 @@ const Speakers = ({}) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
 
+    alert('DISPATCH IS BROKEN HERE BECAUSE IT HAS MOVED TO useAxiosFetch. See next clip for details');
     // PLURALSIGHT COURSE NOTE: DISPATCH IS BROKEN HERE BECAUSE IT HAS MOVED TO useAxiosFetch. See next clip for details
     dispatch({
       type: favoriteValue === true ? "favorite" : "unfavorite",

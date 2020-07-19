@@ -13,7 +13,6 @@
   "author": "Peter Kellner",
   "license": "ISC",
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "json-server": "^0.16.1",
