@@ -7,7 +7,7 @@ const SignMeUp = ({ signupCallback }) => {
     //console.log(`SignMeUp:useEffect called`);
   });
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState();
   const [emailValid, setEmailValid] = useState(false);
   const [sendProcessing, setSendProcessing] = useState(false);
 
