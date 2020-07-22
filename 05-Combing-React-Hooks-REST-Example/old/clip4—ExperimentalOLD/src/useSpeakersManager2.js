@@ -1,12 +1,11 @@
 import speakersReducer from "./speakersReducer";
 import SpeakerData from "./SpeakerData";
-import {useEffect, useReducer, useState} from "react";
+import { useEffect, useReducer, useState } from "react";
 
 const useSpeakersManager = () => {
-  
   const [speakerList, dispatch] = useReducer(speakersReducer, []);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     setIsLoading(true);
     new Promise(function (resolve) {
@@ -23,7 +22,7 @@ const useSpeakersManager = () => {
     return () => {
       console.log("cleanup");
     };
-  },[]); // [speakingSaturday, speakingSunday]);
+  }, []); // [speakingSaturday, speakingSunday]);
   return {
     speakerList,
     dispatch,

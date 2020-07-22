@@ -4,7 +4,6 @@ import "../static/site.css";
 import useEmailValidation from "./useEmailValidation";
 
 function EmailValidatingForm() {
-
   const { count, email, setEmail, emailValid } = useEmailValidation(10);
 
   return (
@@ -15,7 +14,7 @@ function EmailValidatingForm() {
           <input
             disabled={count <= 0}
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmail(e.target.value);
             }}
             placeholder="Enter Email"

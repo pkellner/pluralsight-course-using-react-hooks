@@ -20,11 +20,11 @@ const useSpeakersManager = () => {
     };
     fetchData();
   }, []);
-  
-  const favoriteRecord = (speaker,favoriteValue) => {
+
+  const favoriteRecord = (speaker, favoriteValue) => {
     dispatch({
       type: favoriteValue === true ? "favorite" : false,
-      replacerecord: record
+      replacerecord: record,
     });
   };
 

@@ -15,18 +15,13 @@ import { ConfigContext } from "./App";
 import speakersReducer from "./speakersReducer";
 import useSpeakersManager from "./useSpeakersManager";
 
-
 const Speakers = ({}) => {
   const context = useContext(ConfigContext);
-  
+
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-  
-  const {
-    speakerList,
-    dispatch,
-    isLoading,
-  } = useSpeakersManager();
+
+  const { speakerList, dispatch, isLoading } = useSpeakersManager();
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);

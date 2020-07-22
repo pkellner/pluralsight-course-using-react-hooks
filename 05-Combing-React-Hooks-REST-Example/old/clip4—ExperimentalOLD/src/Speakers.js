@@ -24,18 +24,16 @@ const Speakers = ({}) => {
 
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-  
+
   const { data, isLoading } = useSpeakersManager();
-  
+
   console.log(
     `Speakers.js: data Length:${
       data != undefined ? data.length : "undefined"
     } isLoading: ${isLoading}  `
   );
-  
-  
+
   //const [speakersList, dispatch] = useReducer(speakersReducer, []);
-  
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);

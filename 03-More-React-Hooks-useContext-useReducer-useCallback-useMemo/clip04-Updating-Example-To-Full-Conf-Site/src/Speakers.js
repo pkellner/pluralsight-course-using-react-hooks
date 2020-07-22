@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { Header } from "../src/Header";
-import { Menu } from "../src/Menu";
-import SpeakerData from "./SpeakerData";
-import SpeakerDetail from "./SpeakerDetail";
+import { Header } from '../src/Header';
+import { Menu } from '../src/Menu';
+import SpeakerData from './SpeakerData';
+import SpeakerDetail from './SpeakerDetail';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
@@ -26,7 +26,7 @@ const Speakers = ({}) => {
       setSpeakerList(speakerListServerFilter);
     });
     return () => {
-      console.log("cleanup");
+      console.log('cleanup');
     };
   }, []); // [speakingSunday, speakingSaturday]);
 
@@ -38,7 +38,8 @@ const Speakers = ({}) => {
     ? []
     : speakerList
         .filter(
-          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+          ({ sat, sun }) =>
+            (speakingSaturday && sat) || (speakingSunday && sun),
         )
         .sort(function (a, b) {
           if (a.firstName < b.firstName) {
@@ -56,7 +57,7 @@ const Speakers = ({}) => {
 
   const heartFavoriteHandler = (e, favoriteValue) => {
     e.preventDefault();
-    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
+    const sessionId = parseInt(e.target.attributes['data-sessionid'].value);
     setSpeakerList(
       speakerList.map((item) => {
         if (item.id === sessionId) {
@@ -64,7 +65,7 @@ const Speakers = ({}) => {
           return item;
         }
         return item;
-      })
+      }),
     );
     //console.log("changing session favorte to " + favoriteValue);
   };
@@ -117,7 +118,7 @@ const Speakers = ({}) => {
                     bio={bio}
                   />
                 );
-              }
+              },
             )}
           </div>
         </div>

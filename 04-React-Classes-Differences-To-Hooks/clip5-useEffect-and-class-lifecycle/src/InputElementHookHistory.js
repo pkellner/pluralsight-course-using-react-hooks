@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const InputElementHookHistory = () => {
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState('');
   const [historyList, setHistoryList] = useState([]);
 
   return (
     <div>
       <input
-        onChange={e => {
+        onChange={(e) => {
           setInputText(e.target.value);
           setHistoryList([...historyList, e.target.value]);
         }}
@@ -18,7 +18,7 @@ const InputElementHookHistory = () => {
       <hr />
       <br />
       <ul>
-        {historyList.map((rec,index) => {
+        {historyList.map((rec, index) => {
           return <div key={index}>{rec}</div>;
         })}
       </ul>

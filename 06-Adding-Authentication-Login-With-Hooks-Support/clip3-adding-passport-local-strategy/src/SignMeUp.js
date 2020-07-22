@@ -25,8 +25,8 @@ const SignMeUp = ({ signupCallback }) => {
 
   function sendEmailToBackend() {
     setSendProcessing(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         setSendProcessing(false);
         setEmail("");
         resolve();
@@ -46,8 +46,9 @@ const SignMeUp = ({ signupCallback }) => {
     return (
       <div className="container">
         <div className="content">
-          <span>Logged in User Email: {context.loggedInUserEmail}</span>&nbsp;&nbsp;
-          <a href='/logout' >Logout</a>
+          <span>Logged in User Email: {context.loggedInUserEmail}</span>
+          &nbsp;&nbsp;
+          <a href="/logout">Logout</a>
         </div>
       </div>
     );
@@ -60,7 +61,7 @@ const SignMeUp = ({ signupCallback }) => {
         <div className="content">
           <input
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmailValid(validateEmail(e.target.value));
               return setEmail(e.target.value);
             }}
@@ -79,7 +80,7 @@ const SignMeUp = ({ signupCallback }) => {
           >
             {buttonText}
           </button>
-          &nbsp;&nbsp;<a href='/login' >Login</a>
+          &nbsp;&nbsp;<a href="/login">Login</a>
         </div>
       </div>
     </div>

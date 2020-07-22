@@ -9,7 +9,7 @@ const app1 = next({ dev });
 const handle = app1.getRequestHandler();
 
 passport.use(
-  new Strategy(function(username, password, done) {
+  new Strategy(function (username, password, done) {
     function validateUser(username, password) {
       return username === password;
     }
@@ -20,11 +20,11 @@ passport.use(
   })
 );
 
-passport.serializeUser(function(userInfo, done) {
+passport.serializeUser(function (userInfo, done) {
   done(null, userInfo);
 });
 
-passport.deserializeUser(function(userInfo, cb) {
+passport.deserializeUser(function (userInfo, cb) {
   cb(null, userInfo);
 });
 
@@ -39,7 +39,7 @@ app1
       require("express-session")({
         secret: "keyboard cat",
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
       })
     );
 
@@ -51,7 +51,7 @@ app1
     app.post(
       "/login",
       passport.authenticate("local", { failureRedirect: "/login" }),
-      function(req, res) {
+      function (req, res) {
         res.redirect("/");
       }
     );
@@ -65,12 +65,12 @@ app1
       return handle(req, res);
     });
 
-    app.listen(3000, err => {
+    app.listen(3000, (err) => {
       if (err) throw err;
       console.log("> Ready on http://localhost:3000");
     });
   })
-  .catch(ex => {
+  .catch((ex) => {
     console.error(ex.stack);
     process.exit(1);
   });

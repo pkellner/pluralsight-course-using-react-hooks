@@ -14,7 +14,7 @@ const Speakers = ({}) => {
     isLoading,
     hasErrored,
     errorMessage,
-    updateDataRecord
+    updateDataRecord,
   } = useAxiosFetch("http://localhost:4000/speakers", []);
 
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
@@ -32,10 +32,10 @@ const Speakers = ({}) => {
     const toggledRec = { ...speakerRec, favorite: !speakerRec.favorite };
     axios
       .put(`http://localhost:4000/speakers/${speakerRec.id}`, toggledRec)
-      .then(function(response) {
+      .then(function (response) {
         updateDataRecord(toggledRec);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, []);
@@ -46,7 +46,7 @@ const Speakers = ({}) => {
         .filter(
           ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
         )
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           if (a.firstName < b.firstName) {
             return -1;
           }

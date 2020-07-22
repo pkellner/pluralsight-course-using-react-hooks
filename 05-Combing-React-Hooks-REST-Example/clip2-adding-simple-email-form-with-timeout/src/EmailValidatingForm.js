@@ -1,5 +1,5 @@
-import React, { useState, useReducer, useEffect } from "react";
-import useInterval from "./useInterval";
+import React, { useState, useReducer, useEffect } from 'react';
+import useInterval from './useInterval';
 
 function EmailValidatingForm() {
   const validateEmail = (email) => {
@@ -13,7 +13,7 @@ function EmailValidatingForm() {
     return action;
   };
 
-  const [email, setEmail] = useReducer(emailReducer, "");
+  const [email, setEmail] = useReducer(emailReducer, '');
   const maxSeconds = 30;
   const [count, setCount] = useState(maxSeconds);
 
@@ -22,28 +22,37 @@ function EmailValidatingForm() {
   }, 1000);
 
   return (
-    <div className="container"><br />
+    <div className="container">
+      <br />
       <div>
         <div className="content">
           <input
             onChange={(e) => {
               setEmail(e.target.value);
-            }} disabled={count <= 0} value={email}
-            placeholder="Enter Email" type="email" name="email" required
-          />&nbsp;&nbsp;&nbsp;
+            }}
+            disabled={count <= 0}
+            value={email}
+            placeholder="Enter Email"
+            type="email"
+            name="email"
+            required
+          />
+          &nbsp;&nbsp;&nbsp;
           <button
             disabled={!emailValid || count <= 0}
             onClick={() => {
               setCount(0);
               alert(`button clicked with email ${email}`);
-            }} className="btn-lg"
+            }}
+            className="btn-lg"
             type="submit"
-          >PRESS ME!
+          >
+            PRESS ME!
           </button>
           <div>
             {count > 0
               ? `You Have ${count} Seconds To Enter Your Email`
-              : "Email Entered or Time Expired"}
+              : 'Email Entered or Time Expired'}
           </div>
         </div>
       </div>

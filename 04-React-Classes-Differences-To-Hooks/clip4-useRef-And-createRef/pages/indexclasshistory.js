@@ -1,4 +1,4 @@
-import InputElementClassHistory from "../src/InputElementClassHistory";
+import InputElementClassHistory from '../src/InputElementClassHistory';
 
 const indexclasshistory = () => {
   return <InputElementClassHistory />;

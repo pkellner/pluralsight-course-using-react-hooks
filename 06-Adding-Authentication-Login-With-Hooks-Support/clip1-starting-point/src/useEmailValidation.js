@@ -1,8 +1,8 @@
 import useInterval from "./useInterval";
-import React,{useState,useReducer} from "react";
+import React, { useState, useReducer } from "react";
 
 const useEmailValidation = (secondsFormValidFor) => {
-  const validateEmail = email => {
+  const validateEmail = (email) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   };
@@ -22,7 +22,6 @@ const useEmailValidation = (secondsFormValidFor) => {
   );
 
   return { count, email, setEmail, emailValid };
-
 };
 
-export default useEmailValidation
+export default useEmailValidation;

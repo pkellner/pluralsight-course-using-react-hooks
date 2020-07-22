@@ -6,7 +6,7 @@ export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {
       user: {},
-      isServer: false
+      isServer: false,
     };
 
     if (Component.getInitialProps) {

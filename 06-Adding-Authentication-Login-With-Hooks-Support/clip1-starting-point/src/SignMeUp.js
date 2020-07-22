@@ -25,8 +25,8 @@ const SignMeUp = ({ signupCallback }) => {
 
   function sendEmailToBackend() {
     setSendProcessing(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         setSendProcessing(false);
         setEmail("");
         resolve();
@@ -49,7 +49,7 @@ const SignMeUp = ({ signupCallback }) => {
         <div className="content">
           <input
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmailValid(validateEmail(e.target.value));
               return setEmail(e.target.value);
             }}

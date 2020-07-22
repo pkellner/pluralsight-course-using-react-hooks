@@ -19,7 +19,7 @@ const Index = () => {
             <div className="mb-3">
               <h3>Login</h3>
               <input
-                onChange={e => {
+                onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 value={email}
@@ -32,7 +32,7 @@ const Index = () => {
             </div>
             <div className="mb-3">
               <input
-                onChange={e => {
+                onChange={(e) => {
                   setPassword(e.target.value);
                 }}
                 value={password}

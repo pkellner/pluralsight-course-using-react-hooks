@@ -5,7 +5,7 @@ import Login from "./Login";
 
 export const ConfigContext = React.createContext();
 
-const pageToShow = pageName => {
+const pageToShow = (pageName) => {
   if (pageName === "Home") return <Home />;
   if (pageName === "Speakers") return <Speakers />;
   if (pageName === "Login") return <Login />;
@@ -14,11 +14,11 @@ const pageToShow = pageName => {
 
 const configValue = {
   showSignMeUp: true,
-  showSpeakerSpeakingDays: true
+  showSpeakerSpeakingDays: true,
 };
 
 const App = ({ pageName, userInfo }) => {
-  configValue.loggedInUserEmail = userInfo ? userInfo.email : '';
+  configValue.loggedInUserEmail = userInfo ? userInfo.email : "";
   return (
     <ConfigContext.Provider value={configValue}>
       <div>{pageToShow(pageName)}</div>

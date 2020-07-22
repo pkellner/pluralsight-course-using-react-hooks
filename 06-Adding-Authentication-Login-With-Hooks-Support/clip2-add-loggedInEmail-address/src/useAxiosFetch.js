@@ -11,18 +11,18 @@ const dataFetchReducer = (state, action) => {
         isLoading: false,
         hasErrored: false,
         errorMessage: "",
-        data: action.payload
+        data: action.payload,
       };
     case "FETCH_FAILURE":
       return {
         ...state,
         isLoading: false,
         hasErrored: true,
-        errorMessage: "Data Retrieve Failure"
+        errorMessage: "Data Retrieve Failure",
       };
     case "REPLACE_DATA":
       // The record passed (state.data) must have the attribute "id"
-      const newData = state.data.map(rec => {
+      const newData = state.data.map((rec) => {
         return rec.id === action.replacerecord.id ? action.replacerecord : rec;
       });
       return {
@@ -30,7 +30,7 @@ const dataFetchReducer = (state, action) => {
         isLoading: false,
         hasErrored: false,
         errorMessage: "",
-        data: newData
+        data: newData,
       };
     default:
       throw new Error();
@@ -44,7 +44,7 @@ const useAxiosFetch = (initialUrl, initialData) => {
     isLoading: false,
     hasErrored: false,
     errorMessage: "",
-    data: initialData
+    data: initialData,
   });
 
   useEffect(() => {
@@ -72,10 +72,10 @@ const useAxiosFetch = (initialUrl, initialData) => {
     };
   }, [url]);
 
-  const updateDataRecord = record => {
+  const updateDataRecord = (record) => {
     dispatch({
       type: "REPLACE_DATA",
-      replacerecord: record
+      replacerecord: record,
     });
   };
 

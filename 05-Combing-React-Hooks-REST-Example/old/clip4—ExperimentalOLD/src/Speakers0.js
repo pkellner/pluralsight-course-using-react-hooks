@@ -15,15 +15,13 @@ import { ConfigContext } from "./App";
 import speakersReducer from "./speakersReducer";
 
 const Speakers = ({}) => {
-
-  
   const context = useContext(ConfigContext);
-  
+
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const [speakerList, dispatch] = useReducer(speakersReducer, []);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     setIsLoading(true);
     new Promise(function (resolve) {
@@ -43,7 +41,7 @@ const Speakers = ({}) => {
     return () => {
       console.log("cleanup");
     };
-  }, [speakingSaturday,speakingSunday]);
+  }, [speakingSaturday, speakingSunday]);
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);

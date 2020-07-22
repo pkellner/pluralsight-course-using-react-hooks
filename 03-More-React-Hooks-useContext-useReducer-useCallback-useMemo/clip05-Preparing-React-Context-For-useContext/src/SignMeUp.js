@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignMeUp = ({ signupCallback }) => {
   useEffect(() => {
@@ -21,20 +21,20 @@ const SignMeUp = ({ signupCallback }) => {
 
   function sendEmailToBackend() {
     setSendProcessing(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         setSendProcessing(false);
-        setEmail("");
+        setEmail('');
         resolve();
       }, 1000);
     }).then(() => {
       notify();
       signupCallback(email);
-      setEmail("");
+      setEmail('');
     });
   }
 
-  const buttonText = sendProcessing ? "processing..." : "Get Updates";
+  const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
 
   //console.log("src/SignMeUp called");
 
@@ -45,7 +45,7 @@ const SignMeUp = ({ signupCallback }) => {
         <div className="content">
           <input
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmailValid(validateEmail(e.target.value));
               return setEmail(e.target.value);
             }}

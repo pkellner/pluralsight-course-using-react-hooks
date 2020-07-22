@@ -4,7 +4,7 @@ import Speakers from "./Speakers";
 
 export const ConfigContext = React.createContext();
 
-const pageToShow = pageName => {
+const pageToShow = (pageName) => {
   if (pageName === "Home") return <Home />;
   if (pageName === "Speakers") return <Speakers />;
   return <div>Not Found</div>;
@@ -13,7 +13,7 @@ const pageToShow = pageName => {
 const configValue = {
   showSignMeUp: true,
   showSpeakerSpeakingDays: true,
-  loggedInUserEmail: 'peter@test.co'
+  loggedInUserEmail: "peter@test.co",
 };
 
 const App = ({ pageName }) => {

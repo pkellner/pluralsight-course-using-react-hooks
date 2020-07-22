@@ -21,7 +21,7 @@ const Speakers = ({}) => {
   const context = useContext(ConfigContext);
 
   const { isLoading, speakerList, dispatch } = useSpeakerDataManager(
-    SpeakerData
+    SpeakerData,
   );
 
   const handleChangeSaturday = () => {
@@ -43,7 +43,8 @@ const Speakers = ({}) => {
     () =>
       speakerList
         .filter(
-          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+          ({ sat, sun }) =>
+            (speakingSaturday && sat) || (speakingSunday && sun),
         )
         .sort(function (a, b) {
           if (a.firstName < b.firstName) {
@@ -54,7 +55,7 @@ const Speakers = ({}) => {
           }
           return 0;
         }),
-    [speakingSaturday, speakingSunday, speakerList]
+    [speakingSaturday, speakingSunday, speakerList],
   );
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;
@@ -109,7 +110,7 @@ const Speakers = ({}) => {
                     bio={bio}
                   />
                 );
-              }
+              },
             )}
           </div>
         </div>

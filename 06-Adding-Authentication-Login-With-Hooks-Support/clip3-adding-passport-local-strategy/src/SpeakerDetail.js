@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import { useContext } from "react";
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
 import { ConfigContext } from "./App";
 
@@ -11,7 +11,7 @@ const SpeakerDetail = React.memo(
     sun,
     favorite,
     bio,
-    onHeartFavoriteHandler
+    onHeartFavoriteHandler,
   }) => {
     const context = useContext(ConfigContext);
     return (
@@ -28,7 +28,7 @@ const SpeakerDetail = React.memo(
               <button
                 data-sessionid={id}
                 className={favorite ? "heartredbutton" : "heartdarkbutton"}
-                onClick={e => {
+                onClick={(e) => {
                   onHeartFavoriteHandler(e, {
                     id,
                     firstName,
@@ -36,7 +36,7 @@ const SpeakerDetail = React.memo(
                     favorite,
                     bio,
                     sat,
-                    sun
+                    sun,
                   });
                 }}
               />
