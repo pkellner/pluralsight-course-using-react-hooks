@@ -1,6 +1,6 @@
 const speakersReducer = (state, action) => {
   function updateFavorite(favoriteValue) {
-    return state.data.map((item) => {
+    return state.speakerList.map((item) => {
       if (item.id === action.sessionId) {
         item.favorite = favoriteValue;
       }
