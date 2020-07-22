@@ -12,15 +12,13 @@ const speakersReducer = (state, action) => {
     case 'setSpeakerList':
       return { ...state, isLoading: false, speakerList: action.payload };
     case 'favorite': {
-      const newData = updateFavorite(true);
-      return [...state, { speakerList: newData }];
+      return { ...state, speakerList: updateFavorite(true) };
     }
     case 'unfavorite': {
-      const newData = updateFavorite(false);
-      return [...state, { speakerList: newData }];
+      return { ...state, speakerList: updateFavorite(false) };
     }
     default:
-      return [...state];
+      return state;
   }
 };
 
