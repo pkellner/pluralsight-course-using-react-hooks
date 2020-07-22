@@ -13,30 +13,16 @@ import SpeakerData from './SpeakerData';
 import SpeakerDetail from './SpeakerDetail';
 import { ConfigContext } from './App';
 import speakersReducer from './speakersReducer';
+import useSpeakerDataManager from './useSpeakerDataManager';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-
-  const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
-    isLoading: true,
-    speakerList: [],
-  });
-
   const context = useContext(ConfigContext);
 
-  useEffect(() => {
-    new Promise(function (resolve) {
-      setTimeout(function () {
-        resolve();
-      }, 1000);
-    }).then(() => {
-      dispatch({ type: 'setSpeakerList', payload: SpeakerData });
-    });
-    return () => {
-      console.log('cleanup');
-    };
-  }, []);
+  const { isLoading, speakerList, dispatch } = useSpeakerDataManager(
+    SpeakerData
+  );
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
