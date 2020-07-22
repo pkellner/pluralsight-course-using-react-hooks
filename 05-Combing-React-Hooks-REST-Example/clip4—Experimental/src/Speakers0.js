@@ -12,30 +12,38 @@ import { Menu } from "../src/Menu";
 import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
-
-import useSpeakersManager from "./useSpeakersManager";
+import speakersReducer from "./speakersReducer";
 
 const Speakers = ({}) => {
-  console.log(`top of Speakers`);
 
-  // return <div>hi</div>
-
+  
   const context = useContext(ConfigContext);
-
+  
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
+  const [speakerList, dispatch] = useReducer(speakersReducer, []);
+  const [isLoading, setIsLoading] = useState(true);
   
-  const { data, isLoading } = useSpeakersManager();
-  
-  console.log(
-    `Speakers.js: data Length:${
-      data != undefined ? data.length : "undefined"
-    } isLoading: ${isLoading}  `
-  );
-  
-  
-  //const [speakersList, dispatch] = useReducer(speakersReducer, []);
-  
+  useEffect(() => {
+    setIsLoading(true);
+    new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve();
+      }, 1000);
+    }).then(() => {
+      setIsLoading(false);
+      const speakerListServerFilter = SpeakerData.filter(({ sat, sun }) => {
+        return (speakingSaturday && sat) || (speakingSunday && sun);
+      });
+      dispatch({
+        type: "setSpeakerList",
+        data: speakerListServerFilter,
+      });
+    });
+    return () => {
+      console.log("cleanup");
+    };
+  }, [speakingSaturday,speakingSunday]);
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -54,7 +62,7 @@ const Speakers = ({}) => {
 
   const newSpeakerList = useMemo(
     () =>
-      data
+      speakerList
         .filter(
           ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
         )
@@ -67,7 +75,7 @@ const Speakers = ({}) => {
           }
           return 0;
         }),
-    [speakingSaturday, speakingSunday, data]
+    [speakingSaturday, speakingSunday, speakerList]
   );
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;

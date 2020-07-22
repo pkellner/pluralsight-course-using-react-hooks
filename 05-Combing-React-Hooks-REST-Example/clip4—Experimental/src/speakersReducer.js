@@ -1,6 +1,6 @@
 const speakersReducer = (state, action) => {
     function updateFavorite(favoriteValue) {
-        return state.map((item, index) => {
+        return state.data.map((item) => {
             if (item.id === action.sessionId) {
                 item.favorite = favoriteValue;
             }
@@ -8,17 +8,23 @@ const speakersReducer = (state, action) => {
         });
     }
     switch (action.type) {
-        case "setSpeakerList": {
-            return action.data;
-        }
+        case "setSpeakerList":
+            return {
+                ...state,
+                isLoading: false,
+                data: action.payload
+            };
+        
         case "favorite": {
-            return updateFavorite(true);
+            const newData = updateFavorite(true);
+            return [...state, {data: newData}];
         }
         case "unfavorite": {
-            return updateFavorite(false);
+            const newData = updateFavorite(false);
+            return [...state, {data: newData}];
         }
         default:
-            return state;
+            return [...state];
     }
 };
 export default speakersReducer;
