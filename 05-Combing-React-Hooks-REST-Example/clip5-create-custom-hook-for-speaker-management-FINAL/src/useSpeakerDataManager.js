@@ -7,6 +7,12 @@ function useSpeakerDataManager(data) {
     speakerList: [],
   });
 
+  const updateSpeakerRecord = (speakerRec) => {
+    speakerRec.favorite === true
+      ? dispatch({ type: 'favorite', sessionId: speakerRec.id })
+      : dispatch({ type: 'unfavorite', sessionId: speakerRec.id });
+  };
+
   useEffect(() => {
     new Promise(function (resolve) {
       setTimeout(function () {
@@ -19,7 +25,7 @@ function useSpeakerDataManager(data) {
       console.log('cleanup');
     };
   }, []);
-  return { isLoading, speakerList, dispatch };
+  return { isLoading, speakerList, updateSpeakerRecord };
 }
 
 export default useSpeakerDataManager;
