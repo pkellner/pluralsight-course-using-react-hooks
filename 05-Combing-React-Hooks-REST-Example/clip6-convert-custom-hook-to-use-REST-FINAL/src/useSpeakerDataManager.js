@@ -17,7 +17,7 @@ function useSpeakerDataManager(data) {
           : dispatch({ type: 'unfavorite', sessionId: speakerRec.id });
       })
       .catch(function (error) {
-        console.log('useSpeakersManager failure axios.put', err);
+        console.log('useSpeakersManager failure axios.put', error);
       });
   };
 
@@ -26,8 +26,8 @@ function useSpeakerDataManager(data) {
       try {
         let result = await axios.get('http://localhost:4000/speakers');
         dispatch({ type: 'setSpeakerList', payload: result.data });
-      } catch (err) {
-        console.log('useSpeakersManager failure axios.get', err);
+      } catch (error) {
+        console.log('useSpeakersManager failure axios.get', error);
       }
     };
     fetchData();
@@ -36,7 +36,7 @@ function useSpeakerDataManager(data) {
       console.log('cleanup');
     };
   }, []);
-  return { isLoading, speakerList, updateSpeakerRecord, dispatch };
+  return { isLoading, speakerList, updateSpeakerRecord };
 }
 
 export default useSpeakerDataManager;

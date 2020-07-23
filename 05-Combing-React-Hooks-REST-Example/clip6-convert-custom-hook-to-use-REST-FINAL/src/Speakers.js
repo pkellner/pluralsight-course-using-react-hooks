@@ -20,7 +20,7 @@ const Speakers = ({}) => {
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
 
-  const { isLoading, speakerList, updateSpeakerRecord, dispatch } = useSpeakerDataManager(
+  const { isLoading, speakerList, updateSpeakerRecord } = useSpeakerDataManager(
     SpeakerData,
   );
 
@@ -32,13 +32,7 @@ const Speakers = ({}) => {
   };
   const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
-  
     updateSpeakerRecord(speakerRec);
-    
-    dispatch({
-      type: speakerRec.favorite === true ? 'favorite' : 'unfavorite',
-      sessionId: speakerRec.id,
-    });
   }, []);
 
   const newSpeakerList = useMemo(
