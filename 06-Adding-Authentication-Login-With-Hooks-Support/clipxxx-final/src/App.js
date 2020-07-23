@@ -4,6 +4,8 @@ import Speakers from './Speakers';
 
 export const ConfigContext = React.createContext();
 
+import { GlobalProvider } from './GlobalState';
+
 const pageToShow = (pageName) => {
   if (pageName === 'Home') return <Home />;
   if (pageName === 'Speakers') return <Speakers />;
@@ -18,7 +20,9 @@ const configValue = {
 const App = ({ pageName }) => {
   return (
     <ConfigContext.Provider value={configValue}>
-      <div>{pageToShow(pageName)}</div>
+      <GlobalProvider>
+        <div>{pageToShow(pageName)}</div>
+      </GlobalProvider>
     </ConfigContext.Provider>
   );
 };

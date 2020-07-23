@@ -12,16 +12,15 @@ import { Menu } from '../src/Menu';
 import SpeakerData from './SpeakerData';
 import SpeakerDetail from './SpeakerDetail';
 import { ConfigContext } from './App';
-import speakersReducer from './speakersReducer';
-import useSpeakerDataManager from './useSpeakerDataManager';
+import { GlobalContext } from './GlobalState';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
 
-  const { isLoading, speakerList, updateSpeakerRecord } = useSpeakerDataManager(
-    SpeakerData,
+  const { isLoading, speakerList, updateSpeakerRecord } = useContext(
+    GlobalContext,
   );
 
   const handleChangeSaturday = () => {
