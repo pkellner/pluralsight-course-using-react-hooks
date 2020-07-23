@@ -6,6 +6,8 @@ import axios from 'axios';
 const initialState = {
   isloading: true,
   speakerList: [],
+  hasErrored: false,
+  errorMessage: '',
 };
 
 // Create context
@@ -21,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
         let result = await axios.get('http://localhost:4000/speakers');
         dispatch({ type: 'setSpeakerList', payload: result.data });
       } catch (error) {
-        console.log('GlobalProvider failure axios.get', error);
+        dispatch({ type: 'speakerListError', error: error });
       }
     };
     fetchData();
@@ -40,7 +42,7 @@ export const GlobalProvider = ({ children }) => {
           : dispatch({ type: 'unfavorite', sessionId: speakerRec.id });
       })
       .catch(function (error) {
-        console.log('GlobalProvider failure axios.put', error);
+        dispatch({ type: 'favoriteError', error: error });
       });
   };
 
@@ -74,6 +76,8 @@ export const GlobalProvider = ({ children }) => {
         favoriteSpeaker,
         unFavoriteSpeaker,
         updateSpeakerRecord,
+        hasErrored: state.hasErrored,
+        errorMessage: state.errorMessage,
       }}
     >
       {children}

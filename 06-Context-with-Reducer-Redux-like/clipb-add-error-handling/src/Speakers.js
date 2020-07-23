@@ -19,9 +19,13 @@ const Speakers = ({}) => {
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
 
-  const { isLoading, speakerList, updateSpeakerRecord } = useContext(
-    GlobalContext,
-  );
+  const {
+    isLoading,
+    speakerList,
+    updateSpeakerRecord,
+    errorMessage,
+    hasErrored,
+  } = useContext(GlobalContext);
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -54,6 +58,14 @@ const Speakers = ({}) => {
   );
 
   const speakerListFiltered = isLoading ? [] : newSpeakerList;
+
+  if (hasErrored && hasErrored === true)
+    return (
+      <div>
+        &nbsp;"Make sure you have launched "npm run json-server{' '}
+        {errorMessage?.response?.status}:{errorMessage?.response?.statusText}"
+      </div>
+    );
 
   if (isLoading) return <div>Loading...</div>;
 

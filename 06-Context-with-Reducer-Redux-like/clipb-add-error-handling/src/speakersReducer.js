@@ -10,13 +10,36 @@ const speakersReducer = (state, action) => {
 
   switch (action.type) {
     case 'setSpeakerList':
-      return { ...state, isLoading: false, speakerList: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        hasErrored: false,
+        speakerList: action.payload,
+      };
     case 'favorite': {
-      return { ...state, speakerList: updateFavorite(true) };
+      return { ...state, hasErrored: false, speakerList: updateFavorite(true) };
     }
     case 'unfavorite': {
-      return { ...state, speakerList: updateFavorite(false) };
+      return {
+        ...state,
+        hasErrored: false,
+        speakerList: updateFavorite(false),
+      };
     }
+    case 'speakerListError':
+      return {
+        ...state,
+        isLoading: false,
+        hasErrored: true,
+        errorMessage: action.error,
+      };
+    case 'favoriteError':
+      return {
+        ...state,
+        isLoading: false,
+        hasErrored: true,
+        errorMessage: action.error,
+      };
     default:
       return state;
   }
