@@ -31,7 +31,7 @@ const SpeakerDetail = React.memo(
                   id,
                   firstName,
                   lastName,
-                  favorite: !favorite,
+                  favorite,
                   bio,
                   sat,
                   sun,

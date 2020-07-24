@@ -7,10 +7,10 @@ function useSpeakerDataManager(data) {
     speakerList: [],
   });
 
-  const updateSpeakerRecord = (speakerRec) => {
+  const toggleSpeakerFavorite = (speakerRec) => {
     speakerRec.favorite === true
-      ? dispatch({ type: 'favorite', sessionId: speakerRec.id })
-      : dispatch({ type: 'unfavorite', sessionId: speakerRec.id });
+      ? dispatch({ type: 'unfavorite', sessionId: speakerRec.id })
+      : dispatch({ type: 'favorite', sessionId: speakerRec.id });
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function useSpeakerDataManager(data) {
       console.log('cleanup');
     };
   }, []);
-  return { isLoading, speakerList, updateSpeakerRecord };
+  return { isLoading, speakerList, toggleSpeakerFavorite };
 }
 
 export default useSpeakerDataManager;
