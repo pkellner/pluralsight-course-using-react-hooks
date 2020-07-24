@@ -95,18 +95,12 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerListFiltered.map(
-              ({ id, firstName, lastName, bio, sat, sun, favorite }) => {
+              (speakerRec) => {
                 return (
                   <SpeakerDetail
-                    key={id}
-                    id={id}
-                    favorite={favorite}
+                    key={speakerRec.id}
                     onHeartFavoriteHandler={heartFavoriteHandler}
-                    firstName={firstName}
-                    lastName={lastName}
-                    bio={bio}
-                    sat={sat}
-                    sun={sun}
+                    speakerRec={speakerRec}
                   />
                 );
               },

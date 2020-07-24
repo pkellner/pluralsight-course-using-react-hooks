@@ -9,8 +9,8 @@ function useSpeakerDataManager(data) {
 
   const toggleSpeakerFavorite = (speakerRec) => {
     speakerRec.favorite === true
-      ? dispatch({ type: 'unfavorite', sessionId: speakerRec.id })
-      : dispatch({ type: 'favorite', sessionId: speakerRec.id });
+      ? dispatch({ type: 'unfavorite', id: speakerRec.id })
+      : dispatch({ type: 'favorite', id: speakerRec.id });
   };
 
   useEffect(() => {
