@@ -10,7 +10,7 @@ const speakersReducer = (state, action) => {
 
   switch (action.type) {
     case 'setSpeakerList':
-      return { ...state, isLoading: false, speakerList: action.payload };
+      return { ...state, isLoading: false, speakerList: action.data };
     case 'favorite': {
       return { ...state, speakerList: updateFavorite(true) };
     }

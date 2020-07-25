@@ -19,7 +19,7 @@ function useSpeakerDataManager(data) {
         resolve();
       }, 1000);
     }).then(() => {
-      dispatch({ type: 'setSpeakerList', payload: data });
+      dispatch({ type: 'setSpeakerList', data: data });
     });
     return () => {
       console.log('cleanup');
