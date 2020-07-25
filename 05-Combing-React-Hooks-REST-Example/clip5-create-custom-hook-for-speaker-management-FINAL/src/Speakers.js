@@ -19,10 +19,12 @@ const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
-  
-  const { isLoading, speakerList, toggleSpeakerFavorite } = useSpeakerDataManager(
-    SpeakerData,
-  );
+
+  const {
+    isLoading,
+    speakerList,
+    toggleSpeakerFavorite,
+  } = useSpeakerDataManager(SpeakerData);
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -30,7 +32,7 @@ const Speakers = ({}) => {
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
   };
-  
+
   const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
     toggleSpeakerFavorite(speakerRec);
@@ -94,17 +96,16 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered.map(
-              (speakerRec) => {
-                return (
-                  <SpeakerDetail
-                    key={speakerRec.id}
-                    onHeartFavoriteHandler={heartFavoriteHandler}
-                    speakerRec={speakerRec}
-                  />
-                );
-              },
-            )}
+            {speakerListFiltered.map((speakerRec) => {
+              return (
+                <SpeakerDetail
+                  key={speakerRec.id}
+                  onHeartFavoriteHandler={heartFavoriteHandler}
+                  speakerRec={speakerRec}
+                  favorite={speakerRec.favorite}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
