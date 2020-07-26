@@ -17,10 +17,10 @@ import speakersReducer from './speakersReducer';
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
-  
-  const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
+
+  const [{ isLoading, speakerList  }, dispatch] = useReducer(speakersReducer, {
     isLoading: true,
-    speakerList: [],
+    speakerList: []
   });
 
   const context = useContext(ConfigContext);
@@ -52,7 +52,7 @@ const Speakers = ({}) => {
     const sessionId = parseInt(e.target.attributes['data-sessionid'].value);
     dispatch({
       type: favoriteValue === true ? 'favorite' : 'unfavorite',
-      sessionId,
+      id: sessionId,
     });
   }, []);
 
