@@ -2,7 +2,6 @@ const speakersReducer = (state, action) => {
   function updateFavorite(favoriteValue) {
     return state.speakerList.map((item, index) => {
       if (item.id === action.id) {
-        //item.favorite = favoriteValue;
         return {...item,favorite: favoriteValue};
       }
       return item;
@@ -10,7 +9,7 @@ const speakersReducer = (state, action) => {
   }
   switch (action.type) {
     case 'setSpeakerList': {
-      return { ...state, speakerList: action.data, isLoading: false };
+      return {  ...state, speakerList: action.data, isLoading: false };
     }
     case 'favorite': {
       return { ...state, speakerList: updateFavorite(true) };

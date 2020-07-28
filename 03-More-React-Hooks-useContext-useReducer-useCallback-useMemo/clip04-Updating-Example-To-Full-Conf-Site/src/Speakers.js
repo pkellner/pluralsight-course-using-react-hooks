@@ -61,8 +61,7 @@ const Speakers = ({}) => {
     setSpeakerList(
       speakerList.map((item) => {
         if (item.id === sessionId) {
-          item.favorite = favoriteValue;
-          return item;
+          return {...item,favorite: favoriteValue};
         }
         return item;
       }),

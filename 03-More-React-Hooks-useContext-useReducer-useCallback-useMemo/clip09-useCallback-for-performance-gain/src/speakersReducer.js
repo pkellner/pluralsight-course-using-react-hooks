@@ -2,7 +2,7 @@ const speakersReducer = (state, action) => {
   function updateFavorite(favoriteValue) {
     return state.map((item, index) => {
       if (item.id === action.sessionId) {
-        item.favorite = favoriteValue;
+        return {...item,favorite: favoriteValue};
       }
       return item;
     });
