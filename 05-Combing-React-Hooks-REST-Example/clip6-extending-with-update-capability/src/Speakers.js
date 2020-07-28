@@ -100,7 +100,7 @@ const Speakers = ({}) => {
               (speakerRec) => {
                 return (
                   <SpeakerDetail
-                    {...speakerRec}
+                    speakerRec={speakerRec}
                     key={speakerRec.id}
                     onHeartFavoriteHandler={heartFavoriteHandler}
                   />
