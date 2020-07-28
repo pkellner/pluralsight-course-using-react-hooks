@@ -10,9 +10,10 @@ function useSpeakerDataManager() {
   });
 
   function toggleSpeakerFavorite(speakerRec) {
-    speakerRec.favorite === true
-      ? dispatch({ type: "unfavorite", id: speakerRec.id })
-      : dispatch({ type: "favorite", id: speakerRec.id });
+    speakerRec.favorite === true ?
+      dispatch({type: "unfavorite", id: speakerRec.id}) :
+      displatch({type: "favorite", id: speakerRec.id});
+    
   }
 
   useEffect(() => {

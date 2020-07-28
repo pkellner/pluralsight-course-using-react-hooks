@@ -7,8 +7,8 @@ import React, {
   useMemo,
 } from 'react';
 
-import { Header } from './Header';
-import { Menu } from './Menu';
+import { Header } from '../src/Header';
+import { Menu } from '../src/Menu';
 import SpeakerData from './SpeakerData';
 import SpeakerDetail from './SpeakerDetail';
 import { ConfigContext } from './App';
@@ -20,7 +20,9 @@ const Speakers = ({}) => {
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
 
-  const { isLoading, speakerList, toggleSpeakerFavorite } = useSpeakerDataManager();
+  const { isLoading, speakerList, updateSpeakerRecord } = useSpeakerDataManager(
+    SpeakerData,
+  );
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -30,7 +32,7 @@ const Speakers = ({}) => {
   };
   const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
-    toggleSpeakerFavorite(speakerRec);
+    updateSpeakerRecord(speakerRec);
   }, []);
 
   const newSpeakerList = useMemo(
@@ -92,12 +94,18 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerListFiltered.map(
-              (speakerRec) => {
+              ({ id, firstName, lastName, bio, sat, sun, favorite }) => {
                 return (
                   <SpeakerDetail
-                    key={speakerRec.id}
-                    speakerRec={speakerRec}
+                    key={id}
+                    id={id}
+                    favorite={favorite}
                     onHeartFavoriteHandler={heartFavoriteHandler}
+                    firstName={firstName}
+                    lastName={lastName}
+                    bio={bio}
+                    sat={sat}
+                    sun={sun}
                   />
                 );
               },
