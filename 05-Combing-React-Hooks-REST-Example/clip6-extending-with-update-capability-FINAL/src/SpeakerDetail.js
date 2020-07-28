@@ -1,10 +1,15 @@
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 
 const SpeakerDetail = React.memo(
-  ({ id, firstName, lastName, favorite, bio, onHeartFavoriteHandler }) => {
+  ({
+    speakerRec,
+    onHeartFavoriteHandler,
+  }) => {
+    const {id,firstName,lastName,bio,favorite} = speakerRec;
     console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+    //const speakerRec = { id, firstName, lastName, favorite, bio, sat, sun };
 
-    return (
+    return ( 
       <div className="card col-4 cardmin">
         <ImageToggleOnScroll
           className="card-img-top"
@@ -18,7 +23,7 @@ const SpeakerDetail = React.memo(
               data-sessionid={id}
               className={favorite ? 'heartredbutton' : 'heartdarkbutton'}
               onClick={(e) => {
-                onHeartFavoriteHandler(e, !favorite);
+                onHeartFavoriteHandler(e, speakerRec);
               }}
             />
             <span>
