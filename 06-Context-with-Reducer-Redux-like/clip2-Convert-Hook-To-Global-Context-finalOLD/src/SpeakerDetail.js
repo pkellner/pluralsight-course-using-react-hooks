@@ -1,17 +1,17 @@
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 
-import { GlobalContext } from './GlobalState';
-import { useCallback, useContext } from 'react';
-
-
 const SpeakerDetail = React.memo(
-  ({ speakerRec }) => {
-    const {id,firstName,lastName,bio,favorite} = speakerRec;
+  ({
+    id,
+    firstName,
+    lastName,
+    favorite,
+    bio,
+    sat,
+    sun,
+    onHeartFavoriteHandler,
+  }) => {
     console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
-  
-    const { toggleSpeakerFavorite } = useContext(
-      GlobalContext,
-    );
 
     return (
       <div className="card col-4 cardmin">
@@ -24,9 +24,18 @@ const SpeakerDetail = React.memo(
         <div className="card-body">
           <h4 className="card-title">
             <button
+              data-sessionid={id}
               className={favorite ? 'heartredbutton' : 'heartdarkbutton'}
               onClick={(e) => {
-                toggleSpeakerFavorite(speakerRec);
+                onHeartFavoriteHandler(e, {
+                  id,
+                  firstName,
+                  lastName,
+                  favorite: !favorite,
+                  bio,
+                  sat,
+                  sun,
+                });
               }}
             />
             <span>

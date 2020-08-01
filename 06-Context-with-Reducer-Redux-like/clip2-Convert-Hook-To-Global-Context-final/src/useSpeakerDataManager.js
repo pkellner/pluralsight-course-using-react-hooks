@@ -1,34 +1,36 @@
 import speakersReducer from './speakersReducer';
-import { useEffect, useReducer } from 'react';
+import SpeakerData from './SpeakerData';
+import { useCallback, useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-function useSpeakerDataManager(data) {
+function useSpeakerDataManager() {
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
     isLoading: true,
     speakerList: [],
   });
 
-  const updateSpeakerRecord = (speakerRec) => {
-    axios
-      .put(`http://localhost:4000/speakers/${speakerRec.id}`, speakerRec)
-      .then(function (response) {
-        speakerRec.favorite === true
-          ? dispatch({ type: 'favorite', sessionId: speakerRec.id })
-          : dispatch({ type: 'unfavorite', sessionId: speakerRec.id });
-      })
-      .catch(function (error) {
-        console.log('useSpeakersManager failure axios.put', error);
-      });
-  };
+  const toggleSpeakerFavorite = useCallback((speakerRec) => {
+    const updateData = async function () {
+      axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, speakerRec);
+      speakerRec.favorite === true
+        ? dispatch({ type: 'unfavorite', id: speakerRec.id })
+        : dispatch({ type: 'favorite', id: speakerRec.id });
+    };
+    updateData();
+  }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let result = await axios.get('http://localhost:4000/speakers');
-        dispatch({ type: 'setSpeakerList', payload: result.data });
-      } catch (error) {
-        console.log('useSpeakersManager failure axios.get', error);
-      }
+    // new Promise(function (resolve) {
+    //   setTimeout(function () {resolve();}, 1000);
+    // }).then(() => {
+    //   dispatch({
+    //     type: 'setSpeakerList',
+    //     data: SpeakerData,
+    //   });
+    // });
+    const fetchData = async function () {
+      let result = await axios.get('http://localhost:4000/speakers');
+      dispatch({ type: 'setSpeakerList', data: result.data });
     };
     fetchData();
 
@@ -36,7 +38,6 @@ function useSpeakerDataManager(data) {
       console.log('cleanup');
     };
   }, []);
-  return { isLoading, speakerList, updateSpeakerRecord };
+  return { isLoading, speakerList, toggleSpeakerFavorite };
 }
-
 export default useSpeakerDataManager;
