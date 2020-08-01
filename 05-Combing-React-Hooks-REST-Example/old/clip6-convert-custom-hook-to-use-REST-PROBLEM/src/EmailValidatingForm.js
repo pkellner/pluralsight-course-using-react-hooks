@@ -3,7 +3,7 @@ import useEmailValidation from './useEmailValidation';
 
 function EmailValidatingForm() {
   const { setEmail, count, email, emailValid, setCount } = useEmailValidation(
-    30,
+    30
   );
 
   return (

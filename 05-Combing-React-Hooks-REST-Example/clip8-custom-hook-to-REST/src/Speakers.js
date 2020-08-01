@@ -20,7 +20,11 @@ const Speakers = ({}) => {
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
 
-  const { isLoading, speakerList, toggleSpeakerFavorite } = useSpeakerDataManager();
+  const {
+    isLoading,
+    speakerList,
+    toggleSpeakerFavorite,
+  } = useSpeakerDataManager();
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -91,17 +95,15 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered.map(
-              (speakerRec) => {
-                return (
-                  <SpeakerDetail
-                    key={speakerRec.id}
-                    speakerRec={speakerRec}
-                    onHeartFavoriteHandler={heartFavoriteHandler}
-                  />
-                );
-              },
-            )}
+            {speakerListFiltered.map((speakerRec) => {
+              return (
+                <SpeakerDetail
+                  key={speakerRec.id}
+                  speakerRec={speakerRec}
+                  onHeartFavoriteHandler={heartFavoriteHandler}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

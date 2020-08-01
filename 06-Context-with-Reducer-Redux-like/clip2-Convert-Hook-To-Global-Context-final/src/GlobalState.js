@@ -17,13 +17,11 @@ export const GlobalProvider = ({ children }) => {
     toggleSpeakerFavorite,
   } = useSpeakerDataManager();
 
-  const provider = useMemo(() => {
-    return {
-      toggleSpeakerFavorite: toggleSpeakerFavorite,
-      isLoading: isLoading,
-      speakerList,
-    };
-  }, [speakerList,isLoading]);
+  const provider = {
+    toggleSpeakerFavorite: toggleSpeakerFavorite,
+    isLoading: isLoading,
+    speakerList,
+  };
 
   return (
     <GlobalContext.Provider value={provider}>{children}</GlobalContext.Provider>

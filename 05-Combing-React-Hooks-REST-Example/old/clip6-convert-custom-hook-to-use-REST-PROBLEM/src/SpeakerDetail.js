@@ -47,7 +47,7 @@ const SpeakerDetail = React.memo(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default SpeakerDetail;

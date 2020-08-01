@@ -7,7 +7,7 @@ function useSpeakerDataManager() {
     isLoading: true,
     speakerList: [],
   });
- 
+
   function toggleSpeakerFavorite(speakerRec) {
     speakerRec.favorite === true
       ? dispatch({ type: 'unfavorite', id: speakerRec.id })
@@ -15,7 +15,9 @@ function useSpeakerDataManager() {
   }
   useEffect(() => {
     new Promise(function (resolve) {
-      setTimeout(function () {resolve();}, 1000);
+      setTimeout(function () {
+        resolve();
+      }, 1000);
     }).then(() => {
       dispatch({
         type: 'setSpeakerList',

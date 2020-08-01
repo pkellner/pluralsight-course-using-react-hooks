@@ -21,17 +21,22 @@ const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
   const context = useContext(ConfigContext);
-  
-  const { isLoading, speakerList } = useContext(
+
+  const { isLoading, speakerList, toggleSpeakerFavorite } = useContext(
     GlobalContext,
   );
-  
+
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
   };
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
   };
+
+  const heartFavoriteHandler = useCallback((e, speakerRec) => {
+    e.preventDefault();
+    toggleSpeakerFavorite(speakerRec);
+  }, []);
 
   const newSpeakerList = useMemo(
     () =>
@@ -91,16 +96,15 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered.map(
-              (speakerRec) => {
-                return (
-                  <SpeakerDetail
-                    key={speakerRec.id}
-                    speakerRec={speakerRec}
-                  />
-                );
-              },
-            )}
+            {speakerListFiltered.map((speakerRec) => {
+              return (
+                <SpeakerDetail
+                  key={speakerRec.id}
+                  speakerRec={speakerRec}
+                  onHeartFavoriteHandler={heartFavoriteHandler}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

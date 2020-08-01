@@ -96,17 +96,15 @@ const Speakers = ({}) => {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered.map(
-              (speakerRec) => {
-                return (
-                  <SpeakerDetail
-                    speakerRec={speakerRec}
-                    key={speakerRec.id}
-                    onHeartFavoriteHandler={heartFavoriteHandler}
-                  />
-                );
-              },
-            )}
+            {speakerListFiltered.map((speakerRec) => {
+              return (
+                <SpeakerDetail
+                  speakerRec={speakerRec}
+                  key={speakerRec.id}
+                  onHeartFavoriteHandler={heartFavoriteHandler}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
