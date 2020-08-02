@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { ConfigContext } from './App';
 
 const SignMeUp = ({ signupCallback }) => {

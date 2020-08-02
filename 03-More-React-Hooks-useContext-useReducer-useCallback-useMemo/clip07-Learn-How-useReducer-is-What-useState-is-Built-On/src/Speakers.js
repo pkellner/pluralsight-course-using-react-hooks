@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 import { Header } from '../src/Header';
 import { Menu } from '../src/Menu';
