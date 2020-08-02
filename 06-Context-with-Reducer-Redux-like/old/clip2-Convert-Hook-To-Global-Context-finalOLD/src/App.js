@@ -1,10 +1,9 @@
 import React from 'react';
 import Home from './Home';
 import Speakers from './Speakers';
+import {GlobalProvider} from './GlobalState';
 
 export const ConfigContext = React.createContext();
-
-import { GlobalProvider } from './GlobalState';
 
 const pageToShow = (pageName) => {
   if (pageName === 'Home') return <Home />;

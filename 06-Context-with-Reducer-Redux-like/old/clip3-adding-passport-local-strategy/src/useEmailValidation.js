@@ -1,5 +1,5 @@
 import useInterval from "./useInterval";
-import React, { useState, useReducer } from "react";
+import {useReducer, useState} from "react";
 
 const useEmailValidation = (secondsFormValidFor) => {
   const validateEmail = (email) => {

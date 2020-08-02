@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from 'react';
+import {createContext, useEffect, useReducer} from 'react';
 import speakersReducer from './speakersReducer';
 import axios from 'axios';
 

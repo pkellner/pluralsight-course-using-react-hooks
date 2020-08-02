@@ -1,4 +1,5 @@
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
+
 const SpeakerDetail = React.memo(
   ({
     id,

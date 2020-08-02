@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
-import { ConfigContext } from "./App";
+import {toast, ToastContainer} from "react-toastify";
+import {ConfigContext} from "./App";
 
 const SignMeUp = ({ signupCallback }) => {
   useEffect(() => {

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import {useContext} from 'react';
 
-import { Header } from './Header';
-import { Menu } from './Menu';
+import {Header} from './Header';
+import {Menu} from './Menu';
 
-import { GlobalContext } from './GlobalState';
+import {GlobalContext} from './GlobalState';
 
 const Schedule = ({}) => {
   

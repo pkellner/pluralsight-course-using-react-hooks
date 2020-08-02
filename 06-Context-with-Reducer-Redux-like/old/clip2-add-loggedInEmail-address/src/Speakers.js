@@ -1,10 +1,10 @@
-import React, { useState, useContext, useCallback, useMemo } from "react";
+import {useCallback, useContext, useMemo, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
-import { Header } from "../src/Header";
-import { Menu } from "../src/Menu";
+import {Header} from "../src/Header";
+import {Menu} from "../src/Menu";
 import SpeakerDetail from "./SpeakerDetail";
-import { ConfigContext } from "./App";
+import {ConfigContext} from "./App";
 import useAxiosFetch from "./useAxiosFetch";
 import axios from "axios";
 
