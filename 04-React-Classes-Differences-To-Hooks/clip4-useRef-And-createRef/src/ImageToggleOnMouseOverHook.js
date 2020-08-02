@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 
 const ImageToggleOnMouseOverHook = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
