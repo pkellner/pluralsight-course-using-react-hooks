@@ -1,18 +1,18 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, { useContext } from 'react';
 
 import { Header } from './Header';
 import { Menu } from './Menu';
-import useSpeakerDataManager from './useSpeakerDataManager';
+
+import { GlobalContext } from './GlobalState';
 
 const Schedule = ({}) => {
-  const { isLoading, speakerList } = useSpeakerDataManager();
+  
+  
+  //const { isLoading, speakerList } = useSpeakerDataManager();
+  
+  const { isLoading, speakerList } = useContext(
+    GlobalContext,
+  );
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -21,38 +21,34 @@ const Schedule = ({}) => {
       <Header />
       <Menu />
       <div className="container-fluid mt-3">
-        <div className="row mx-auto" >
-          <div className="col-sm-5 offset-1 ">
-            <div className="card">
-              <div className="card-header">Saturday Speakers</div>
-              <ul className="mt-3 mr-4">
-                {speakerList.filter(rec => rec.sat === true).map((speakerRec) => {
-                  return (
-                    <li className="list-group-item" key={speakerRec.id}>
-                      {`${speakerRec.firstName} ${speakerRec.lastName}`}
-                    </li>
-                  );
-                })}
-              </ul>
+        {['sat', 'sun'].map(function (day) {
+          return (
+            <div className="row mx-auto">
+              <div className="col-sm-5">
+                <div className="card">
+                  <div className="card-header">
+                    <h2>{day === 'sat' ? 'Saturday' : 'Sunday'} Speakers</h2>
+                  </div>
+                  <ul className="mt-3 mr-4">
+                    {speakerList
+                      .filter(function(rec) {
+                        if (rec.sat === true && day === "sat") return true;
+                        if (rec.sun === true && day === "sun") return true;
+                      })
+                      .map((speakerRec) => {
+                        return (
+                          <li className="list-group-item" key={speakerRec.id}>
+                            <h3>{`${speakerRec.firstName} ${speakerRec.lastName} ${speakerRec.sat}`}</h3>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="col-sm-5">
-            <div className="card">
-              <div className="card-header"><h2>Sunday Speakers</h2></div>
-              <ul className="mt-3 mr-4">
-                {speakerList.filter(rec => rec.sun === true).map((speakerRec) => {
-                  return (
-                    <li className="list-group-item" key={speakerRec.id}>
-                      <h3>{`${speakerRec.firstName} ${speakerRec.lastName}`}</h3>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
-     
     </div>
   );
 };

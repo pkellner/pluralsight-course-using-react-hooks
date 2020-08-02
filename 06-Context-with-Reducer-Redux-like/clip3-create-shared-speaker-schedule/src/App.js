@@ -2,10 +2,9 @@ import React from 'react';
 import Home from './Home';
 import Speakers from './Speakers';
 import Schedule from './Schedule';
+import { GlobalProvider } from './GlobalState';
 
 export const ConfigContext = React.createContext();
-
-import { GlobalProvider } from './GlobalState';
 
 
 const pageToShow = (pageName) => {
