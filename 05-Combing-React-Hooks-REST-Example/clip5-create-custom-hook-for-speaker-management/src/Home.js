@@ -1,6 +1,5 @@
-import React from 'react';
-import { Header } from '../src/Header';
-import { Menu } from '../src/Menu';
+import {Header} from '../src/Header';
+import {Menu} from '../src/Menu';
 
 function index() {
   return (

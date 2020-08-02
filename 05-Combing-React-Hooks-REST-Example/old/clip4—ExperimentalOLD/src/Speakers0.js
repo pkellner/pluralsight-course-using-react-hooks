@@ -1,17 +1,10 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  useCallback,
-  useMemo,
-} from "react";
+import React, {useCallback, useContext, useEffect, useMemo, useReducer, useState,} from "react";
 
-import { Header } from "../src/Header";
-import { Menu } from "../src/Menu";
+import {Header} from "../src/Header";
+import {Menu} from "../src/Menu";
 import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
-import { ConfigContext } from "./App";
+import {ConfigContext} from "./App";
 import speakersReducer from "./speakersReducer";
 
 const Speakers = ({}) => {

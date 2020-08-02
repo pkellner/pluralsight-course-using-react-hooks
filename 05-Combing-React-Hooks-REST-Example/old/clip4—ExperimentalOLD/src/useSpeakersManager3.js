@@ -1,6 +1,3 @@
-import speakersReducer from "./speakersReducer";
-import SpeakerData from "./SpeakerData";
-import { useEffect, useReducer, useState } from "react";
 import useAxios from "axios-hooks";
 
 const useSpeakersManager = () => {

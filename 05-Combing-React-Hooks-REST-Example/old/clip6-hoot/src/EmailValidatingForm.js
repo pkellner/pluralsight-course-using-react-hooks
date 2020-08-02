@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React from 'react';
 import useEmailValidation from './useEmailValidation';
 
 function EmailValidatingForm() {

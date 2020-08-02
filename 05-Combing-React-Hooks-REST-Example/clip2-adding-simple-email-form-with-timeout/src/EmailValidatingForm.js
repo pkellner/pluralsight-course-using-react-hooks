@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import {useReducer, useState} from 'react';
 import useInterval from './useInterval';
 
 function EmailValidatingForm() {

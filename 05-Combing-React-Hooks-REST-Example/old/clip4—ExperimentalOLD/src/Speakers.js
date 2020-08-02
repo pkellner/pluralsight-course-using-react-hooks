@@ -1,17 +1,9 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  useCallback,
-  useMemo,
-} from "react";
+import React, {useCallback, useContext, useMemo, useState,} from "react";
 
-import { Header } from "../src/Header";
-import { Menu } from "../src/Menu";
-import SpeakerData from "./SpeakerData";
+import {Header} from "../src/Header";
+import {Menu} from "../src/Menu";
 import SpeakerDetail from "./SpeakerDetail";
-import { ConfigContext } from "./App";
+import {ConfigContext} from "./App";
 
 import useSpeakersManager from "./useSpeakersManager";
 

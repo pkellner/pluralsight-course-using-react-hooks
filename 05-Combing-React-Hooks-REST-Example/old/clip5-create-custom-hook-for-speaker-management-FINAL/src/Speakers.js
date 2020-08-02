@@ -1,19 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  useCallback,
-  useMemo,
-} from 'react';
-
-vimport { Header } from '../src/Header';
-import { Menu } from '../src/Menu';
+import React, {useCallback, useContext, useMemo, useState,} from 'react';
+import {Menu} from '../src/Menu';
 import SpeakerData from './SpeakerData';
 import SpeakerDetail from './SpeakerDetail';
-import { ConfigContext } from './App';
-import speakersReducer from './speakersReducer';
+import {ConfigContext} from './App';
 import useSpeakerDataManager from './useSpeakerDataManager';
+
+vimport { Header } from '../src/Header';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
