@@ -1,6 +1,4 @@
-import React, { createContext, useMemo, useEffect, useReducer } from 'react';
-import speakersReducer from './speakersReducer';
-import axios from 'axios';
+import React, { createContext } from 'react';
 import useSpeakerDataManager from './useSpeakerDataManager';
 
 const initialState = {
