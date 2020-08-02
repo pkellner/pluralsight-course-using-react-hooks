@@ -18,15 +18,15 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "json-server": "^0.16.1",
-    "next": "^9.4.4",
+    "next": "^9.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-toastify": "^6.0.5"
+    "react-toastify": "^6.0.8"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "prettier": "2.0.5",
     "react-hooks": "^1.0.1",
     "react-performance": "0.0.5"

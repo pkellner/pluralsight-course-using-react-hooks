@@ -1,0 +1,56 @@
+.large {
+    padding: 50px
+}
+.cardwidth {
+    width: 20rem;
+}
+.margintopbottom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.margintopbottom10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.margintopbottom5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.cardmin {
+    min-width: 300px;
+}
+
+.large-text {
+    font-size: x-large;
+}
+
+.checkbox-bigger {
+    zoom: 1.5;
+}
+
+
+.heartredbutton
+{
+    background-image:  url('/static/heart-red.png');
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    float: right;
+}
+
+.heartdarkbutton
+{
+    background-image:  url('/static/heart-dark.png');
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    float: right;
+}
+
