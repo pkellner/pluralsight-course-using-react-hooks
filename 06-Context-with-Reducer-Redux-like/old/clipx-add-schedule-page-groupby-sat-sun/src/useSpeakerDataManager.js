@@ -1,5 +1,5 @@
 import speakersReducer from './speakersReducer';
-import {useEffect, useReducer} from 'react';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 function useSpeakerDataManager() {
@@ -33,4 +33,3 @@ function useSpeakerDataManager() {
   return { isLoading, speakerList, toggleSpeakerFavorite };
 }
 export default useSpeakerDataManager;
- 

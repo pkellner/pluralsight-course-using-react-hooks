@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
-import {Header} from "../src/Header";
-import {Menu} from "../src/Menu";
+import { Header } from "../src/Header";
+import { Menu } from "../src/Menu";
 
 const Index = () => {
   const [email, setEmail] = useState("");

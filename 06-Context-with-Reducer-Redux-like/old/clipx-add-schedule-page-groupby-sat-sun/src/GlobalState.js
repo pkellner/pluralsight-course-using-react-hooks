@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import { createContext } from 'react';
 import useSpeakerDataManager from './useSpeakerDataManager';
 
 const initialState = {

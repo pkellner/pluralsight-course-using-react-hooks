@@ -1,10 +1,10 @@
-import {useCallback, useContext, useMemo, useState,} from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 
-import {Header} from '../src/Header';
-import {Menu} from '../src/Menu';
+import { Header } from '../src/Header';
+import { Menu } from '../src/Menu';
 import SpeakerDetail from './SpeakerDetail';
-import {ConfigContext} from './App';
-import {GlobalContext} from './GlobalState';
+import { ConfigContext } from './App';
+import { GlobalContext } from './GlobalState';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);

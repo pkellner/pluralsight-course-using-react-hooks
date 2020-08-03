@@ -1,6 +1,6 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
-import {ConfigContext} from "./App";
+import { ConfigContext } from "./App";
 
 const SpeakerDetail = React.memo(
   ({

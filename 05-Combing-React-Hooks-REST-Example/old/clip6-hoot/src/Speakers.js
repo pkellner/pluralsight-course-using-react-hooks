@@ -1,9 +1,9 @@
-import React, {useCallback, useContext, useMemo, useState,} from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
-import {Header} from '../src/Header';
-import {Menu} from '../src/Menu';
+import { Header } from '../src/Header';
+import { Menu } from '../src/Menu';
 import SpeakerDetail from './SpeakerDetail';
-import {ConfigContext} from './App';
+import { ConfigContext } from './App';
 import useSpeakerDataManager from './useSpeakerDataManager';
 
 const Speakers = ({}) => {

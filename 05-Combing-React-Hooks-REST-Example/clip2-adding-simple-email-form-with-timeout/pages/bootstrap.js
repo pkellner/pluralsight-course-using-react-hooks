@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 
 class bootstrap extends Component {
   render() {

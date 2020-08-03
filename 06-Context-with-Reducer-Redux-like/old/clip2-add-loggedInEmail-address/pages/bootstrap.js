@@ -1,4 +1,4 @@
-import {Component} from "react";
+import { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
 

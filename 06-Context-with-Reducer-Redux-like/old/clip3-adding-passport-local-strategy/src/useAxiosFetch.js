@@ -1,4 +1,4 @@
-import {useEffect, useReducer, useState} from "react";
+import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
 const dataFetchReducer = (state, action) => {

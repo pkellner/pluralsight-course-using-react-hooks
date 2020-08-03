@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const InputElementHook = () => {
   const [inputText, setInputText] = useState('');

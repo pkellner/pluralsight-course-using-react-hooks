@@ -1,6 +1,6 @@
 import speakersReducer from './speakersReducer';
 import SpeakerData from './SpeakerData';
-import {useEffect, useReducer} from 'react';
+import { useEffect, useReducer } from 'react';
 
 function useSpeakerDataManager() {
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {

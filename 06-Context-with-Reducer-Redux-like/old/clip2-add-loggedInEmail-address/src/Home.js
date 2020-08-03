@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
-import {Header} from "../src/Header";
-import {Menu} from "../src/Menu";
+import { Header } from "../src/Header";
+import { Menu } from "../src/Menu";
 
 function index() {
   return (

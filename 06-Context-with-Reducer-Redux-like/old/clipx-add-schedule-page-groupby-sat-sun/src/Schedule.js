@@ -1,18 +1,14 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 
-import {Header} from './Header';
-import {Menu} from './Menu';
+import { Header } from './Header';
+import { Menu } from './Menu';
 
-import {GlobalContext} from './GlobalState';
+import { GlobalContext } from './GlobalState';
 
 const Schedule = ({}) => {
-  
-  
   //const { isLoading, speakerList } = useSpeakerDataManager();
-  
-  const { isLoading, speakerList } = useContext(
-    GlobalContext,
-  );
+
+  const { isLoading, speakerList } = useContext(GlobalContext);
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -31,9 +27,9 @@ const Schedule = ({}) => {
                   </div>
                   <ul className="mt-3 mr-4">
                     {speakerList
-                      .filter(function(rec) {
-                        if (rec.sat === true && day === "sat") return true;
-                        if (rec.sun === true && day === "sun") return true;
+                      .filter(function (rec) {
+                        if (rec.sat === true && day === 'sat') return true;
+                        if (rec.sun === true && day === 'sun') return true;
                       })
                       .map((speakerRec) => {
                         return (
