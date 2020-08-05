@@ -6,11 +6,12 @@ import useSpeakerDataManager from './useSpeakerDataManager';
 const SpeakerDetail = React.memo(({ speakerRec, onHeartFavoriteHandler }) => {
   const { id, firstName, lastName, bio, favorite } = speakerRec;
   console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
-  
-  const { incrementFavoriteClickCount, favoriteClickCount } = useContext(GlobalContext);
+
+  const { incrementFavoriteClickCount, favoriteClickCount } = useContext(
+    GlobalContext,
+  );
   //const { incrementFavoriteClickCount, favoriteClickCount } = useSpeakerDataManager();
-  
-  
+
   return (
     <div className="card col-4 cardmin">
       <ImageToggleOnScroll

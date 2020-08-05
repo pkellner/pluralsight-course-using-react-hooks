@@ -18,7 +18,7 @@
       "lastName": "Chuvyrov",
       "sat": true,
       "sun": false,
-      "favorite": true,
+      "favorite": false,
       "bio": "Eugene Chuvyrov is  a Senior Cloud Architect at Microsoft. He works directly with both startups and enterprises to enable their solutions in Microsoft cloud, and to make Azure better as a result of this work with partners."
     },
     {
@@ -87,7 +87,7 @@
       "lastName": "Souders",
       "sat": true,
       "sun": false,
-      "favorite": false,
+      "favorite": true,
       "bio": "Steve works at SpeedCurve on the interplay between performance and design. He previously served as Google's Head Performance Engineer, Chief Performance Yahoo!, and Chief Performance Officer at Fastly."
     }
   ]

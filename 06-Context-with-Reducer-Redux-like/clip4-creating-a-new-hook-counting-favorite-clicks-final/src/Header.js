@@ -7,7 +7,7 @@ export const Header = () => {
   const signupCallback = (email) => {
     return console.log(`sign up called with email ${email}`);
   };
-  
+
   const { favoriteClickCount } = useContext(GlobalContext);
 
   return (
