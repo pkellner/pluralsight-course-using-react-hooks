@@ -18,7 +18,7 @@
       "lastName": "Chuvyrov",
       "sat": true,
       "sun": false,
-      "favorite": true,
+      "favorite": false,
       "bio": "Eugene Chuvyrov is  a Senior Cloud Architect at Microsoft. He works directly with both startups and enterprises to enable their solutions in Microsoft cloud, and to make Azure better as a result of this work with partners."
     },
     {
@@ -36,7 +36,7 @@
       "lastName": "Everitt",
       "sat": true,
       "sun": true,
-      "favorite": true,
+      "favorite": false,
       "bio": "Paul is the PyCharm and WebStorm Developer Advocate at JetBrains. Before that, Paul was a partner at Agendaless Consulting and co-founder of Zope Corporation, taking the first open source application server through $14M of funding."
     },
     {
@@ -72,7 +72,7 @@
       "lastName": "Nilson",
       "sat": false,
       "sun": true,
-      "favorite": true,
+      "favorite": false,
       "bio": "Team Lead of the Chromecast Technical Solutions Engineer team, a Java Champion and three time JavaOne Rock Star Presenter. Kevin has spoken at conferences such as JavaOne, Devoxx, JAX, O'Reilly Fluent, Silicon Valley Code Camp, JAX and HTML5DevConf."
     },
     {

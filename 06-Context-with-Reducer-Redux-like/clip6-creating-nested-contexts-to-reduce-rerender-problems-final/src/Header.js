@@ -8,6 +8,7 @@ export const Header = () => {
   };
   
   const { favoriteClickCount } = useContext(GlobalContext);
+  
   return (
     <div className="jumbotron jumbotronheight">
       <div className="row">
