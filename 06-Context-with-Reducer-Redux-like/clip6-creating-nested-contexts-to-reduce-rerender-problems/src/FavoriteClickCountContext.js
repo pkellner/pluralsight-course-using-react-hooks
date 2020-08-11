@@ -10,10 +10,10 @@ export const FavoriteClickCountProvider = ({ children }) => {
   // const provider = {
   //   incrementFavoriteClickCount,
   // };
-  
+
   const provider = useMemo(() => {
     return { incrementFavoriteClickCount };
-  },[]);
+  }, []);
 
   return (
     <FavoriteClickCountContext.Provider value={provider}>

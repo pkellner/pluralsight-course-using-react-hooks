@@ -3,11 +3,14 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 function useSpeakerDataManager() {
-  const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(speakersReducer, {
-    isLoading: true,
-    speakerList: [],
-    favoriteClickCount: 10,
-  });
+  const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(
+    speakersReducer,
+    {
+      isLoading: true,
+      speakerList: [],
+      favoriteClickCount: 10,
+    },
+  );
 
   function toggleSpeakerFavorite(speakerRec) {
     const updateData = async function () {

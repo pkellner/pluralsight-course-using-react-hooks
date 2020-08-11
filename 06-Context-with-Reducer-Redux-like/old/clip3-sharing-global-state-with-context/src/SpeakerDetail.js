@@ -2,7 +2,6 @@ import ImageToggleOnScroll from './ImageToggleOnScroll';
 
 import { GlobalContext } from './GlobalState';
 import { useContext } from 'react';
-import useSpeakerDataManager from './useSpeakerDataManager';
 
 const SpeakerDetail = React.memo(({ speakerRec, onHeartFavoriteHandler }) => {
   const { id, firstName, lastName, bio, favorite } = speakerRec;

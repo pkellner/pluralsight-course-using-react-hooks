@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import SignMeUp from './SignMeUp';
 import { GlobalContext } from './GlobalState';
 
@@ -6,7 +6,7 @@ export const Header = () => {
   const signupCallback = (email) => {
     return console.log(`sign up called with email ${email}`);
   };
-  
+
   const { favoriteClickCount } = useContext(GlobalContext);
   return (
     <div className="jumbotron jumbotronheight">
