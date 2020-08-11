@@ -10,6 +10,8 @@ export const GlobalProvider = ({ children }) => {
     favoriteClickCount,
     toggleSpeakerFavorite,
     incrementFavoriteClickCount,
+    hasErrored,
+    error,
   } = useSpeakerDataManager();
 
   const provider = {
@@ -18,6 +20,8 @@ export const GlobalProvider = ({ children }) => {
     favoriteClickCount,
     toggleSpeakerFavorite,
     incrementFavoriteClickCount,
+    hasErrored,
+    error,
   };
 
   return (

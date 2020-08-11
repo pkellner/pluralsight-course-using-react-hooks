@@ -3,12 +3,15 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 function useSpeakerDataManager() {
-  const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(
+  const [{ isLoading, speakerList, favoriteClickCount,
+            hasErrored, error}, dispatch] = useReducer(
     speakersReducer,
     {
       isLoading: true,
       speakerList: [],
       favoriteClickCount: 0,
+      hasErrored: false,
+      error: null,
     },
   );
 
@@ -28,8 +31,12 @@ function useSpeakerDataManager() {
 
   useEffect(() => {
     const fetchData = async function () {
-      let result = await axios.get('http://localhost:4000/speakers');
-      dispatch({ type: 'setSpeakerList', data: result.data });
+      try {
+        let result = await axios.get('http://localhost:4000/speakers');
+        dispatch({ type: 'setSpeakerList', data: result.data });
+      } catch (e) {
+        dispatch({type: 'errored',error: e});
+      }
     };
     fetchData();
 
@@ -44,6 +51,8 @@ function useSpeakerDataManager() {
     favoriteClickCount,
     incrementFavoriteClickCount,
     toggleSpeakerFavorite,
+    hasErrored,
+    error,
   };
 }
 export default useSpeakerDataManager;
