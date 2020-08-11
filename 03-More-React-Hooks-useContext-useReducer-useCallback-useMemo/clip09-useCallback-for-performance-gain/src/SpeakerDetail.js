@@ -1,4 +1,4 @@
-import ImageToggleOnMouseOver from './ImageToggleOnScroll';
+import ImageToggleOnMouseOver from "./ImageToggleOnScroll";
 
 const SpeakerDetail = React.memo(
   ({ id, firstName, lastName, favorite, bio, onHeartFavoriteHandler }) => {
@@ -16,7 +16,7 @@ const SpeakerDetail = React.memo(
           <h4 className="card-title">
             <button
               data-sessionid={id}
-              className={favorite ? 'heartredbutton' : 'heartdarkbutton'}
+              className={favorite ? "heartredbutton" : "heartdarkbutton"}
               onClick={(e) => {
                 onHeartFavoriteHandler(e, !favorite);
               }}
@@ -30,7 +30,7 @@ const SpeakerDetail = React.memo(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default SpeakerDetail;

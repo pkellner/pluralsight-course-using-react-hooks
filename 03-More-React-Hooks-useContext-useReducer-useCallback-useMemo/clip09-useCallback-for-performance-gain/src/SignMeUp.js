@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { ConfigContext } from './App';
+import React, { useContext, useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { ConfigContext } from "./App";
 
 const SignMeUp = ({ signupCallback }) => {
   useEffect(() => {
@@ -27,17 +27,17 @@ const SignMeUp = ({ signupCallback }) => {
     new Promise(function (resolve) {
       setTimeout(function () {
         setSendProcessing(false);
-        setEmail('');
+        setEmail("");
         resolve();
       }, 1000);
     }).then(() => {
       notify();
       signupCallback(email);
-      setEmail('');
+      setEmail("");
     });
   }
 
-  const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
+  const buttonText = sendProcessing ? "processing..." : "Get Updates";
 
   //console.log("src/SignMeUp called");
 

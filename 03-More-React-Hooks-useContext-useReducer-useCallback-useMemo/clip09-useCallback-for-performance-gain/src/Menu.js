@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
+import React, { Component } from "react";
+import Link from "next/link";
 
 export class Menu extends Component {
   render() {

@@ -8,13 +8,13 @@ const speakersReducer = (state, action) => {
     });
   }
   switch (action.type) {
-    case 'setSpeakerList': {
+    case "setSpeakerList": {
       return action.data;
     }
-    case 'favorite': {
+    case "favorite": {
       return updateFavorite(true);
     }
-    case 'unfavorite': {
+    case "unfavorite": {
       return updateFavorite(false);
     }
     default:
