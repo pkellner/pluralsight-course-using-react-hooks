@@ -8,7 +8,7 @@ by one titled **Global App State With useContext and useReducer Like Redux**.
 
 If you want to get to the source code from the original course release in May of 2019, you can find it in the branch named [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-First-Release-May-2019).
 
-To read more about the update (click here)[August2020-Update-Notes.md]
+To read more about the update [click here](August2020-Update-Notes.md)
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
