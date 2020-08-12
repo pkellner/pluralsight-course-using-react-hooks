@@ -32,6 +32,7 @@ and pasting. Same with the reducer code. This is much easier to follow and code 
 This module is 100% new and replaces the previous module on authentication.  **Global App State With useContext and useReducer Like Redux**
 
 
+# [(Back) Primary Rep Page](README.md)
 
 
 

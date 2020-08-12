@@ -1,20 +1,20 @@
 # pluralsight-course-using-react-hooks (COURSE UPDATED AUG 12, 2020)
-The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in August of 2020 in the master branch.
+The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in August of 2020.
 
 ![Course Update Notice August 2020](Announcement-Update-August2020a.png)
 
-Our course has had a major update. Every module has changes, some more significant then others. The last module that was on authentication has been replaced
+Our course has had a major update. Every module has changes, 
+some more significant then others. The last module that was on 
+authentication has been replaced
 by one titled **Global App State With useContext and useReducer Like Redux**.
 
-If you want to get to the source code from the original course release in May of 2019, you can find it in the branch named [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-First-Release-May-2019).
+If you want to get to the source code from the original course release 
+in May of 2019, you can find it in the branch named
+ [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-First-Release-May-2019).
 
 To read more about the update [click here](August2020-Update-Notes.md)
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
-
-
-
-This GitHub repo includes the final code for all the modules in the course 
 
 
 Before you start, you should install node on either your Windows or Mac computer (those are the two environments that are tested). Below, in
