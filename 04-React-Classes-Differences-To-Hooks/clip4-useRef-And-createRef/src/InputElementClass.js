@@ -1,12 +1,10 @@
-class InputElementClass extends
-  React.Component {
-
+class InputElementClass extends React.Component {
   state = {
-    inputText: ""
+    inputText: '',
   };
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      inputText: event.target.value
+      inputText: event.target.value,
     });
   };
   render() {

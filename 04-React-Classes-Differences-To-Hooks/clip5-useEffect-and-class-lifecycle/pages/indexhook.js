@@ -1,4 +1,4 @@
-import InputElementHook from "../src/InputElementHook";
+import InputElementHook from '../src/InputElementHook';
 
 const indexHook = () => {
   return <InputElementHook />;

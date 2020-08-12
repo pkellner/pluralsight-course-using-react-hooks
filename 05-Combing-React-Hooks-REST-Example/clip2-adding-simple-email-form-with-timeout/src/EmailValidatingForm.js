@@ -1,28 +1,25 @@
-import React, { useState, useReducer } from "react";
-import useInterval from "./useInterval";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
+import { useReducer, useState } from 'react';
+import useInterval from './useInterval';
 
 function EmailValidatingForm() {
-  const validateEmail = email => {
+  const validateEmail = (email) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   };
   const [emailValid, setEmailValid] = useState(false);
-  const reducer = (state, action) => {
-    state = action;
-    setEmailValid(validateEmail(state));
+  const emailReducer = (state, action) => {
+    const isValidEmail = validateEmail(action);
+    setEmailValid(isValidEmail);
     return action;
   };
-  const [email, setEmail] = useReducer(reducer, "");
-  const secondsFormValidFor = 30;
-  const [count, setCount] = useState(secondsFormValidFor);
-  useInterval(
-    () => {
-      setCount(count - 1);
-    },
-    count > 0 ? 1000 : null
-  );
+
+  const [email, setEmail] = useReducer(emailReducer, '');
+  const maxSeconds = 30;
+  const [count, setCount] = useState(maxSeconds);
+
+  useInterval(() => {
+    setCount(count - 1);
+  }, 1000);
 
   return (
     <div className="container">
@@ -30,11 +27,11 @@ function EmailValidatingForm() {
       <div>
         <div className="content">
           <input
-            disabled={count <= 0}
-            value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmail(e.target.value);
             }}
+            disabled={count <= 0}
+            value={email}
             placeholder="Enter Email"
             type="email"
             name="email"
@@ -43,7 +40,10 @@ function EmailValidatingForm() {
           &nbsp;&nbsp;&nbsp;
           <button
             disabled={!emailValid || count <= 0}
-            onClick={() => alert(`button clicked with email ${email}`)}
+            onClick={() => {
+              setCount(0);
+              alert(`button clicked with email ${email}`);
+            }}
             className="btn-lg"
             type="submit"
           >
@@ -52,7 +52,7 @@ function EmailValidatingForm() {
           <div>
             {count > 0
               ? `You Have ${count} Seconds To Enter Your Email`
-              : "Times Up"}
+              : 'Email Entered or Time Expired'}
           </div>
         </div>
       </div>

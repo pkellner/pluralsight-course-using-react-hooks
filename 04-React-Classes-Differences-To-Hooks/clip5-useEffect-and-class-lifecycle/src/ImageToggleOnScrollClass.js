@@ -4,47 +4,56 @@ class ImageToggleOnScrollClass extends React.Component {
     this.imgRef = React.createRef();
     this.state = {
       inView: false,
-      isLoading: true
+      isLoading: true,
     };
   }
 
   isInView = () => {
-    if (this.imgRef.current) {
-      const rect = this.imgRef.current.getBoundingClientRect();
-      return rect.top >= 0 && rect.bottom <= window.innerHeight;
-    }
-    return false;
+    const rect = this.imgRef.current.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
   };
 
   scrollHandler = () => {
     this.setState({
-      inView: this.isInView()
+      inView: this.isInView(),
     });
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.isLoading !== prevState.isLoading) {
-      this.setState({
-        inView: this.isInView()
-      });
-    }
+    // nothing to do hear since changes
+    //   happen on scrolling and
+    //  we already have a listener for that.
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", scrollHandler);
+    window.removeEventListener('scroll', this.scrollHandler);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.scrollHandler);
+    window.addEventListener('scroll', this.scrollHandler);
     this.setState({
       inView: this.isInView(),
-      isLoading: false
+      isLoading: false,
     });
   }
 
   render() {
     if (this.state.isLoading === true) {
-      return null;
+      return (
+        <img
+          src={
+            this.state.isLoading
+              ? 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==' // 1x1gif
+              : inView
+              ? secondaryImg
+              : primaryImg
+          }
+          alt=""
+          ref={this.imgRef}
+          width="200"
+          height="200"
+        />
+      );
     } else {
       return (
         <div>

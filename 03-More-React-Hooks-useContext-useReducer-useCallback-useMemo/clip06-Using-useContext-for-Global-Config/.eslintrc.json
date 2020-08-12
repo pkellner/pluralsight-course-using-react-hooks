@@ -1,17 +1,15 @@
 {
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
-      "destructuring": true,
-      "spread": true,
-      "experimentalObjectRestSpread": true
+      "jsx": true
     }
   },
   "plugins": ["react-hooks"],
   "rules": {
     //additional rules here
+    "semi": [2, "always"],
     "react-hooks/rules-of-hooks": "error"
   }
 }

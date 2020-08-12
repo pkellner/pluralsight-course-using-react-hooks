@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const InputElementHook = () => {
-
-  const [inputText, setInputText] =
-    useState("");
+  const [inputText, setInputText] = useState('');
   return (
     <div>
       <input
-        onChange={e => {
+        onChange={(e) => {
           setInputText(e.target.value);
         }}
       />

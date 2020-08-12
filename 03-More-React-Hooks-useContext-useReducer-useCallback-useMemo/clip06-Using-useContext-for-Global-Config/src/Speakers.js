@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useContext, useEffect, useState } from 'react';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../static/site.css";
-import { Header } from "../src/Header";
-import { Menu } from "../src/Menu";
-import SpeakerData from "./SpeakerData";
-import SpeakerDetail from "./SpeakerDetail";
-import { ConfigContext } from "./App";
+import { Header } from '../src/Header';
+import { Menu } from '../src/Menu';
+import SpeakerData from './SpeakerData';
+import SpeakerDetail from './SpeakerDetail';
+import { ConfigContext } from './App';
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
@@ -19,8 +17,8 @@ const Speakers = ({}) => {
 
   useEffect(() => {
     setIsLoading(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         resolve();
       }, 1000);
     }).then(() => {
@@ -31,7 +29,7 @@ const Speakers = ({}) => {
       setSpeakerList(speakerListServerFilter);
     });
     return () => {
-      console.log("cleanup");
+      console.log('cleanup');
     };
   }, []); // [speakingSunday, speakingSaturday]);
 
@@ -43,9 +41,10 @@ const Speakers = ({}) => {
     ? []
     : speakerList
         .filter(
-          ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
+          ({ sat, sun }) =>
+            (speakingSaturday && sat) || (speakingSunday && sun),
         )
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           if (a.firstName < b.firstName) {
             return -1;
           }
@@ -61,14 +60,15 @@ const Speakers = ({}) => {
 
   const heartFavoriteHandler = (e, favoriteValue) => {
     e.preventDefault();
-    const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-    setSpeakerList(speakerList.map(item => {
-      if (item.id === sessionId) {
-        item.favorite = favoriteValue;
+    const sessionId = parseInt(e.target.attributes['data-sessionid'].value);
+    setSpeakerList(
+      speakerList.map((item) => {
+        if (item.id === sessionId) {
+          return { ...item, favorite: favoriteValue };
+        }
         return item;
-      }
-      return item;
-    }));
+      }),
+    );
     //console.log("changing session favorte to " + favoriteValue);
   };
 
@@ -81,31 +81,31 @@ const Speakers = ({}) => {
       <div className="container">
         <div className="btn-toolbar  margintopbottom5 checkbox-bigger">
           {context.showSpeakerSpeakingDays === false ? null : (
-          <div className="hide">
-            <div className="form-check-inline">
-              <label className="form-check-label">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  onChange={handleChangeSaturday}
-                  checked={speakingSaturday}
-                />
-                Saturday Speakers
-              </label>
+            <div className="hide">
+              <div className="form-check-inline">
+                <label className="form-check-label">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    onChange={handleChangeSaturday}
+                    checked={speakingSaturday}
+                  />
+                  Saturday Speakers
+                </label>
+              </div>
+              <div className="form-check-inline">
+                <label className="form-check-label">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    onChange={handleChangeSunday}
+                    checked={speakingSunday}
+                  />
+                  Sunday Speakers
+                </label>
+              </div>
             </div>
-            <div className="form-check-inline">
-              <label className="form-check-label">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  onChange={handleChangeSunday}
-                  checked={speakingSunday}
-                />
-                Sunday Speakers
-              </label>
-            </div>
-          </div>
-              )}
+          )}
         </div>
         <div className="row">
           <div className="card-deck">
@@ -122,7 +122,7 @@ const Speakers = ({}) => {
                     bio={bio}
                   />
                 );
-              }
+              },
             )}
           </div>
         </div>

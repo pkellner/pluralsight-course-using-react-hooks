@@ -1,7 +1,18 @@
-# pluralsight-course-using-react-hooks
-The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in May of 2019 in the master branch.
+# pluralsight-course-using-react-hooks (COURSE UPDATED AUG 12, 2020)
+The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in August of 2020 in the master branch.
+
+![Course Update Notice August 2020](Announcement-Update-August2020a.png)
+
+Our course has had a major update. Every module has changes, some more significant then others. The last module that was on authentication has been replaced
+by one titled **Global App State With useContext and useReducer Like Redux**.
+
+If you want to get to the source code from the original course release in May of 2019, you can find it in the branch named [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-First-Release-May-2019).
+
+To read more about the update [click here](August2020-Update-Notes.md)
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
+
+
 
 This GitHub repo includes the final code for all the modules in the course 
 
@@ -22,7 +33,7 @@ When you are finished with this course, you’ll confidently be able to combine 
 
 
 ## Getting Started
-1. **Install [Node 10.15.3 with NPM 6.9](https://nodejs.org)**. 
+1. **Install [Node 12.16.3 with NPM 6.14.4](https://nodejs.org)**. 
 2. **Clone this repository.** - `git clone https://github.com/pkellner/pluralsight-course-using-react-hooks` or [download the zip](https://github.com/pkellner/pluralsight-course-using-react-hooks/archive/master.zip)
 3. **Set your default directory to which module you want (example: cd 02-Basic-React-Hooks-useState-useRef-useEffect - `cd m6-add-rest-data-to-server-side-rendering`
 4. **Install Node Packages with Dependencies.** - `npm install`

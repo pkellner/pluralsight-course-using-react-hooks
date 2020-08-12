@@ -1,4 +1,4 @@
-import InputElementClass from "../src/InputElementClass";
+import InputElementClass from '../src/InputElementClass';
 
 const indexclass = () => {
   return <InputElementClass />;

@@ -1,8 +1,8 @@
-import React from "react";
-import SignMeUp from "./SignMeUp";
+import React from 'react';
+import SignMeUp from './SignMeUp';
 
 export const Header = () => {
-  const signupCallback = email => {
+  const signupCallback = (email) => {
     return console.log(`sign up called with email ${email}`);
   };
 

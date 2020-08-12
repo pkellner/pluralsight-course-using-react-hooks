@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react';
 
 const ImageToggleOnMouseOverHook = ({ primaryImg, secondaryImg }) => {
   const imageRef = useRef(null);
 
   return (
     <div>
-      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i><br/>
+      <i>ImageToggleOnMouseOver - Functional Component React Hooks</i>
+      <br />
       <img
         onMouseOver={() => {
           imageRef.current.src = secondaryImg;

@@ -1,0 +1,32 @@
+{
+  "name": "React-App-Learning-React-Hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "json-server": "json-server --watch db.json --port 4000 --delay 500"
+  },
+  "keywords": [],
+  "author": "Peter Kellner",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.2",
+    "next": "^9.5.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-toastify": "^6.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "json-server": "^0.16.1",
+    "prettier": "2.0.5",
+    "react-hooks": "^1.0.1",
+    "react-performance": "0.0.5"
+  }
+}

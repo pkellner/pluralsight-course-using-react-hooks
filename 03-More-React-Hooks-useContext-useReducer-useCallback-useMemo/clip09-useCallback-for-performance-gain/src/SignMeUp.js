@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useContext, useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { ConfigContext } from "./App";
 
 const SignMeUp = ({ signupCallback }) => {
@@ -25,8 +24,8 @@ const SignMeUp = ({ signupCallback }) => {
 
   function sendEmailToBackend() {
     setSendProcessing(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         setSendProcessing(false);
         setEmail("");
         resolve();
@@ -49,7 +48,7 @@ const SignMeUp = ({ signupCallback }) => {
         <div className="content">
           <input
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmailValid(validateEmail(e.target.value));
               return setEmail(e.target.value);
             }}
