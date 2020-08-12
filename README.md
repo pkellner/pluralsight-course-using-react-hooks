@@ -1,5 +1,5 @@
-# pluralsight-course-using-react-hooks
-The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in May of 2019 in the master branch.
+# pluralsight-course-using-react-hooks (COURSE UPDATED AUG 12, 2020)
+The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in August of 2020 in the master branch.
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
