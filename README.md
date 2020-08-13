@@ -14,6 +14,18 @@ in May of 2019, you can find it in the branch named
 
 To read more about the update [click here](August2020-Update-Notes.md)
 
+One of the most powerful features that become available to you after learning 
+how to use React Hooks, specifically the useContext and useReducer hooks, is that you
+can combine the two to make a powerful "redux-like" solution for gobally sharing 
+data between different parts of your application hierarchy.
+
+I've literally added 30 minutes of 100% new content to the course that covers how to do this. 
+I'd suggest you re-watch [Module 5](https://app.pluralsight.com/player?course=using-react-hooks&author=peter-kellner&name=5b710e27-32b2-4f8d-930b-b8ccd29a3ecc&clip=0&mode=live), building custom hooks first if you've not, then module 6, 
+[Using useContext and useReducer to Make a Redux-like Global App State](https://app.pluralsight.com/player?course=using-react-hooks&author=peter-kellner&name=95df19ab-9a51-4c3c-bb40-38358c179ee1&clip=0&mode=live)
+
+![Consolidating State Management With Context](m6-clip01-tree-to-global.gif)
+![Consolidating State Management With Context](m6-clip02-single-component-to-context.gif)
+
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
 
