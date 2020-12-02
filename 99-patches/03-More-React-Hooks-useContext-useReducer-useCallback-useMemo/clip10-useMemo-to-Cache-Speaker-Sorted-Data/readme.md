@@ -2,6 +2,15 @@
 
 The problem is that the only thing toggles the image from changing from black and white to color is the scroll event.  What we want is when the user clicks the checkbox to show sat and/or sun speakers, the speakers in the view change, and the image control does not know that.
 
+Here's the video:
+
+![YouTube Video Showing Fix](videothumbnail.png)<a href="https://www.youtube.com/watch?v=9FbP3N0E4Vw" target="_blank">https://www.youtube.com/watch?v=9FbP3N0E4Vw</a>
+
+## Details to Skip Video
+
+GitHub Solution:  
+https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/master/99-patches/03-More-React-Hooks-useContext-useReducer-useCallback-useMemo
+
 Somehow, we need the `ImageToggleOnScroll` component to be aware of the change and re-calculate if it is in view.
 
 My thinking is that we need to have some state change in this component that will trigger a re-render when the button is clicked.
@@ -18,6 +27,4 @@ OK,I've done that, made a rough video showing and explaining this, and added to 
 Have a better idea?  Post to the discussions forum here with your idea.
 
 http://disq.us/p/2dkdtqe
-
-And, here's the video:
 
