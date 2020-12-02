@@ -4,7 +4,7 @@ The problem is that the only thing toggles the image from changing from black an
 
 Here's the video:
 
-![YouTube Video Showing Fix](videothumbnail.png)<a href="https://www.youtube.com/watch?v=9FbP3N0E4Vw" target="_blank">https://www.youtube.com/watch?v=9FbP3N0E4Vw</a>
+![YouTube Video Showing Fix](videothumbnail.png)<a href="https://youtu.be/9FbP3N0E4Vw" target="_blank">https://youtu.be/9FbP3N0E4Vw</a>
 
 ## Details to Skip Video
 
