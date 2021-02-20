@@ -23,7 +23,7 @@ function useSpeakerDataManager() {
 
       const speakerRecUpdated = {...speakerRec,favorite: !speakerRec.favorite};
 
-      axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, speakerRecUpdated);
+      await axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, speakerRecUpdated);
 
       dispatch({type: 'update', speakerRec: speakerRecUpdated});
 
