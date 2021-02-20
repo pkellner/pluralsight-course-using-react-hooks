@@ -7,6 +7,13 @@ const speakersReducer = (state, action) => {
       return item;
     });
   }
+
+  function updateRecord(record) {
+    return state.speakerList.map((rec) => {
+      return rec.id === record.id ? record : rec;
+    });
+  }
+
   switch (action.type) {
     case 'setSpeakerList': {
       return {
@@ -16,6 +23,10 @@ const speakersReducer = (state, action) => {
         hasErrored: false,
       };
     }
+    case 'update': {
+      return { ...state, speakerList: updateRecord(action.speakerRec) };
+    }
+
     case 'favorite': {
       return { ...state, speakerList: updateFavorite(true) };
     }
