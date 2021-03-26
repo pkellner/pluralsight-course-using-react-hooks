@@ -11,6 +11,7 @@ const Speakers = ({}) => {
 
   const [speakerList, setSpeakerList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [forceUpdateIdentifier,setForceUpdateIdentifier] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,6 +33,7 @@ const Speakers = ({}) => {
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
+    setForceUpdateIdentifier(Date.now());
   };
 
   const speakerListFiltered = isLoading
@@ -53,6 +55,7 @@ const Speakers = ({}) => {
 
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
+    setForceUpdateIdentifier(Date.now());
   };
 
   const heartFavoriteHandler = (e, favoriteValue) => {
@@ -115,6 +118,7 @@ const Speakers = ({}) => {
                     firstName={firstName}
                     lastName={lastName}
                     bio={bio}
+                    forceUpdateIdentifier={forceUpdateIdentifier}
                   />
                 );
               },

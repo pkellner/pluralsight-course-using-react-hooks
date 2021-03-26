@@ -7,6 +7,7 @@ const SpeakerDetail = ({
   favorite,
   bio,
   onHeartFavoriteHandler,
+  forceUpdateIdentifier,
 }) => {
   //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
   return (
@@ -16,6 +17,7 @@ const SpeakerDetail = ({
         primaryImg={`/static/speakers/bw/Speaker-${id}.jpg`}
         secondaryImg={`/static/speakers/Speaker-${id}.jpg`}
         alt="{firstName} {lastName}"
+        forceUpdateIdentifier={forceUpdateIdentifier}
       />
       <div className="card-body">
         <h4 className="card-title">
