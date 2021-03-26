@@ -51,7 +51,7 @@
       "lastName": "Mantle",
       "sat": true,
       "sun": true,
-      "favorite": false,
+      "favorite": true,
       "bio": "Mickey has been developing software systems and products for over 40 years, as a systems programmer, Tech Lead, Manager, VP Engineering, CTO, COO, and now CEO/CTO of his own company."
     },
     {
@@ -72,7 +72,7 @@
       "lastName": "Nilson",
       "sat": false,
       "sun": true,
-      "favorite": true,
+      "favorite": false,
       "bio": "Team Lead of the Chromecast Technical Solutions Engineer team, a Java Champion and three time JavaOne Rock Star Presenter. Kevin has spoken at conferences such as JavaOne, Devoxx, JAX, O'Reilly Fluent, Silicon Valley Code Camp, JAX and HTML5DevConf."
     },
     {

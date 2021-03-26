@@ -8,32 +8,37 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function userHandler(req, res) {
 
-  const id = req?.query?.id;
+  const id = parseInt(req?.query?.id);
   const method = req?.method;
-  const putPostOrDeleteRecord = req?.body;
+  const recordFromBody = req?.body;
   const jsonFile = path.resolve("./", "db.json");
 
+  async function getSpeakersData() {
+    const readFileData = await readFile(jsonFile);
+    return JSON.parse(readFileData).speakers;
+  }
 
   switch (method) {
     case "GET":
+      const speakers = await getSpeakersData();
+      const speaker = speakers.find(rec => rec.id === id);
+      if (speaker) {
+        res.status(200).json(speaker);
+      } else {
+        res.status(404).send("speaker not found");
+      }
+      //speaker ? res.status(200).json(speaker) : res.status(404);
+
       // Get data from your database
       //res.status(200).json({ id, name: `User ${id}` });
       break;
     case "PUT":
       try {
-        await delay(500);
-        const readFileData = await readFile(jsonFile);
-        const speakers = JSON.parse(readFileData).speakers;
+        await delay(1000);
+        const speakers = await getSpeakersData();
         const newSpeakersArray = speakers.map(function (rec) {
-          console.log(`rec.id:${rec.id}   id:${id}`);
-          if (rec.id == id) {
-            console.log("new rec",putPostOrDeleteRecord);
-            return putPostOrDeleteRecord;
-          } else {
-            return rec;
-          }
+          return rec.id === id ? recordFromBody : rec;
         });
-        //console.log("newSpeakersArray",newSpeakersArray);
         writeFile(
           jsonFile,
           JSON.stringify(
@@ -44,7 +49,7 @@ export default async function userHandler(req, res) {
             2
           )
         );
-        res.status(200).json(putPostOrDeleteRecord);
+        res.status(200).json(recordFromBody);
       } catch (e) {
         console.log("/api/speakers PUT error:", e);
       }

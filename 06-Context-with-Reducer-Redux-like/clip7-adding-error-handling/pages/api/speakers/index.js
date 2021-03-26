@@ -6,9 +6,7 @@ const readFile = promisify(fs.readFile);
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function handler(req, res) {
-  //console.log(`api/speakers GET called`);
   const jsonFile = path.resolve('./', 'db.json');
-
   try {
     const readFileData = await readFile(jsonFile);
     await delay(1000);
