@@ -20,18 +20,21 @@ function useSpeakerDataManager() {
 
   function toggleSpeakerFavorite(speakerRec) {
     const updateData = async function () {
-      axios.put(`http://localhost:4000/speakers/${speakerRec.id}`, speakerRec);
+      debugger;
+      axios.put(`/api/speakers/${speakerRec.id}`, speakerRec);
       speakerRec.favorite === true
         ? dispatch({ type: 'unfavorite', id: speakerRec.id })
         : dispatch({ type: 'favorite', id: speakerRec.id });
+      debugger;
     };
+
     updateData();
   }
 
   useEffect(() => {
     const fetchData = async function () {
       try {
-        let result = await axios.get('http://localhost:4000/speakers');
+        let result = await axios.get('/api/speakers');
         dispatch({ type: 'setSpeakerList', data: result.data });
       } catch (e) {
         dispatch({ type: 'errored', error: e });
