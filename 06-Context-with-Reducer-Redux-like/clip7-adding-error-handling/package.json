@@ -1,16 +1,15 @@
 {
-  "name": "React-App-Learning-React-Hooks",
+  "name": "pluralsight-using-react-hooks",
   "version": "1.0.0",
-  "description": "",
+  "description": "course files",
+  "author": "Peter Kellner",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "json-server": "json-server --watch db.json --port 4000 --delay 500"
+    "start": "next start"
   },
   "keywords": [],
-  "author": "Peter Kellner",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
@@ -23,7 +22,6 @@
     "eslint": "^7.22.0",
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "json-server": "^0.16.3",
     "prettier": "2.2.1"
   }
 }

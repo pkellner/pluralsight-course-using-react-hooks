@@ -9,11 +9,10 @@ All that is added is the file ``.eslintrc.json` and dev dependencies in `package
 
 ```
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "prettier": "2.0.5",
-    "react-hooks": "^1.0.1"
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1"
   }
 ```
 
