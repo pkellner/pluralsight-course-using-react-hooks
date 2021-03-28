@@ -50,6 +50,7 @@ const Speakers = ({}) => {
   const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes['data-sessionid'].value);
+    // this is dispatching what the new value will be, see speakerDetail for it passing !favorite in.
     dispatch({
       type: favoriteValue === true ? 'favorite' : 'unfavorite',
       id: sessionId,

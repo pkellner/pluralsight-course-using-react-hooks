@@ -31,6 +31,9 @@ export default async function userHandler(req, res) {
 
       // Get data from your database
       //res.status(200).json({ id, name: `User ${id}` });
+
+      console.log(`GET /api/speakers/${id} status: 200`);
+
       break;
     case "PUT":
       try {
@@ -50,6 +53,7 @@ export default async function userHandler(req, res) {
           )
         );
         res.status(200).json(recordFromBody);
+        console.log(`PUT /api/speakers/${id} status: 200`)
       } catch (e) {
         console.log("/api/speakers PUT error:", e);
       }
