@@ -10,7 +10,10 @@ function useSpeakerDataManager() {
 
   function toggleSpeakerFavorite(speakerRec) {
     const updateData = async function () {
-      axios.put(`/api/speakers/${speakerRec.id}`, speakerRec);
+      axios.put(`/api/speakers/${speakerRec.id}`, {
+        ...speakerRec,
+        favorite: !speakerRec.favorite,
+      });
       speakerRec.favorite === true
         ? dispatch({ type: 'unfavorite', id: speakerRec.id })
         : dispatch({ type: 'favorite', id: speakerRec.id });
