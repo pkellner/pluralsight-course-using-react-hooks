@@ -1,3 +1,4 @@
+import '../public/static/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 import '../public/static/site.css';
 

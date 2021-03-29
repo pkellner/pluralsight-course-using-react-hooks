@@ -1,8 +1,7 @@
 {
-  "name": "pluralsight-using-react-hooks",
+  "name": "using-react-hooks-course-pluralsight",
   "version": "1.0.0",
-  "description": "course files",
-  "author": "Peter Kellner",
+  "description": "Using React Course Demo Files",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -10,7 +9,8 @@
     "start": "next start"
   },
   "keywords": [],
-  "license": "ISC",
+  "author": "Peter Kellner",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "next": "^10.0.9",
