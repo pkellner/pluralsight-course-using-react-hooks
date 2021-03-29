@@ -19,3 +19,10 @@ export default async function handler(req, res) {
     console.log('/api/speakers error:', e);
   }
 }
+
+// import speakerData from '../../../src/SpeakerData';
+//
+// export default async function handler(req, res) {
+//   res.status(200).send(JSON.stringify(speakerData, null, 2));
+//   console.log(`GET /api/speakers status: 200`);
+// }

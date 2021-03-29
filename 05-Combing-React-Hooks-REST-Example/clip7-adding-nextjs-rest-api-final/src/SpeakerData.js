@@ -7,7 +7,7 @@ const speakerData = [
     sun: true,
     favorite: true,
     bio:
-      'Tammy has held a number of executive and management roles over the past 15 years, including VP engineering Roles at USA Tech, Cantaloupe Systems, E-Color, and Untangle Inc.',
+      'Tammy has held a number of executive and management positions over the past 15 years, including VP engineering Roles at USA Tech, Cantaloupe Systems, E-Color, and Untangle Inc.',
   },
   {
     id: 5996,
