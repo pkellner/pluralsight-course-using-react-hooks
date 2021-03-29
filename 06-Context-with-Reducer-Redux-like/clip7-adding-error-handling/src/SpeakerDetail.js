@@ -1,9 +1,9 @@
-import { useContext, memo } from 'react';
+import React, { useContext } from 'react';
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 import useSpeakerDataManager from './useSpeakerDataManager';
 import { FavoriteClickCountContext } from './FavoriteClickCountContext';
 
-const SpeakerDetail = memo(({ speakerRec, onHeartFavoriteHandler }) => {
+const SpeakerDetail = React.memo(({ speakerRec, onHeartFavoriteHandler }) => {
   const { id, firstName, lastName, bio, favorite } = speakerRec;
   console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
 

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 import useSpeakerDataManager from './useSpeakerDataManager';
 import { FavoriteClickCountContext } from './FavoriteClickCountContext';

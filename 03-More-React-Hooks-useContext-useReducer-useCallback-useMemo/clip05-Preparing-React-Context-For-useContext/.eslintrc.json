@@ -8,8 +8,6 @@
   },
   "plugins": ["react-hooks"],
   "rules": {
-    //additional rules here
-    "semi": [2, "always"],
     "react-hooks/rules-of-hooks": "error"
   }
 }
