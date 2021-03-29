@@ -7,7 +7,7 @@ const speakerData = [
     sun: true,
     favorite: true,
     bio:
-      'Tammy has held a number of executive and management roles over the past 15 years, including VP engineering Roles at Molekule Inc., Cantaloupe Systems, E-Color, and Untangle Inc.',
+      'Tammy has held a number of executive and management roles over the past 15 years, including VP engineering Roles at USA Tech, Cantaloupe Systems, E-Color, and Untangle Inc.',
   },
   {
     id: 5996,
@@ -128,16 +128,6 @@ const speakerData = [
     favorite: true,
     bio:
       'Antony Ross is a consultant specializing in data science and machine learning applied to sports performance. He has worked closely with USC and UCLA and is presently involved with the Recurse Center in New York researching deep learning and voice recognition.',
-  },
-  {
-    id: 6548,
-    firstName: 'Steve',
-    lastName: 'Souders',
-    sat: true,
-    sun: false,
-    favorite: true,
-    bio:
-      "Steve works at SpeedCurve on the interplay between performance and design. He previously served as Google's Head Performance Engineer, Chief Performance Yahoo!, and Chief Performance Officer at Fastly.",
   },
 ];
 export default speakerData;
