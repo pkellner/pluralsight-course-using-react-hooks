@@ -2,6 +2,9 @@ import App from '../src/App';
 
 import path from 'path';
 import fs from 'fs';
+import React from 'react';
+
+export const InitialSpeakersDataContext = React.createContext();
 
 // export async function getServerSideProps() {
 //   // Fetch data from external API
@@ -56,8 +59,12 @@ export async function getStaticProps(context) {
   };
 }
 
-function speakers(props) {
-  return <App pageName="Speakers" {...props} />;
+function speakers({ initialSpeakersData }) {
+  return (
+    <InitialSpeakersDataContext.Provider value={initialSpeakersData}>
+      <App pageName="Speakers" />
+    </InitialSpeakersDataContext.Provider>
+  );
 }
 
 export default speakers;

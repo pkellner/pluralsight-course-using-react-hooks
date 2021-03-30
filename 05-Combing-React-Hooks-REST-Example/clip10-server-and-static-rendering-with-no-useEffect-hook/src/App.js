@@ -14,7 +14,6 @@ const App = ({ pageName, initialSpeakersData }) => {
   const configValue = {
     showSignMeUp: true,
     showSpeakerSpeakingDays: true,
-    initialSpeakersData: initialSpeakersData,
   };
 
   return (
