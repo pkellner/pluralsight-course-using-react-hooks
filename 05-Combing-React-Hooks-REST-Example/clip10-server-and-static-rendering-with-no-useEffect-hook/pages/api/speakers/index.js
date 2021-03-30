@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     //res.status(200).json(speakers); keeps json minified but harder to read
     res.setHeader('Content-Type', 'application/json');
     res.status(200).send(JSON.stringify(speakers, null, 2));
-    console.log(`GET /api/speakers status: 200`);
+    console.log(`GET  /api/speakers status: 200`);
   } catch (e) {
     console.log('/api/speakers error:', e);
   }
