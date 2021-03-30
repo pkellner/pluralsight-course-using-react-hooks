@@ -1,14 +1,19 @@
 import speakersReducer from './speakersReducer';
-import { useEffect, useReducer } from 'react';
+import { useContext, useEffect, useReducer } from 'react';
 import axios from 'axios';
 
+import { InitialSpeakersDataContext } from '../pages/speakers';
+
 function useSpeakerDataManager() {
+
+  const initialSpeakersData = useContext(InitialSpeakersDataContext);
+
   const [
     { isLoading, speakerList, favoriteClickCount, hasErrored, error },
     dispatch,
   ] = useReducer(speakersReducer, {
-    isLoading: true,
-    speakerList: [],
+    isLoading: false,
+    speakerList: initialSpeakersData,
     favoriteClickCount: 0,
     hasErrored: false,
     error: null,
