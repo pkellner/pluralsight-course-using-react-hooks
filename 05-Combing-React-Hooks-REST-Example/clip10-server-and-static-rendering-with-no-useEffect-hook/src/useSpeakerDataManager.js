@@ -1,6 +1,6 @@
 import speakersReducer from './speakersReducer';
-import { useEffect, useReducer } from 'react';
 import axios from 'axios';
+import { useEffect, useReducer } from 'react';
 
 function useSpeakerDataManager() {
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
@@ -20,19 +20,16 @@ function useSpeakerDataManager() {
     };
     updateData();
   }
-
   useEffect(() => {
     const fetchData = async function () {
       let result = await axios.get('/api/speakers');
       dispatch({ type: 'setSpeakerList', data: result.data });
     };
     fetchData();
-
     return () => {
       console.log('cleanup');
     };
   }, []);
-
   return { isLoading, speakerList, toggleSpeakerFavorite };
 }
 export default useSpeakerDataManager;
