@@ -6,7 +6,7 @@ import fs from 'fs';
 const { promisify } = require('util');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve,ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function handler(req, res) {
   const method = req?.method;
@@ -24,10 +24,13 @@ export default async function handler(req, res) {
       if (!speakers) {
         res.status(404).send('Error: Request failed with status code 404');
       } else {
-        const newSpeakersArray = speakers.map(function(rec) {
+        const newSpeakersArray = speakers.map(function (rec) {
           return rec.id === id ? recordFromBody : rec;
         });
-        writeFile(jsonFile,JSON.stringify({speakers: newSpeakersArray},null,2,));
+        writeFile(
+          jsonFile,
+          JSON.stringify({ speakers: newSpeakersArray }, null, 2),
+        );
         res.status(200).json(recordFromBody);
         console.log(`PUT /api/speakers/${id} status: 200`);
       }
@@ -36,4 +39,3 @@ export default async function handler(req, res) {
     }
   }
 }
-

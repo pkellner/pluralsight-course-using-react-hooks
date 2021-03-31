@@ -2,7 +2,15 @@ import React from 'react';
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 
 const SpeakerDetail = React.memo(
-  ({ id, firstName, lastName, favorite, bio, onHeartFavoriteHandler, dayChangeCount }) => {
+  ({
+    id,
+    firstName,
+    lastName,
+    favorite,
+    bio,
+    onHeartFavoriteHandler,
+    dayChangeCount,
+  }) => {
     console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
 
     return (

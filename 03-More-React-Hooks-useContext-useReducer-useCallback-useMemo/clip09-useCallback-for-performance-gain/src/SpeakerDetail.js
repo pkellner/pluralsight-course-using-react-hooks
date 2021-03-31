@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ImageToggleOnMouseOver from "./ImageToggleOnScroll";
 
 const SpeakerDetail = React.memo(

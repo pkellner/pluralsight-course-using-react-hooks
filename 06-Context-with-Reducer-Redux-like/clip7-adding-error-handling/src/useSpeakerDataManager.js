@@ -5,7 +5,6 @@ import axios from 'axios';
 import { InitialSpeakersDataContext } from '../pages/speakers';
 
 function useSpeakerDataManager() {
-
   const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
   const [

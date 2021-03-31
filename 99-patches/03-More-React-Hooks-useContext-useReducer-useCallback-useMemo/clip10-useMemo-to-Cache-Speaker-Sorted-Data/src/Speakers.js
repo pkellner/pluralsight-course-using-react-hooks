@@ -49,11 +49,11 @@ const Speakers = ({}) => {
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
-    setDayChangeCount(dayChangeCnt+1);
+    setDayChangeCount(dayChangeCnt + 1);
   };
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
-    setDayChangeCount(dayChangeCnt+1);
+    setDayChangeCount(dayChangeCnt + 1);
   };
   const heartFavoriteHandler = useCallback((e, favoriteValue) => {
     e.preventDefault();
