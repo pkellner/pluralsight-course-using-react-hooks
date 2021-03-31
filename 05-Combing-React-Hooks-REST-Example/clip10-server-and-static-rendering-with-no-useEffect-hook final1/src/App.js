@@ -10,12 +10,12 @@ const pageToShow = (pageName) => {
   return <div>Not Found</div>;
 };
 
-const App = ({ pageName, initialSpeakersData }) => {
-  const configValue = {
-    showSignMeUp: true,
-    showSpeakerSpeakingDays: true,
-  };
+const configValue = {
+  showSignMeUp: true,
+  showSpeakerSpeakingDays: true,
+};
 
+const App = ({ pageName }) => {
   return (
     <ConfigContext.Provider value={configValue}>
       <div>{pageToShow(pageName)}</div>
