@@ -32,6 +32,14 @@ export async function getServerSideProps() {
   return { props: { initialSpeakersData } };
 }
 
+// The below code is not covered in the course, however, if you are interested in seeing the site created
+// statically in the build process, you need to comment out the getServerSideProps code above and uncomment
+// this getStaticProps code.  With Revalidate set to 3600, this page will be regenerated on the server once
+// each hour assuming the page is browsed to.  Essentially, getStaticProps with revalidate set is very similar
+// to what getServerSideProps does but it renders it statically.
+//
+// More details in the NextJS docs.
+//
 // export async function getStaticProps(context) {
 //   const { promisify } = require('util');
 //   const readFile = promisify(fs.readFile);
