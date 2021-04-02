@@ -20,7 +20,7 @@ function useSpeakerDataManager() {
     const updateData = async function () {
       const newSpeakerRec = { ...speakerRec, favorite: !speakerRec.favorite };
       axios.put(
-        `http://localhost:4000/speakers/${speakerRec.id}`,
+        `/api/speakers/${speakerRec.id}`,
         newSpeakerRec,
       );
       speakerRec.favorite === true
@@ -32,7 +32,7 @@ function useSpeakerDataManager() {
 
   useEffect(() => {
     const fetchData = async function () {
-      let result = await axios.get('http://localhost:4000/speakers');
+      let result = await axios.get('/api/speakers');
       dispatch({ type: 'setSpeakerList', data: result.data });
     };
     fetchData();
