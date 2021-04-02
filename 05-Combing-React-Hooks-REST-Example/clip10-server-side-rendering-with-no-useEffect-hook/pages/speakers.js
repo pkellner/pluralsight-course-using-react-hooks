@@ -5,7 +5,7 @@ import React from 'react';
 
 export const InitialSpeakersDataContext = React.createContext();
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const {promisify } = require('util');
   const readFile = promisify(fs.readFile);
   const jsonFile = path.resolve('./', 'db.json' );
@@ -17,7 +17,7 @@ export async function getStaticProps() {
     console.log('/api/speakers error:',e);
   }
 
-  return {revalidate: 1,props: {initialSpeakersData}};
+  return {props: {initialSpeakersData}};
 
 }
 

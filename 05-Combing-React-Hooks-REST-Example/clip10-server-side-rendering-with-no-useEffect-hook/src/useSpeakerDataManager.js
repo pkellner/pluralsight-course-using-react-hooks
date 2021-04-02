@@ -9,8 +9,8 @@ function useSpeakerDataManager() {
   const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
-    isLoading: true,
-    speakerList: [],
+    isLoading: false,
+    speakerList: initialSpeakersData,
   });
 
   function toggleSpeakerFavorite(speakerRec) {
