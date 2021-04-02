@@ -3,14 +3,22 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 function useSpeakerDataManager() {
-  const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(
-    speakersReducer,
-    {
-      isLoading: true,
-      speakerList: [],
-      favoriteClickCount: 0,
-    },
-  );
+  const [
+    { isLoading, speakerList, favoriteClickCount, forceUpdateIdentifier },
+    dispatch,
+  ] = useReducer(speakersReducer, {
+    isLoading: true,
+    speakerList: [],
+    favoriteClickCount: 0,
+    forceUpdateIdentifier: 0,
+  });
+
+  console.log(`useSpeakerDataManager: forceUpdateIdentifier:${forceUpdateIdentifier}`);
+
+
+  function forceUpdate() {
+    dispatch({ type: 'forceUpdate' });
+  }
 
   function incrementFavoriteClickCount() {
     dispatch({ type: 'incrementFavoriteClickCount' });
@@ -43,6 +51,8 @@ function useSpeakerDataManager() {
     isLoading,
     speakerList,
     favoriteClickCount,
+    forceUpdateIdentifier,
+    forceUpdate,
     incrementFavoriteClickCount,
     toggleSpeakerFavorite,
   };

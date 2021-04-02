@@ -5,7 +5,6 @@ import { useEffect, useReducer, useContext } from 'react';
 import { InitialSpeakersDataContext } from '../pages/speakers';
 
 function useSpeakerDataManager() {
-
   const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
