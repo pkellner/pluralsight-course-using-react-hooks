@@ -2,6 +2,10 @@ import speakersReducer from './speakersReducer';
 import axios from 'axios';
 import { useEffect, useReducer } from 'react';
 
+// all code in this module does not contain the server-side or static
+// site generation code from the end of the last module. It all relies
+// on the useEffect hook to load speakers data.
+
 function useSpeakerDataManager() {
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
     isLoading: true,
