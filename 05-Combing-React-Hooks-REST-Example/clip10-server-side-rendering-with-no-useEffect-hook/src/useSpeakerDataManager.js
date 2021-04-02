@@ -8,10 +8,9 @@ function useSpeakerDataManager() {
 
   const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
-
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
-    isLoading: false,
-    speakerList: initialSpeakersData,
+    isLoading: true,
+    speakerList: [],
   });
 
   function toggleSpeakerFavorite(speakerRec) {
@@ -26,6 +25,7 @@ function useSpeakerDataManager() {
     };
     updateData();
   }
+
   useEffect(() => {
     const fetchData = async function () {
       let result = await axios.get('/api/speakers');
