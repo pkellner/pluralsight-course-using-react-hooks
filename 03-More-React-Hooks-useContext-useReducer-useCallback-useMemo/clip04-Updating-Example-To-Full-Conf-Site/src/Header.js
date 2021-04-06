@@ -2,9 +2,8 @@ import React from 'react';
 import SignMeUp from './SignMeUp';
 
 export const Header = () => {
-
   const signupCallback = (email) => {
-    return console.log(`sign up called with email: ${email}`);
+    return console.log(`sign up called with email ${email}`);
   };
 
   return (
@@ -15,15 +14,15 @@ export const Header = () => {
           <h6 className="text-uppercase">San Jose, California</h6>
         </div>
         <div className="col-12 col-sm-8 text-lg-right">
-          <div src="/static/SVCClogo.png" />
-        </div>
-        <h2>Silicon Valley Code Camp</h2>
-        <div className="row col-12 text-lg-right">
-          <SignMeUp signupCallback={signupCallback} />
+          <div>
+            <img src="/static/SVCClogo.png" />
+          </div>
+          <h2>Silicon Valley Code Camp</h2>
+          <div className="row col-12 text-lg-right">
+            <SignMeUp signupCallback={signupCallback} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
-export default Header;

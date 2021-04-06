@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header.js';
-import Menu from './Menu.js';
+import { Header } from './Header';
+import { Menu } from './Menu';
 
 function index() {
   return (
