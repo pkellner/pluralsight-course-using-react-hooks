@@ -3,8 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import React from 'react';
 
-export const InitialSpeakersDataContext = React.createContext();
-
 export async function getServerSideProps() {
   const { promisify } = require('util');
   const readFile = promisify(fs.readFile);
@@ -21,11 +19,7 @@ export async function getServerSideProps() {
 }
 
 function speakers({ initialSpeakersData }) {
-  return (
-    <InitialSpeakersDataContext.Provider value={initialSpeakersData}>
-      <App pageName="Speakers" />
-    </InitialSpeakersDataContext.Provider>
-  );
+  return <App pageName="Speakers" />;
 }
 
 export default speakers;

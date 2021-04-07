@@ -2,14 +2,14 @@ import speakersReducer from './speakersReducer';
 import axios from 'axios';
 import { useEffect, useReducer, useContext } from 'react';
 
-import { InitialSpeakersDataContext } from '../pages/speakers';
+//import { InitialSpeakersDataContext } from '../pages/speakers';
 
 function useSpeakerDataManager() {
-  const initialSpeakersData = useContext(InitialSpeakersDataContext);
+  //const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
   const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
     isLoading: false,
-    speakerList: initialSpeakersData,
+    speakerList: [],
   });
 
   function toggleSpeakerFavorite(speakerRec) {
