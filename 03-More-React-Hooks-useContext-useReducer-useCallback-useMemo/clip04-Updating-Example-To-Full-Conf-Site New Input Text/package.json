@@ -1,0 +1,25 @@
+{
+  "name": "using-react-hooks-course-pluralsight",
+  "version": "1.0.0",
+  "description": "Using React Course Demo Files",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "Peter Kellner",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^10.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1"
+  }
+}
