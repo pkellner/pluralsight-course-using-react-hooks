@@ -19,9 +19,9 @@ const Speakers = ({}) => {
         resolve();
       },1000);
     }).then(() => {
-      setIsLoading(false);
+      setSpeakerList(SpeakerData); setIsLoading(false);
     });
-    setSpeakerList(SpeakerData);
+
     return () => {
       console.log('cleanup');
     };

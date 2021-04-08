@@ -1,71 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { ConfigContext } from './App';
+import React, { useState } from 'react';
 
-const SignMeUp = ({ signupCallback }) => {
-  useEffect(() => {
-    console.log(`SignMeUp:useEffect called`);
-  });
+const SignMeUp = ({ signupCallback}) => {
 
-  const [email, setEmail] = useState();
-  const [emailValid, setEmailValid] = useState(false);
-  const [sendProcessing, setSendProcessing] = useState(false);
+  const [email, setEmail] = useState("");
 
-  const context = useContext(ConfigContext);
-
-  function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-
-  const notify = () => {
-    toast.info(`You will be notified of upcoming events ${email}`);
-  };
-
-  function sendEmailToBackend() {
-    setSendProcessing(true);
-    new Promise(function (resolve) {
-      setTimeout(function () {
-        setSendProcessing(false);
-        setEmail('');
-        resolve();
-      }, 1000);
-    }).then(() => {
-      notify();
-      signupCallback(email);
-      setEmail('');
-    });
-  }
-
-  const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
-
-  //console.log("src/SignMeUp called");
-
-  return context.showSignMeUp === false ? null : (
+  return (
     <div className="container">
       <div>
-        <ToastContainer />
         <div className="content">
-          <input
-            value={email}
+          <input placeholder="Enter Email" type="email" name="email" value={email}
             onChange={(e) => {
-              setEmailValid(validateEmail(e.target.value));
-              return setEmail(e.target.value);
-            }}
-            placeholder="Enter Email"
-            type="email"
-            name="email"
-            required
-          />
+              setEmail(e.target.value);
+            }}/>
           &nbsp;
           <button
-            disabled={!emailValid || sendProcessing}
-            className="btn"
-            onClick={sendEmailToBackend}
-            type="submit"
-          >
-            {buttonText}
-          </button>
+            disabled={!email.includes("@")}
+            onClick={() => {
+              signupCallback(email);
+              setEmail("");
+              alert("signup confirmed");
+            }}
+            className="btn" type="submit">Get Updates</button>
         </div>
       </div>
     </div>

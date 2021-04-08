@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const SignMeUp = ({ signupCallback }) => {
   const [email, setEmail] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
 
   return (
     <div className="container">
@@ -15,7 +14,6 @@ const SignMeUp = ({ signupCallback }) => {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              setEmailValid(e.target.value.includes('@'));
             }}
           />
           &nbsp;
@@ -27,7 +25,7 @@ const SignMeUp = ({ signupCallback }) => {
             }}
             className="btn"
             type="submit"
-            disabled={!emailValid}
+            disabled={!email.includes('@')}
           >
             Get Updates
           </button>
