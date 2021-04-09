@@ -15,7 +15,7 @@ in April 2020, you can find it in the branch named
 - React Version 17, NextJS version 10
 - Server-side rendering included including Incremental Site Generation for infinite scaling by real time updates to a staticly generated site
 
-[Update Notes](https://github.com/pkellner/pluralsight-course-using-react-hooks/April2021-Update-Notes.md)
+[Update Notes](https://github.com/pkellner/pluralsight-course-using-react-hooks/blob/master/April2021-Update-Notes.md)
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
