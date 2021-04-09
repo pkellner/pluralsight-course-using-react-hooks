@@ -130,4 +130,5 @@ const speakerData = [
       'Antony Ross is a consultant specializing in data science and machine learning applied to sports performance. He has worked closely with USC and UCLA and is presently involved with the Recurse Center in New York researching deep learning and voice recognition.',
   },
 ];
+
 export default speakerData;
