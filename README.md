@@ -1,4 +1,4 @@
-# pluralsight-course-using-react-hooks (COURSE UPDATED AUG 12, 2020)
+# pluralsight-course-using-react-hooks (COURSE UPDATED April 9, 2021)
 The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in April 2021.
 
 ![Course Update Notice April 2021](Announcement-Update-April-2021.png)
