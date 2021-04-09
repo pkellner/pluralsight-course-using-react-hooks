@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const SignMeUp = ({ signupCallback}) => {
-
+const SignMeUp = ({ signupCallback }) => {
   const [email, setEmail] = useState("");
 
   return (
     <div className="container">
       <div>
         <div className="content">
-          <input placeholder="Enter Email" type="email" name="email" value={email}
+          <input
+            placeholder="Enter Email"
+            type="email"
+            name="email"
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-            }}/>
+            }}
+          />
           &nbsp;
           <button
             disabled={!email.includes("@")}
@@ -20,7 +24,11 @@ const SignMeUp = ({ signupCallback}) => {
               setEmail("");
               alert("signup confirmed");
             }}
-            className="btn" type="submit">Get Updates</button>
+            className="btn"
+            type="submit"
+          >
+            Get Updates
+          </button>
         </div>
       </div>
     </div>

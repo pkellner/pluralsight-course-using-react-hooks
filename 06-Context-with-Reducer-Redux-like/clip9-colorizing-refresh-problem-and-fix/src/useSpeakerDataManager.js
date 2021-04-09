@@ -8,8 +8,14 @@ function useSpeakerDataManager() {
   const initialSpeakersData = useContext(InitialSpeakersDataContext);
 
   const [
-    { isLoading, speakerList, favoriteClickCount, hasErrored, error,
-      imageRerenderIdentifier},
+    {
+      isLoading,
+      speakerList,
+      favoriteClickCount,
+      hasErrored,
+      error,
+      imageRerenderIdentifier,
+    },
     dispatch,
   ] = useReducer(speakersReducer, {
     isLoading: false,
@@ -25,7 +31,7 @@ function useSpeakerDataManager() {
   }
 
   function forceImageRerender() {
-    dispatch({type: 'forceImageRerender'});
+    dispatch({ type: 'forceImageRerender' });
   }
 
   function toggleSpeakerFavorite(speakerRec) {

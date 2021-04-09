@@ -17,7 +17,7 @@ const speakersReducer = (state, action) => {
       };
     }
     case 'forceImageRerender': {
-      return {...state,imageRerenderIdentifier: new Date().getTime()};
+      return { ...state, imageRerenderIdentifier: new Date().getTime() };
     }
     case 'favorite': {
       return { ...state, speakerList: updateFavorite(true) };

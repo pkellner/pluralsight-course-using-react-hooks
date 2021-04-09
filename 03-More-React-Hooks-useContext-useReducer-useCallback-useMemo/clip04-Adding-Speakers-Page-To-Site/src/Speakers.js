@@ -12,12 +12,12 @@ const Speakers = ({}) => {
   const [speakerList, setSpeakerList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect( () => {
+  useEffect(() => {
     setIsLoading(true);
-    new Promise(function(resolve) {
-      setTimeout(function() {
+    new Promise(function (resolve) {
+      setTimeout(function () {
         resolve();
-      },1000);
+      }, 1000);
     }).then(() => {
       setSpeakerList(SpeakerData);
       setIsLoading(false);
@@ -26,7 +26,7 @@ const Speakers = ({}) => {
     return () => {
       console.log('cleanup');
     };
-  },[]);
+  }, []);
 
   const handleChangeSaturday = () => {
     setSpeakingSaturday(!speakingSaturday);
@@ -36,28 +36,30 @@ const Speakers = ({}) => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  const speakerListFiltered = isLoading ? [] :
-    speakerList.filter(
-      ({sat,sun}) =>
-        (speakingSaturday && sat) || (speakingSunday && sun),
-    ).sort(function(a,b) {
-      if (a.firstName < b.firstName) {
-        return -1;
-      }
-      if (a.firstName > b.firstName) {
-        return 1;
-      }
-      return 0;
-      }
-    );
+  const speakerListFiltered = isLoading
+    ? []
+    : speakerList
+        .filter(
+          ({ sat, sun }) =>
+            (speakingSaturday && sat) || (speakingSunday && sun),
+        )
+        .sort(function (a, b) {
+          if (a.firstName < b.firstName) {
+            return -1;
+          }
+          if (a.firstName > b.firstName) {
+            return 1;
+          }
+          return 0;
+        });
 
-  const heartFavoriteHandler = (e,favoriteValue) => {
+  const heartFavoriteHandler = (e, favoriteValue) => {
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes['data-sessionid'].value);
     setSpeakerList(
       speakerList.map((item) => {
         if (item.id === sessionId) {
-          return {...item,favorite: favoriteValue};
+          return { ...item, favorite: favoriteValue };
         }
         return item;
       }),
@@ -75,17 +77,22 @@ const Speakers = ({}) => {
           <div className="hide">
             <div className="form-check-inline">
               <label className="form-check-label">
-                <input type="checkbox" className="form-check-input"
-                       onChange={handleChangeSaturday}
-                       checked={speakingSaturday}
-                />Saturday Speakers
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  onChange={handleChangeSaturday}
+                  checked={speakingSaturday}
+                />
+                Saturday Speakers
               </label>
             </div>
             <div className="form-check-inline">
               <label className="form-check-label">
-                <input type="checkbox" className="form-check-input"
-                       onChange={handleChangeSunday}
-                       checked={speakingSunday}
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  onChange={handleChangeSunday}
+                  checked={speakingSunday}
                 />
                 Sunday Speakers
               </label>
@@ -95,10 +102,17 @@ const Speakers = ({}) => {
         <div className="row">
           <div className="card-deck">
             {speakerListFiltered.map(
-              ({id, firstName,lastName,bio,favorite}) => {
+              ({ id, firstName, lastName, bio, favorite }) => {
                 return (
-                  <SpeakerDetail key={id} id={id} favorite={favorite} firstName={firstName} lastName={lastName}
-                                 bio={bio} onHeartFavoriteHandler={heartFavoriteHandler} />
+                  <SpeakerDetail
+                    key={id}
+                    id={id}
+                    favorite={favorite}
+                    firstName={firstName}
+                    lastName={lastName}
+                    bio={bio}
+                    onHeartFavoriteHandler={heartFavoriteHandler}
+                  />
                 );
               },
             )}
