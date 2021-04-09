@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ConfigContext } from "./App";
+import { ConfigContext } from './App';
 
 const SignMeUp = ({ signupCallback }) => {
   const [email, setEmail] = useState('');
