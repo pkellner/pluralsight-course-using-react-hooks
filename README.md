@@ -3,21 +3,19 @@ The master branch here is the latest updates to the Pluralsight course published
 
 ![Course Update Notice April 2021](Announcement-Update-April-2021.png)
 
-Our course has had a major update. Every module has changes, 
-some more significant then others. The last module that was on 
-authentication has been replaced
-by one titled **Global App State With useContext and useReducer Like Redux**.
+This course has had a significant update.
 
 If you want to get to the source code from the previous course release 
 in April 2020, you can find it in the branch named
- [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-Update-July-2020).
+ [Course-Update-July-2020](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-Update-July-2020).
 
 ## Major Changes Include:
 
 - REST implemented using NextJS API Routes (no more json-server)
 - React Version 17, NextJS version 10
-- Major re-write of first 3 modules covering exchange of data between components (best practice techniques)
-- Static Site Generation techniques including Incremental Site Generation for infinite scaling
+- Server-side rendering included including Incremental Site Generation for infinite scaling by real time updates to a staticly generated site
+
+[Update Notes](https://github.com/pkellner/pluralsight-course-using-react-hooks/April2021-Update-Notes.md)
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
@@ -66,7 +64,7 @@ This course uses the Next.js framework as a demonstraton vehicle for React Hooks
 
 ## Repo or Course Issues
 
-If you find any problems or issues, feel free to post it as an issue here at this forum and I will look into it as soon as I can. You can also contact me directly at http://peterkellner.net/contact/ 
+If you find any problems or issues, feel free to post it as an issue here at this forum and I will look into it as soon as I can. You can also contact me directly at https://peterkellner.net/contact/ 
 
 I hope you enjoy the course!
 
