@@ -1,30 +1,23 @@
 # pluralsight-course-using-react-hooks (COURSE UPDATED AUG 12, 2020)
-The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in August of 2020.
+The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in April 2021.
 
-![Course Update Notice August 2020](Announcement-Update-August2020a.png)
+![Course Update Notice April 2021](Announcement-Update-April-2021.png)
 
 Our course has had a major update. Every module has changes, 
 some more significant then others. The last module that was on 
 authentication has been replaced
 by one titled **Global App State With useContext and useReducer Like Redux**.
 
-If you want to get to the source code from the original course release 
-in May of 2019, you can find it in the branch named
- [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-First-Release-May-2019).
+If you want to get to the source code from the previous course release 
+in April 2020, you can find it in the branch named
+ [Course-First-Release-May-2019](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-Update-July-2020).
 
-To read more about the update [click here](August2020-Update-Notes.md)
+## Major Changes Include:
 
-One of the most powerful features that become available to you after learning 
-how to use React Hooks, specifically the useContext and useReducer hooks, is that you
-can combine the two to make a powerful "redux-like" solution for gobally sharing 
-data between different parts of your application hierarchy.
-
-I've literally added 30 minutes of 100% new content to the course that covers how to do this. 
-I'd suggest you re-watch [Module 5](https://app.pluralsight.com/player?course=using-react-hooks&author=peter-kellner&name=5b710e27-32b2-4f8d-930b-b8ccd29a3ecc&clip=0&mode=live), building custom hooks first if you've not, then module 6, 
-[Using useContext and useReducer to Make a Redux-like Global App State](https://app.pluralsight.com/player?course=using-react-hooks&author=peter-kellner&name=95df19ab-9a51-4c3c-bb40-38358c179ee1&clip=0&mode=live)
-
-![Consolidating State Management With Context](m6-clip01-tree-to-global.gif)
-![Consolidating State Management With Context](m6-clip02-single-component-to-context.gif)
+- REST implemented using NextJS API Routes (no more json-server)
+- React Version 17, NextJS version 10
+- Major re-write of first 3 modules covering exchange of data between components (best practice techniques)
+- Static Site Generation techniques including Incremental Site Generation for infinite scaling
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
@@ -37,7 +30,7 @@ Before you start, you should install node on either your Windows or Mac computer
 
 ## Course Description
 
-React versions 16.8 and higher, include React Hooks which solve several problems that went unaddressed in previous versions. React Hooks provide a direct API to React concepts you already know about. Those concepts include props, state, context, refs and lifecycle events. React Hooks are designed for use in React Functional Components where previously there was no good way to manage state or lifecycle events.
+React versions 17.0.2 and higher, include React Hooks which solve several problems that went unaddressed in previous versions. React Hooks provide a direct API to React concepts you already know about. Those concepts include props, state, context, refs and lifecycle events. React Hooks are designed for use in React Functional Components where previously there was no good way to manage state or lifecycle events.
 
 In this course, you’ll learn how to use the top seven React Hooks as well as gain the knowledge and experience necessary to build your own customized composite Hook. Along the way, you’ll pick up techniques you can use building real world web apps that include how React Hooks can help you with REST services, reducers, authentication and more.
 
@@ -45,7 +38,7 @@ When you are finished with this course, you’ll confidently be able to combine 
 
 
 ## Getting Started
-1. **Install [Node 12.16.3 with NPM 6.14.4](https://nodejs.org)**. 
+1. **Install [Node 14.16 with NPM 7.9](https://nodejs.org)**. 
 2. **Clone this repository.** - `git clone https://github.com/pkellner/pluralsight-course-using-react-hooks` or [download the zip](https://github.com/pkellner/pluralsight-course-using-react-hooks/archive/master.zip)
 3. **Set your default directory to which module you want (example: cd 02-Basic-React-Hooks-useState-useRef-useEffect - `cd m6-add-rest-data-to-server-side-rendering`
 4. **Install Node Packages with Dependencies.** - `npm install`
@@ -66,10 +59,6 @@ Then, do run the app you just need type
 `npm run dev`
 
 And that will launch the web server on port 3000 where you can browser to it at the url: `http://localhost:3000`
-
-Starting in module 5, you'll need to launch the `json-server` to simulate a REST server.  To do that, you enter the command at a terminal or DOS prompt:
-
-`npm run json-server`
 
 ## Background
 
