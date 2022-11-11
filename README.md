@@ -9,7 +9,7 @@ https://pluralsight.com/courses/react-18-using-hooks
 
 This new course **"Using Hooks in React 18"** covers all the React Hooks covered in this course as well as the new React
 Hooks useTransition and useDeferredValue. The new course incorporates a lot of feedback from this course including more focus 
-on React and less focus on the build chain NextJS. That is, there no discussions about deployments or server-side rendering.
+on React and less focus on the build chain NextJS. That is, there is no discussions about deployments or server-side rendering.
 
 There is nothing inaccurate in this course regarding hooks, the newer course is improved and more up to date in all regards.
 
