@@ -1,21 +1,19 @@
 # pluralsight-course-using-react-hooks (COURSE UPDATED April 9, 2021)
 The master branch here is the latest updates to the Pluralsight course published by Peter Kellner in April 2021.
 
-![Course Update Notice April 2021](Announcement-Update-April-2021.png)
 
-This course has had a significant update.
+# Updated Course: [Using Hooks in React 18 (Released Nov 2022)](https://pluralsight.com/courses/react-18-using-hooks)
+https://pluralsight.com/courses/react-18-using-hooks
 
-If you want to get to the source code from the previous course release 
-in April 2020, you can find it in the branch named
- [Course-Update-July-2020](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-Update-July-2020).
+![Updated Course Released at Different Location](m2-using-hooks-in-react-18-slide-600px.png)
 
-## Major Changes Include:
+This new course **"Using Hooks in React 18"** covers all the React Hooks covered in this course as well as the new React
+Hooks useTransition and useDeferredValue. The new course incorporates a lot of feedback from this course including more focus 
+on React and less focus on the build chain NextJS. That is, there no discussions about deployments or server-side rendering.
 
-- REST implemented using NextJS API Routes (no more json-server)
-- React Version 17, NextJS version 10
-- Server-side rendering included including Incremental Site Generation for infinite scaling by real time updates to a staticly generated site
+There is nothing inaccurate in this course regarding hooks, the newer course is improved and more up to date in all regards.
 
-[Update Notes](https://github.com/pkellner/pluralsight-course-using-react-hooks/blob/master/April2021-Update-Notes.md)
+
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
 
@@ -23,6 +21,7 @@ in April 2020, you can find it in the branch named
 Before you start, you should install node on either your Windows or Mac computer (those are the two environments that are tested). Below, in
 "Getting Started" are the basics to get module 6 up and running as fast as possible.
 
+[Update Notes for April 2021 Release](https://github.com/pkellner/pluralsight-course-using-react-hooks/blob/master/April2021-Update-Notes.md)
 
 *[A new React Course from Peter Kellner "Designing React Components"](https://app.pluralsight.com/library/courses/react-components-designing)*
 
@@ -67,6 +66,16 @@ This course uses the Next.js framework as a demonstraton vehicle for React Hooks
 If you find any problems or issues, feel free to post it as an issue here at this forum and I will look into it as soon as I can. You can also contact me directly at https://peterkellner.net/contact/ 
 
 I hope you enjoy the course!
+
+## Notes
+
+If you want to get to the source code from the previous course release
+in April 2020, you can find it in the branch named
+[Course-Update-July-2020](https://github.com/pkellner/pluralsight-course-using-react-hooks/tree/Course-Update-July-2020).
+
+
+
+
 
 
 
