@@ -20,7 +20,7 @@ There is nothing inaccurate in this course regarding hooks, the newer course is 
 | **[Using Hooks in React 18](https://pluralsight.com/courses/react-18-using-hooks/)** | November 2022 |
 | **[What is React](https://pluralsight.com/courses/react-what-is/)**                  | August 2022   |
 | **[What's New in React 18](https://pluralsight.com/courses/react-18-whats-new/)**    | May 2022      |
-| **[Data and UI Patterns in React](https://github.com/pkellner/pluralsight-building-essential-ui-data-elements-in-react/)**    | May 2022      |
+| **[Data and UI Patterns in React](https://github.com/pkellner/pluralsight-building-essential-ui-data-elements-in-react/)**    | December 2021      |
 
 
 # Course Code for [Using React Hooks](https://app.pluralsight.com/library/courses/using-react-hooks) on Pluralsight
